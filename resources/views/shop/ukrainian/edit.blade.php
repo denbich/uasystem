@@ -223,8 +223,8 @@
                                         <label class="custom-control-label" for="desire2">Nie</label>
                                       </div>
                                       <div class="custom-control custom-radio mb-1">
-                                        <input type="radio" id="desire3" name="stay" value="Na czas wojny" class="custom-control-input" @if ($uk->stay == "Na czas wojny") checked @endif>
-                                        <label class="custom-control-label" for="desire3">Na czas wojny</label>
+                                        <input type="radio" id="desire3" name="stay" value="może" class="custom-control-input" @if ($uk->stay == "może") checked @endif>
+                                        <label class="custom-control-label" for="desire3">Może</label>
                                       </div>
                                       <div class="custom-control custom-radio mb-1">
                                         <input type="radio" id="desire4" name="stay" value="Nie wie" class="custom-control-input" @if ($uk->stay == "Nie wie") checked @endif>

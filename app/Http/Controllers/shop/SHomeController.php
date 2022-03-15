@@ -84,13 +84,7 @@ class SHomeController extends Controller
     public function exceldo(Request $request)
     {
         Excel::import(new UkrainianImport, $request->file);
-        for($i = 1; $i <= 607; $i++)
-        {
-            Ukrainian_visit::create([
-                'ukrainian_id' => $i,
-                'user_id' => Auth::id(),
-            ]);
-        }
+        
         return "success";
     }
 }

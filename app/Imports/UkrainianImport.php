@@ -14,13 +14,16 @@ class UkrainianImport implements ToModel, WithLimit
         switch($row[8])
         {
             case('tak'):
-                $stay = '';
+                $stay = 'tak';
                 break;
             case('nie'):
-                $stay = '';
+                $stay = 'nie';
+                break;
+            case('Może'):
+                $stay = 'może';
                 break;
             default:
-            $stay = '';
+                $stay = 'może';
             break;
 
         }
@@ -44,6 +47,6 @@ class UkrainianImport implements ToModel, WithLimit
 
     public function limit(): int
     {
-        return 607;
+        return 665;
     }
 }
