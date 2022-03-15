@@ -8,4 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Ukrainian_visit extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'id',
+        'ukrainian_id',
+        'user_id',
+        'created_at',
+        'updated_at',
+    ];
+
+    public function users()
+    {
+        return $this->hasOne(User::class, 'user_id', 'id');
+    }
+
+    public function ukrainians()
+    {
+        return $this->hasMany(Ukrainian::class, 'ukrainian_id', 'id');
+    }
 }
