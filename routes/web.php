@@ -16,7 +16,7 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/start', function(){
     Artisan::call('migrate', [ '--force' => true]);
     Artisan::call('db:seed', [ '--class' => 'AdminSeed']);
-    echo "ready";
+    echo "success";
 });
 
 Route::get('/home', function(){
