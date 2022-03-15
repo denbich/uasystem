@@ -41,7 +41,9 @@ class UkrainianImport implements ToModel, WithLimit
             'card_id' => null,
             'rfid' => null,
             'created_by_id' => Auth::id(),
+            'created_at' => $row[0],
         ];
+
         return new Ukrainian($array);
     }
 
