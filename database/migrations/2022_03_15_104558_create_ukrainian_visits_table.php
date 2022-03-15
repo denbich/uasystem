@@ -12,6 +12,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('ukrainian_id');
             $table->unsignedBigInteger('user_id');
+            $table->boolean('food');
+            $table->boolean('detergents');
+            $table->boolean('clothes');
             $table->timestamps();
 
             $table->foreign('ukrainian_id')->references('id')->on('ukrainians')->onDelete('cascade');

@@ -122,9 +122,8 @@
                             <tr>
                                 <th>Imię i nazwisko</th>
                                 <th>Ilość wizyt</th>
-                                <th>Ostatnia wizyta</th>
+                                <th>Ostatnia wizyta - potrzeby</th>
                                 <th>Data urodzenia</th>
-                                <th>Numer tel.</th>
                                 <th>Dzieci</th>
                                 <th>Opcje</th>
                             </tr>
@@ -142,9 +141,8 @@
                                         </div>
                                     </th>
                                     <td><span class="badge badge-primary">{{ $uk->ukrainian_visit_count }}</span></td>
-                                    <td>{{ $uk->ukrainian_visit->last()->created_at }}</td>
+                                    <td>{{ $uk->ukrainian_visit->last()->created_at }} - @if ($uk->ukrainian_visit->last()->food == 1) Jedzenie, @endif @if ($uk->ukrainian_visit->last()->detergents == 1) Chemia, @endif @if ($uk->ukrainian_visit->last()->clothes == 1) Ubrania @endif</td>
                                     <td>{{ date("d.m.Y", strtotime($uk->birth)) }} r.</td>
-                                    <td>{{ $uk->telephone }}</td>
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <span class="completion mr-2">{{ $uk->children }}</span>
@@ -152,10 +150,7 @@
                                     </td>
 
                                     <td class="text-center">
-                                        <form action="{{ route('s.ukrainian.addvisit', [$uk->id]) }}" method="post" id="addvisit{{ $uk->id }}">
-                                            @csrf
-                                            </form>
-                                        <a href="" onclick="event.preventDefault(); document.getElementById('addvisit{{ $uk->id }}').submit();" class="text-lg mx-1">
+                                        <a href="#modaluk{{ $uk->id }}" data-toggle="modal" data-target="#modaluk{{ $uk->id }}" class="text-lg mx-1">
                                                 <i class="fas fa-plus"></i>
                                             </a>
 
@@ -180,6 +175,42 @@
       @include('footer')
     </div>
   </div>
+
+  @foreach ($ukrainians as $uk)
+  <div class="modal fade" id="modaluk{{ $uk->id }}" tabindex="-1" role="dialog" aria-labelledby="labelmodaluk{{ $uk->id }}" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <form action="{{ route('s.ukrainian.addvisit', [$uk->id]) }}" method="post">
+            @csrf
+            <div class="modal-header">
+                <h5 class="modal-title" id="labelmodaluk{{ $uk->id }}">Powód wizyty</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="Check1{{ $uk->id }}" name="clothes">
+                    <label class="custom-control-label" for="Check1{{ $uk->id }}">Ubrania</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="Check2" name="food">
+                    <label class="custom-control-label" for="Check2{{ $uk->id }}">Jedzenie</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="Check3{{ $uk->id }}" name="detergents">
+                    <label class="custom-control-label" for="Check3{{ $uk->id }}">Chemia / kosmetyki</label>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+                <button type="submit" class="btn btn-primary">Zatwierdź</button>
+              </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  @endforeach
 
 @endsection
 

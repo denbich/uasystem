@@ -104,6 +104,18 @@
               </div>
             </div>
               <div class="card-body">
+                @if (session('add_visit') == true)
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <span class="alert-text"><strong>Sukces!</strong> Wizyta została dodana pomyślnie!</span>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                @endif
                 <div id="alertsdiv" class="d-none">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
@@ -143,7 +155,7 @@
         var search = $('#search').val();
         $.ajax({
         url: "{{ route('s.ukrainian.searchukrainian') }}",
-        type: "GET",
+        type: "post",
         dataType: "html",
         data:{
             search: search,
@@ -164,7 +176,7 @@
         var search = $('#search').val();
         $.ajax({
         url: "{{ route('s.ukrainian.searchukrainian') }}",
-        type: "GET",
+        type: "post",
         dataType: "html",
         data:{
             search: search,

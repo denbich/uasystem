@@ -5,6 +5,7 @@ namespace App\Http\Controllers\shop;
 use App\Models\User;
 use App\Models\Ukrainian;
 use Illuminate\Http\Request;
+use App\Imports\VisitsImport;
 use App\Models\Ukrainian_visit;
 use App\Imports\UkrainianImport;
 use App\Http\Controllers\Controller;
@@ -84,7 +85,47 @@ class SHomeController extends Controller
     public function exceldo(Request $request)
     {
         Excel::import(new UkrainianImport, $request->file);
-        
+        for($i = 1; $i <= 738; $i++)
+        {
+            Ukrainian_visit::create([
+                'ukrainian_id' => $i,
+                'user_id' => Auth::id(),
+                'food' => 1,
+                'clothes' => 1,
+                'detergents' => 1,
+                'created_at' => '2022-03-10',
+            ]);
+        }
         return "success";
+    }
+
+    public function visits()
+    {
+        return view('import');
+    }
+
+    public function visitsdo(Request $request)
+    {
+        Excel::import(new VisitsImport, $request->file);
+        return "success";
+    }
+
+    public function test()
+    {
+        $ukrainians = Ukrainian::all();
+
+        foreach ($ukrainians as $uk)
+        {
+            Ukrainian_visit::create([
+                'ukrainian_id' => $uk->id,
+                'user_id' => Auth::id(),
+                'food' => 1,
+                'clothes' => 1,
+                'detergents' => 1,
+                'created_at' => $uk->created_at,
+            ]);
+        }
+
+        return "done";
     }
 }

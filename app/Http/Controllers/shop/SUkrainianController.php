@@ -62,6 +62,9 @@ class SUkrainianController extends Controller
 
         $visit = Ukrainian_visit::create([
             'ukrainian_id' => $ukrainian->id,
+            'food' => 1,
+            'clothes' => 1,
+            'detergents' => 1,
             'user_id' => Auth::id(),
         ]);
 
@@ -94,8 +97,8 @@ class SUkrainianController extends Controller
             'stay' => 'nullable|max:255',
             'children' => 'nullable|max:255',
             'remarks' => 'nullable|max:65535',
-            'card_id' => 'nullable|max:65535|unique:ukrainians,card_id',
-            'rfid' => 'nullable|max:65535|unique:ukrainians,rfid',
+            'card_id' => 'nullable|max:255|unique:ukrainians,card_id',
+            'rfid' => 'nullable|max:255|unique:ukrainians,rfid',
         ]);
 
         if ($request->stay == null)
@@ -131,8 +134,33 @@ class SUkrainianController extends Controller
     public function add_visit(Request $request, $ukrainian_id)
     {
         $ukrainian = Ukrainian::where('id', $ukrainian_id)->first();
+
+        if ($request->food == "on")
+        {
+            $food = 1;
+        } else {
+            $food = 0;
+        }
+
+        if ($request->clothes == "on")
+        {
+            $clothes = 1;
+        } else {
+            $clothes = 0;
+        }
+
+        if ($request->detergents == "on")
+        {
+            $detergents = 1;
+        } else {
+            $detergents = 0;
+        }
+
         $visit = Ukrainian_visit::create([
             'ukrainian_id' => $ukrainian->id,
+            'food' => $food,
+            'clothes' => $clothes,
+            'detergents' => $detergents,
             'user_id' => Auth::id(),
         ]);
 
@@ -151,18 +179,29 @@ class SUkrainianController extends Controller
 
         if(count($urkainians) > 0)
         {
-            $table1 = '<div class="table-responsive"><table class="table align-items-center table-flush"> <thead class="thead-light"> <tr> <th>Imię i nazwisko</th> <th>Ilość wizyt</th> <th>Ostatnia wizyta</th> <th>Data urodzenia</th> <th>Numer tel.</th> <th>Dzieci</th> <th>Opcje</th> </tr></thead><tbody class="list">';
+            $table1 = '<div class="table-responsive"><table class="table align-items-center table-flush"> <thead class="thead-light"> <tr> <th>Imię i nazwisko</th> <th>Ilość wizyt</th> <th>Ostatnia wizyta  - potrzeby</th> <th>Data urodzenia</th> <th>Dzieci</th> <th>Opcje</th> </tr></thead><tbody class="list">';
 
                 $table2 = '';
+                $modals = '';
                 foreach ($urkainians as $uk)
                 {
-                    $table2 = $table2.'<tr> <th scope="row"> <div class="media align-items-center"> <a href="'.route('a.user.show', [$uk->id]) .'"> <div class="media-body"> <span class="name mb-0 text-sm">'.$uk->firstname .' '.$uk->lastname .'</span> </div> </a> </div> </th> <td><span class="badge badge-primary">'.$uk->ukrainian_visit_count.'</span></td> <td>'.$uk->ukrainian_visit->last()->created_at .'</td> <td>'.date("d.m.Y", strtotime($uk->birth)) .' r.</td> <td>'.$uk->telephone .'</td> <td> <div class="d-flex align-items-center"> <span class="completion mr-2">'.$uk->children .'</span> </div> </td> <td class="text-center"> <a href="#" style="cursor:pointer" onclick="add_visit('."'".$uk->id."'".')" class="text-lg mx-1"> <i class="fas fa-plus"></i> </a> <a href="'.route('s.ukrainian.show', [$uk->id]) .'" class="text-lg mx-1"> <i class="fas fa-search"></i> </a> <a href="'.route('s.ukrainian.edit', [$uk->id]) .'" class="text-lg mx-1"> <i class="fas fa-edit"></i> </a> </td> </tr>';
+                    $needs = '';
+                    if ($uk->ukrainian_visit->last()->food == 1) $needs.="Jedzenie, ";
+                    if ($uk->ukrainian_visit->last()->detergents == 1) $needs.="Chemia, ";
+                    if ($uk->ukrainian_visit->last()->clothes == 1) $needs.="Ubrania";
+                    $table2 = $table2.'<tr> <th scope="row"> <div class="media align-items-center"> <a href="'.route('a.user.show', [$uk->id]) .'"> <div class="media-body"> <span class="name mb-0 text-sm">'.$uk->firstname .' '.$uk->lastname .'</span> </div> </a> </div> </th> <td><span class="badge badge-primary">'.$uk->ukrainian_visit_count.'</span></td> <td>'.$uk->ukrainian_visit->last()->created_at .' - '.$needs.' </td> <td>'.date("d.m.Y", strtotime($uk->birth)) .' r.</td> <td> <div class="d-flex align-items-center"> <span class="completion mr-2">'.$uk->children .'</span> </div> </td> <td class="text-center"> <a href="#modaluk'. $uk->id .'" data-toggle="modal" data-target="#modaluk'. $uk->id .'" class="text-lg mx-1"> <i class="fas fa-plus"></i> </a> <a href="'.route('s.ukrainian.show', [$uk->id]) .'" class="text-lg mx-1"> <i class="fas fa-search"></i> </a> <a href="'.route('s.ukrainian.edit', [$uk->id]) .'" class="text-lg mx-1"> <i class="fas fa-edit"></i> </a> </td> </tr>';
+
+                    //<a href="#" style="cursor:pointer" onclick="add_visit('."'".$uk->id."'".')" class="text-lg mx-1"> <i class="fas fa-plus"></i> </a>
+
+                    $modal = '<div class="modal fade" id="modaluk'. $uk->id .'" tabindex="-1" role="dialog" aria-labelledby="labelmodaluk'. $uk->id .'" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <form action="'.route('s.ukrainian.addvisit', [$uk->id]) .'" method="post"> <input type="hidden" name="_token" value="'.csrf_token().'"> <div class="modal-header"> <h5 class="modal-title" id="labelmodaluk'. $uk->id .'">Powód wizyty</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <div class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" id="Check1'. $uk->id .'" name="clothes"> <label class="custom-control-label" for="Check1'. $uk->id .'">Ubrania</label> </div> <div class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" id="Check2'. $uk->id .'" name="food"> <label class="custom-control-label" for="Check2'. $uk->id .'">Jedzenie</label> </div> <div class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" id="Check3'. $uk->id .'" name="detergents"> <label class="custom-control-label" for="Check3'. $uk->id .'">Chemia / kosmetyki</label> </div> </div> <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button> <button type="submit" class="btn btn-primary">Zatwierdź</button> </div> </form> </div> </div> </div>';
+
+                    $modals = $modals.$modal;
                 }
 
                 //<form action="'.route('s.ukrainian.addvisit', [$uk->id]) .'" method="post" id="addvisit'.$uk->id .'"> <input type="hidden" name="_token" value="'.csrf_token().'"> </form>
                 $table3 = '</tbody></table></div>';
 
-            return $table1.$table2.$table3;
+            return $table1.$table2.$table3.$modals;
 
         } else {
             return "<h1 class='text-center text-danger'>Brak wyników!</h1>";
@@ -184,15 +223,26 @@ class SUkrainianController extends Controller
             $table1 = '<div class="table-responsive"><table class="table align-items-center table-flush"> <thead class="thead-light"> <tr> <th>Imię i nazwisko</th> <th>Ilość wizyt</th> <th>Ostatnia wizyta</th> <th>Data urodzenia</th> <th>Numer tel.</th> <th>Dzieci</th> <th>Opcje</th> </tr></thead><tbody class="list">';
 
                 $table2 = '';
+                $modals = '';
                 foreach ($urkainians as $uk)
                 {
-                    $table2 = $table2.'<tr> <th scope="row"> <div class="media align-items-center"> <a href="'.route('a.user.show', [$uk->id]) .'"> <div class="media-body"> <span class="name mb-0 text-sm">'.$uk->firstname .' '.$uk->lastname .'</span> </div> </a> </div> </th> <td><span class="badge badge-primary">'.$uk->ukrainian_visit_count.'</span></td> <td>'.$uk->ukrainian_visit->last()->created_at .'</td> <td>'.date("d.m.Y", strtotime($uk->birth)) .' r.</td> <td>'.$uk->telephone .'</td> <td> <div class="d-flex align-items-center"> <span class="completion mr-2">'.$uk->children .'</span> </div> </td> <td class="text-center"> <a href="#" style="cursor:pointer" onclick="add_visit('."'".$uk->id."'".')" class="text-lg mx-1"> <i class="fas fa-plus"></i> </a> <a href="'.route('s.ukrainian.show', [$uk->id]) .'" class="text-lg mx-1"> <i class="fas fa-search"></i> </a> <a href="'.route('s.ukrainian.edit', [$uk->id]) .'" class="text-lg mx-1"> <i class="fas fa-edit"></i> </a> </td> </tr>';
+                    $needs = '';
+                    if ($uk->ukrainian_visit->last()->food == 1) $needs.="Jedzenie, ";
+                    if ($uk->ukrainian_visit->last()->detergents == 1) $needs.="Chemia, ";
+                    if ($uk->ukrainian_visit->last()->clothes == 1) $needs.="Ubrania";
+                    $table2 = $table2.'<tr> <th scope="row"> <div class="media align-items-center"> <a href="'.route('a.user.show', [$uk->id]) .'"> <div class="media-body"> <span class="name mb-0 text-sm">'.$uk->firstname .' '.$uk->lastname .'</span> </div> </a> </div> </th> <td><span class="badge badge-primary">'.$uk->ukrainian_visit_count.'</span></td> <td>'.$uk->ukrainian_visit->last()->created_at .' - '.$needs.' </td> <td>'.date("d.m.Y", strtotime($uk->birth)) .' r.</td> <td> <div class="d-flex align-items-center"> <span class="completion mr-2">'.$uk->children .'</span> </div> </td> <td class="text-center"> <a href="#modaluk'. $uk->id .'" data-toggle="modal" data-target="#modaluk'. $uk->id .'" class="text-lg mx-1"> <i class="fas fa-plus"></i> </a> <a href="'.route('s.ukrainian.show', [$uk->id]) .'" class="text-lg mx-1"> <i class="fas fa-search"></i> </a> <a href="'.route('s.ukrainian.edit', [$uk->id]) .'" class="text-lg mx-1"> <i class="fas fa-edit"></i> </a> </td> </tr>';
+
+                    //<a href="#" style="cursor:pointer" onclick="add_visit('."'".$uk->id."'".')" class="text-lg mx-1"> <i class="fas fa-plus"></i> </a>
+
+                    $modal = '<div class="modal fade" id="modaluk'. $uk->id .'" tabindex="-1" role="dialog" aria-labelledby="labelmodaluk'. $uk->id .'" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content"> <form action="'.route('s.ukrainian.addvisit', [$uk->id]) .'" method="post"> <input type="hidden" name="_token" value="'.csrf_token().'"> <div class="modal-header"> <h5 class="modal-title" id="labelmodaluk'. $uk->id .'">Powód wizyty</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> <div class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" id="Check1'. $uk->id .'" name="clothes"> <label class="custom-control-label" for="Check1'. $uk->id .'">Ubrania</label> </div> <div class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" id="Check2'. $uk->id .'" name="food"> <label class="custom-control-label" for="Check2'. $uk->id .'">Jedzenie</label> </div> <div class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" id="Check3'. $uk->id .'" name="detergents"> <label class="custom-control-label" for="Check3'. $uk->id .'">Chemia / kosmetyki</label> </div> </div> <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button> <button type="submit" class="btn btn-primary">Zatwierdź</button> </div> </form> </div> </div> </div>';
+
+                    $modals = $modals.$modal;
                 }
 
                 //<form action="'.route('s.ukrainian.addvisit', [$uk->id]) .'" method="post" id="addvisit'.$uk->id .'"> <input type="hidden" name="_token" value="'.csrf_token().'"> </form>
                 $table3 = '</tbody></table></div>';
 
-            return $table1.$table2.$table3;
+            return $table1.$table2.$table3.$modals;
 
         } else {
             return "<h1 class='text-center text-danger'>Brak wyników!</h1>";

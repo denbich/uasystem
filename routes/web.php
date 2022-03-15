@@ -14,6 +14,8 @@ Route::get('language/{locale}', function($locale) { session(['locale' => $locale
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
+Route::get('/migrate', function () { $code = Artisan::call('migrate', [ '--force' => true]); echo $code; });
+
 Route::get('/home', function(){
     switch(Auth::user()->role)
     {
@@ -60,9 +62,15 @@ Route::middleware('auth')->group(function() {
             Route::post('/settings', 'save_settings');
             Route::get('/excel', 'excel');
             Route::post('/excel', 'exceldo');
+
+            Route::get('/visits', 'visits');
+            Route::post('/visits', 'visitsdo');
+
+            Route::get('/test', 'test');
+
         });
         Route::get('/ukrainian/search', [SUkrainianController::class, 'search'])->name('s.ukrainian.search');
-        Route::get('/ukrainian/search-ukrainian', [SUkrainianController::class, 'search_engine'])->name('s.ukrainian.searchukrainian');
+        Route::post('/ukrainian/search-ukrainian', [SUkrainianController::class, 'search_engine'])->name('s.ukrainian.searchukrainian');
         Route::post('/ukrainian/add-visit/{ukrainian_id}', [SUkrainianController::class, 'add_visit'])->name('s.ukrainian.addvisit');
         Route::post('/ukrainian/visit', [SUkrainianController::class, 'visit'])->name('s.ukrainian.visit');
         Route::resource('/ukrainian', SUkrainianController::class, ['names' => [

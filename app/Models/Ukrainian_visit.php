@@ -13,6 +13,9 @@ class Ukrainian_visit extends Model
         'id',
         'ukrainian_id',
         'user_id',
+        'food',
+        'clothes',
+        'detergents',
         'created_at',
         'updated_at',
     ];
