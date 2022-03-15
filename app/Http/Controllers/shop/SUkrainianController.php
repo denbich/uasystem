@@ -151,13 +151,12 @@ class SUkrainianController extends Controller
 
         if(count($urkainians) > 0)
         {
-            $table1 = '<div class="table-responsive">
-            <table class="table align-items-center table-flush"> <thead class="thead-light"> <tr> <th>Imię i nazwisko</th> <th>Ilość wizyt</th> <th>Data urodzenia</th> <th>Numer tel.</th> <th>Dzieci</th> <th>Opcje</th> </tr></thead><tbody class="list">';
+            $table1 = '<div class="table-responsive"><table class="table align-items-center table-flush"> <thead class="thead-light"> <tr> <th>Imię i nazwisko</th> <th>Ilość wizyt</th> <th>Ostatnia wizyta</th> <th>Data urodzenia</th> <th>Numer tel.</th> <th>Dzieci</th> <th>Opcje</th> </tr></thead><tbody class="list">';
 
                 $table2 = '';
                 foreach ($urkainians as $uk)
                 {
-                    $table2 = $table2.'<tr> <th scope="row"> <div class="media align-items-center"> <a href="'.route('a.user.show', [$uk->id]) .'"> <div class="media-body"> <span class="name mb-0 text-sm">'.$uk->firstname .' '.$uk->lastname .'</span> </div> </a> </div> </th> <td><span class="badge badge-primary">'.$uk->ukrainian_visit_count.'</span></td> <td>'.date("d.m.Y", strtotime($uk->birth)) .' r.</td> <td>'.$uk->telephone .'</td> <td> <div class="d-flex align-items-center"> <span class="completion mr-2">'.$uk->children .'</span> </div> </td> <td class="text-center"> <a href="#" style="cursor:pointer" onclick="add_visit('."'".$uk->id."'".')" class="text-lg mx-1"> <i class="fas fa-plus"></i> </a> <a href="'.route('s.ukrainian.show', [$uk->id]) .'" class="text-lg mx-1"> <i class="fas fa-search"></i> </a> <a href="'.route('s.ukrainian.edit', [$uk->id]) .'" class="text-lg mx-1"> <i class="fas fa-edit"></i> </a> </td> </tr>';
+                    $table2 = $table2.'<tr> <th scope="row"> <div class="media align-items-center"> <a href="'.route('a.user.show', [$uk->id]) .'"> <div class="media-body"> <span class="name mb-0 text-sm">'.$uk->firstname .' '.$uk->lastname .'</span> </div> </a> </div> </th> <td><span class="badge badge-primary">'.$uk->ukrainian_visit_count.'</span></td> <td>'.$uk->ukrainian_visit->last()->created_at .'</td> <td>'.date("d.m.Y", strtotime($uk->birth)) .' r.</td> <td>'.$uk->telephone .'</td> <td> <div class="d-flex align-items-center"> <span class="completion mr-2">'.$uk->children .'</span> </div> </td> <td class="text-center"> <a href="#" style="cursor:pointer" onclick="add_visit('."'".$uk->id."'".')" class="text-lg mx-1"> <i class="fas fa-plus"></i> </a> <a href="'.route('s.ukrainian.show', [$uk->id]) .'" class="text-lg mx-1"> <i class="fas fa-search"></i> </a> <a href="'.route('s.ukrainian.edit', [$uk->id]) .'" class="text-lg mx-1"> <i class="fas fa-edit"></i> </a> </td> </tr>';
                 }
 
                 //<form action="'.route('s.ukrainian.addvisit', [$uk->id]) .'" method="post" id="addvisit'.$uk->id .'"> <input type="hidden" name="_token" value="'.csrf_token().'"> </form>
@@ -182,13 +181,12 @@ class SUkrainianController extends Controller
 
         if(count($urkainians) > 0)
         {
-            $table1 = '<div class="table-responsive">
-            <table class="table align-items-center table-flush"> <thead class="thead-light"> <tr> <th>Imię i nazwisko</th> <th>Ilość wizyt</th> <th>Data urodzenia</th> <th>Numer tel.</th> <th>Dzieci</th> <th>Opcje</th> </tr></thead><tbody class="list">';
+            $table1 = '<div class="table-responsive"><table class="table align-items-center table-flush"> <thead class="thead-light"> <tr> <th>Imię i nazwisko</th> <th>Ilość wizyt</th> <th>Ostatnia wizyta</th> <th>Data urodzenia</th> <th>Numer tel.</th> <th>Dzieci</th> <th>Opcje</th> </tr></thead><tbody class="list">';
 
                 $table2 = '';
                 foreach ($urkainians as $uk)
                 {
-                    $table2 = $table2.'<tr> <th scope="row"> <div class="media align-items-center"> <a href="'.route('a.user.show', [$uk->id]) .'"> <div class="media-body"> <span class="name mb-0 text-sm">'.$uk->firstname .' '.$uk->lastname .'</span> </div> </a> </div> </th> <td><span class="badge badge-primary">'.$uk->ukrainian_visit_count.'</span></td> <td>'.date("d.m.Y", strtotime($uk->birth)) .' r.</td> <td>'.$uk->telephone .'</td> <td> <div class="d-flex align-items-center"> <span class="completion mr-2">'.$uk->children .'</span> </div> </td> <td class="text-center"> <a href="#" style="cursor:pointer;" onclick="add_visit('."'".$uk->id."'".')" class="text-lg mx-1"> <i class="fas fa-plus"></i> </a> <a href="'.route('s.ukrainian.show', [$uk->id]) .'" class="text-lg mx-1"> <i class="fas fa-search"></i> </a> <a href="'.route('s.ukrainian.edit', [$uk->id]) .'" class="text-lg mx-1"> <i class="fas fa-edit"></i> </a> </td> </tr>';
+                    $table2 = $table2.'<tr> <th scope="row"> <div class="media align-items-center"> <a href="'.route('a.user.show', [$uk->id]) .'"> <div class="media-body"> <span class="name mb-0 text-sm">'.$uk->firstname .' '.$uk->lastname .'</span> </div> </a> </div> </th> <td><span class="badge badge-primary">'.$uk->ukrainian_visit_count.'</span></td> <td>'.$uk->ukrainian_visit->last()->created_at .'</td> <td>'.date("d.m.Y", strtotime($uk->birth)) .' r.</td> <td>'.$uk->telephone .'</td> <td> <div class="d-flex align-items-center"> <span class="completion mr-2">'.$uk->children .'</span> </div> </td> <td class="text-center"> <a href="#" style="cursor:pointer" onclick="add_visit('."'".$uk->id."'".')" class="text-lg mx-1"> <i class="fas fa-plus"></i> </a> <a href="'.route('s.ukrainian.show', [$uk->id]) .'" class="text-lg mx-1"> <i class="fas fa-search"></i> </a> <a href="'.route('s.ukrainian.edit', [$uk->id]) .'" class="text-lg mx-1"> <i class="fas fa-edit"></i> </a> </td> </tr>';
                 }
 
                 //<form action="'.route('s.ukrainian.addvisit', [$uk->id]) .'" method="post" id="addvisit'.$uk->id .'"> <input type="hidden" name="_token" value="'.csrf_token().'"> </form>
