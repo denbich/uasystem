@@ -13,6 +13,11 @@ use App\Http\Controllers\shop\SUkrainianController;
 Route::get('language/{locale}', function($locale) { session(['locale' => $locale]); App::setLocale($locale); return back(); })->name('language');
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/start', function(){
+    Artisan::call('migrate', [ '--force' => true]);
+    Artisan::call('db:seed', [ '--class' => 'AdminSeed']);
+    echo "ready";
+});
 
 Route::get('/home', function(){
     switch(Auth::user()->role)
