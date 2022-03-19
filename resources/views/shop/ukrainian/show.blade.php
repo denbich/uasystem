@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-{{ __('Dodaj uchodźca') }}
+{{ __('Edytuj dane uchodźca') }}
 @endsection
 
 @section('content')
@@ -72,12 +72,12 @@
           <div class="header-body">
             <div class="row align-items-center py-4">
               <div class="col-lg-6 col-7">
-                <h6 class="h2 text-white d-inline-block mb-0">Dodaj uchodźca</h6>
+                <h6 class="h2 text-white d-inline-block mb-0">Uchodźec #{{ $uk->id }}</h6>
                 <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                   <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                     <li class="breadcrumb-item"><a href="{{ route('s.dashboard') }}"><i class="fas fa-home"></i></a></li>
                     <li class="breadcrumb-item active" aria-current="page">uchodźcy</li>
-                    <li class="breadcrumb-item"><a href="{{ route('s.ukrainian.create') }}">dodaj</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('s.ukrainian.create') }}">#{{ $uk->id }}</a></li>
                   </ol>
                 </nav>
               </div>
@@ -101,6 +101,17 @@
                         @csrf
                         <button type="submit" class="btn btn-primary w-100 my-2">Dodaj wizytę</button>
                         </form>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                    <h3 class="text-center"></h3>
+                    <h3 class="text-center">Historia wizyt</h3>
+                    <ul>
+                    @foreach ($uk->ukrainian_visit as $visit)
+                        <li>{{ $visit->created_at }} - @if ($visit->clothes == "1") Ubrania, @endif @if ($visit->food == "1") Jedzenie, @endif @if ($visit->detergents == "1") Chemia @endif</li>
+                    @endforeach
+                </ul>
                 </div>
               </div>
             </div>

@@ -73,7 +73,7 @@ class SUkrainianController extends Controller
 
     public function show($id)
     {
-        $ukrainian = Ukrainian::where('id', $id)->withCount('ukrainian_visit')->first();
+        $ukrainian = Ukrainian::where('id', $id)->with('ukrainian_visit')->withCount('ukrainian_visit')->first();
         return view('shop.ukrainian.show', ['uk' => $ukrainian]);
     }
 
@@ -112,6 +112,7 @@ class SUkrainianController extends Controller
             'firstname' => $validate['firstname'],
             'lastname' => $validate['lastname'],
             'birth' => $validate['birth'],
+            'telephone' => $validate['telephone'],
             'gender' => $validate['gender'],
             'address' => $validate['address'],
             'work' => $validate['work'],
@@ -122,6 +123,8 @@ class SUkrainianController extends Controller
             'rfid' => $validate['rfid'],
             'created_by_id' => Auth::id(),
         ]);
+
+        $ukrainian->save();
 
         return back()->with(['edit_ukrainian' => true]);
     }
@@ -202,6 +205,7 @@ class SUkrainianController extends Controller
                 $table3 = '</tbody></table></div>';
 
             return $table1.$table2.$table3.$modals;
+            //return response()->json(['uk' => $urkainians]);
 
         } else {
             return "<h1 class='text-center text-danger'>Brak wyników!</h1>";

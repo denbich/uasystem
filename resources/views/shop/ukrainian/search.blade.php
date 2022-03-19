@@ -176,8 +176,8 @@
         var search = $('#search').val();
         $.ajax({
         url: "{{ route('s.ukrainian.searchukrainian') }}",
-        type: "post",
-        dataType: "html",
+        type: "get",
+        dataType: "HTML",
         data:{
             search: search,
           _token: '{{ csrf_token() }}',
@@ -198,7 +198,7 @@
             var search = $('#search').val();
             $.ajax({
         url: "{{ route('s.ukrainian.visit') }}",
-        type: "POST",
+        type: "GET",
         dataType: "html",
         data:{
             ukrainian_id: value,

@@ -243,7 +243,7 @@
                                 <hr>
                                 <div class="form-group">
                                     <label class="required" for="rfid">RFID</label>
-                                    <input class="form-control {{ $errors->has('rfid') ? 'is-invalid' : '' }}" maxlength="65535" type="text" name="rfid" id="rfid" value="{{ $uk->rfid }}">
+                                    <input class="form-control {{ $errors->has('rfid') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="rfid" id="rfid" value="{{ $uk->rfid }}">
                                     @error('rfid')
                                         <span class="text-danger small" role="alert">
                                             <strong>{{ $message }}</strong>

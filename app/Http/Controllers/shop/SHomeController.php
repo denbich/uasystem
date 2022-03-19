@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\NewVisitUkrainianImport;
 
 class SHomeController extends Controller
 {
@@ -85,17 +86,8 @@ class SHomeController extends Controller
     public function exceldo(Request $request)
     {
         Excel::import(new UkrainianImport, $request->file);
-        for($i = 1; $i <= 738; $i++)
-        {
-            Ukrainian_visit::create([
-                'ukrainian_id' => $i,
-                'user_id' => Auth::id(),
-                'food' => 1,
-                'clothes' => 1,
-                'detergents' => 1,
-                'created_at' => '2022-03-10',
-            ]);
-        }
+        Excel::import(new NewVisitUkrainianImport, $request->file);
+
         return "success";
     }
 
@@ -108,24 +100,5 @@ class SHomeController extends Controller
     {
         Excel::import(new VisitsImport, $request->file);
         return "success";
-    }
-
-    public function test()
-    {
-        $ukrainians = Ukrainian::all();
-
-        foreach ($ukrainians as $uk)
-        {
-            Ukrainian_visit::create([
-                'ukrainian_id' => $uk->id,
-                'user_id' => Auth::id(),
-                'food' => 1,
-                'clothes' => 1,
-                'detergents' => 1,
-                'created_at' => $uk->created_at,
-            ]);
-        }
-
-        return "done";
     }
 }

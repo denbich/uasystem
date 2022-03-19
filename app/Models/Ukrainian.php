@@ -21,6 +21,8 @@ class Ukrainian extends Model
         'children',
         'remarks',
         'created_by_id',
+        'card_id',
+        'rfid',
         'created_at',
         'updated_at',
     ];
