@@ -51,6 +51,6 @@ class VisitsImport implements ToModel, WithLimit
 
     public function limit(): int
     {
-        return 140;
+        return 349;
     }
 }
