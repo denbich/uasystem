@@ -170,7 +170,7 @@
                             </div>
                             <div class="mb-2">
                                 <label class="font-weight-bold">Informacja o dzieciach</label>
-                                <p>{{ $uk->children }}</p>
+                                <p>@if ($uk->children == null) Brak @else{{ $uk->children }}@endif</p>
                             </div>
 
                             <div class="mb-2">
