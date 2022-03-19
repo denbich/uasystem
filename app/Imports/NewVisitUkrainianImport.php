@@ -29,6 +29,6 @@ class NewVisitUkrainianImport implements ToModel, WithLimit
 
     public function limit(): int
     {
-        return 904;
+        return 955;
     }
 }
