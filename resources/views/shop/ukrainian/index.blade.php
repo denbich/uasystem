@@ -255,7 +255,7 @@
               </div>
               <div class="modal-body py-0">
                 <div class="form-group">
-                    <label class="required w-100" for="rfid">RFID <i><img style="max-height: 25px;" src="https://uxwing.com/wp-content/themes/uxwing/download/17-internet-network-technology/rfid.svg" alt=""></i></label>
+                    <label class="required w-100" for="rfid">RFID</label>
                     <input class="form-control {{ $errors->has('rfid') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="rfid" id="rfid" value="{{ $uk->rfid }}">
                     @error('rfid')
                         <span class="text-danger small" role="alert">

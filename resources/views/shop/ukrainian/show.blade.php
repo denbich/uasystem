@@ -154,7 +154,7 @@
                         <div class="col-lg-6">
                             <div class="mb-2">
                                 <label class="font-weight-bold">Imię</label>
-                                <p>{{ $uk->firstname }}</p>
+                                <p>@if ($uk->firstname == null) Brak @else{{ $uk->firstname }}@endif</p>
                             </div>
                             <div class="mb-2">
                                 <label class="font-weight-bold">Data urodzenia</label>
@@ -162,11 +162,11 @@
                             </div>
                             <div class="mb-2">
                                 <label class="font-weight-bold">Numer telefonu</label>
-                                <p><a href="tel:{{ $uk->telephone }}">{{ $uk->telephone }}</a></p>
+                                <p>@if ($uk->telephone == null) Brak @else <a href="tel:{{ $uk->telephone }}">{{ $uk->telephone }}</a> @endif</p>
                             </div>
                             <div class="mb-2">
                                 <label class="font-weight-bold">Wykonywana praca</label>
-                                <p>{{ $uk->work }}</p>
+                                <p>@if ($uk->work == null) Brak @else{{ $uk->work }}@endif</p>
                             </div>
                             <div class="mb-2">
                                 <label class="font-weight-bold">Informacja o dzieciach</label>
@@ -193,7 +193,7 @@
                             </div>
                             <div class="mb-2">
                                 <label class="font-weight-bold">Adres pobytu</label>
-                                <p>{{ $uk->address }}</p>
+                                <p>@if ($uk->address == null) Brak @else{{ $uk->address }}@endif</p>
                             </div>
                             <div class="mb-2">
                                 <label class="font-weight-bold">Chęć pozostania w Polsce</label>
