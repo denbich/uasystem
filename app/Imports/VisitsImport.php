@@ -13,12 +13,7 @@ class VisitsImport implements ToModel, WithLimit
     {
         $id = $row[1] - 1;
 
-        if (empty($row[2]))
-        {
-            $date = $row[0];
-        } else {
-            $date = $row[2]." ".$row[3];
-        }
+        if (empty($row[2])) { $date = $row[0]; } else { $date = $row[2]." ".$row[3]; }
 
         switch($row[4])
         {
