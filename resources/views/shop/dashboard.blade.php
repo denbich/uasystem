@@ -10,7 +10,7 @@
     <div class="scrollbar-inner">
       <div class="sidenav-header d-flex mt-2 align-items-center w-100">
         <a class="mt-2 mx-auto" href="{{ route('s.dashboard') }}">
-            <h1>uaSystem</h1>
+            <h1><i><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Lesser_Coat_of_Arms_of_Ukraine.svg" style="max-height: 50px;"></i> uaSystem</h1>
         </a>
       </div>
       <div class="navbar-inner">
@@ -142,8 +142,7 @@
     <!-- Page content -->
 
     <div class="container-fluid mt--6">
-      <div class="row">
-        <div class="col-xl-6">
+        <div class="">
           <div class="card">
             <div class="card-header">
               <div class="row align-items-center">
@@ -162,7 +161,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-6">
+        <div class="">
             <div class="card">
               <div class="card-header">
                 <div class="row align-items-center">
@@ -179,7 +178,6 @@
               </div>
             </div>
           </div>
-      </div>
 
       <div class="row">
         <div class="col-xl-6">

@@ -10,7 +10,7 @@
     <div class="scrollbar-inner">
       <div class="sidenav-header d-flex mt-2 align-items-center w-100">
         <a class="mt-2 mx-auto" href="{{ route('s.dashboard') }}">
-            <h1>uaSystem</h1>
+            <h1><i><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Lesser_Coat_of_Arms_of_Ukraine.svg" style="max-height: 50px;"></i> uaSystem</h1>
         </a>
       </div>
       <div class="navbar-inner">
@@ -97,10 +97,8 @@
                     <h3 class="text-center">Opcje</h3>
                     <a href="{{ route('s.ukrainian.edit', [$uk->id]) }}" class="btn btn-success w-100 my-2 text-white">Edytuj dane uchodźca</a>
                     <hr class="my-2">
-                    <form action="{{ route('s.ukrainian.addvisit', [$uk->id]) }}" method="post" id="addvisit{{ $uk->id }}">
-                        @csrf
-                        <button type="submit" class="btn btn-primary w-100 my-2">Dodaj wizytę</button>
-                        </form>
+                        <a href="#modaluk" data-toggle="modal" data-target="#modaluk" class="btn btn-primary w-100 my-2">Dodaj wizytę</a>
+                        <a href="#modalukinfo" data-toggle="modal" data-target="#modalukinfo" class="btn btn-primary w-100 my-2">Edytuj cyfrowe dane</a>
                 </div>
               </div>
               <div class="card">
@@ -128,6 +126,30 @@
                   </div>
                 </div>
                 <div class="card-body">
+                    @if (session('add_visit') == true)
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <span class="alert-text"><strong>Sukces!</strong> Wizyta została dodana pomyślnie!</span>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                @endif
+                    @if (session('change_digital') == true)
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <span class="alert-text"><strong>Sukces!</strong> Zmiana cyfrowych danych zakończyła się pomyślnie!</span>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                     <div class="row pt-2">
                         <div class="col-lg-6">
                             <div class="mb-2">
@@ -150,12 +172,11 @@
                                 <label class="font-weight-bold">Informacja o dzieciach</label>
                                 <p>{{ $uk->children }}</p>
                             </div>
-                            <hr>
+
                             <div class="mb-2">
-                                <label class="font-weight-bold">ID karty</label>
-                                <p>{{ $uk->card_id }}</p>
+                                <label class="font-weight-bold">mObywatel <i><img style="max-height: 25px;" src="https://www.gov.pl/img/icons/godlo-12.svg" alt=""></i></label>
+                                <p>@if (empty($uk->mobywatel)) Brak @else {{ $uk->mobywatel }} @endif</p>
                             </div>
-                            <hr>
 
                         </div>
                         <div class="col-lg-6">
@@ -164,7 +185,7 @@
                                 <p>{{ $uk->lastname }}</p>
                             </div>
                             <div class="mb-2">
-                                <label class="font-weight-bold">płeć</label>
+                                <label class="font-weight-bold">Płeć</label>
                                 <p>@switch($uk->gender)
                                     @case('f') Kobieta @break
                                     @case('m') Mężczyzna @break
@@ -178,17 +199,21 @@
                                 <label class="font-weight-bold">Chęć pozostania w Polsce</label>
                                 <p>{{ $uk->stay }}</p>
                             </div>
-                            <div class="mb-2">
-                                <label class="font-weight-bold">Uwagi</label>
-                                <p>{{ $uk->remarks }}</p>
-                            </div>
-                            <hr>
+
                             <div class="mb-2">
                                 <label class="font-weight-bold">RFID</label>
-                                <p>{{ $uk->rfid }}</p>
+                                <p>@if (empty($uk->rfid)) Brak @else {{ $uk->rfid }} @endif</p>
                             </div>
-                            <hr>
+
+                            <div class="mb-2">
+                                <label class="font-weight-bold w-100">Diia (Дія) <i><img style="max-height: 25px;" src="https://plan2.diia.gov.ua/assets/img/main/diya.svg" alt=""></i></label>
+                                <p>@if (empty($uk->diia)) Brak @else {{ $uk->diia }} @endif</p>
+                            </div>
                         </div>
+                    </div>
+                    <div class="mb-2">
+                        <label class="font-weight-bold text-center w-100">Uwagi</label>
+                        <p>@if (empty($uk->remark)) Brak @else {{ $uk->remarks }} @endif</p>
                     </div>
                 </div>
               </div>
@@ -198,6 +223,107 @@
       @include('footer')
     </div>
   </div>
+
+  <div class="modal fade" id="modaluk" tabindex="-1" role="dialog" aria-labelledby="labelmodaluk" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form action="{{ route('s.ukrainian.addvisit', [$uk->id]) }}" method="post">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="labelmodaluk">Powód wizyty</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="Check1" name="clothes" checked>
+                          <label class="custom-control-label" for="Check1">Ubrania</label>
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="Check2" name="food">
+                          <label class="custom-control-label" for="Check2">Jedzenie</label>
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="Check3" name="detergents">
+                          <label class="custom-control-label" for="Check3">Chemia / kosmetyki</label>
+                      </div>
+                      <div class="mt-3">
+                          <h3>Wizyty w sklepie</h3>
+                          <div class="alert alert-secondary" role="alert">
+                              <ul>
+                                  @forelse ($uk->ukrainian_visit as $visit)
+                                  <li>
+                                      {{ $visit->created_at }} -
+                                      @if ($visit->food == 1) Jedzenie, @endif
+                                      @if ($visit->detergents == 1) Chemia, @endif
+                                      @if ($visit->clothes == 1) Ubrania @endif
+                                  </li>
+                              @empty
+                                  <h4 class="text-danger">Brak wizyt!</h4>
+                              @endforelse
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+                      <button type="submit" class="btn btn-primary">Zatwierdź</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+
+  <div class="modal fade" id="modalukinfo" tabindex="-1" role="dialog" aria-labelledby="labelmodalukinfo" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <form action="{{ route('s.ukrainian.digital', [$uk->id]) }}" method="post">
+              @csrf
+              <div class="modal-header">
+                  <h5 class="modal-title" id="labelmodalukinfo">Edytuj cyfrowe dane uchodźca</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body py-0">
+                  <div class="form-group">
+                      <label class="required w-100" for="rfid">RFID <i><img style="max-height: 25px;" src="https://uxwing.com/wp-content/themes/uxwing/download/17-internet-network-technology/rfid.svg" alt=""></i></label>
+                      <input class="form-control {{ $errors->has('rfid') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="rfid" id="rfid" value="{{ $uk->rfid }}">
+                      @error('rfid')
+                          <span class="text-danger small" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+
+                  <div class="form-group">
+                      <label class="required w-100" for="diia">Diia (Дія) <i><img style="max-height: 25px;" src="https://plan2.diia.gov.ua/assets/img/main/diya.svg" alt=""></i></label>
+                      <input class="form-control {{ $errors->has('diia') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="diia" id="diia" value="{{ $uk->diia }}">
+                      @error('diia')
+                          <span class="text-danger small" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+                  <div class="form-group">
+                      <label class="required" for="mobywatel">mObywatel <i><img style="max-height: 25px;" src="https://www.gov.pl/img/icons/godlo-12.svg" alt=""></i></label>
+                      <input class="form-control {{ $errors->has('mobywatel') ? 'is-invalid' : '' }}" maxlength="65535" type="text" name="mobywatel" id="mobywatel" value="{{ $uk->mobywatel }}">
+                      @error('mobywatel')
+                          <span class="text-danger small" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+                  <button type="submit" class="btn btn-primary">Zapisz</button>
+                </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
 @endsection
 

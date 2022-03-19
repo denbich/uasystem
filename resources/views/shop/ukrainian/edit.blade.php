@@ -10,7 +10,7 @@
     <div class="scrollbar-inner">
       <div class="sidenav-header d-flex mt-2 align-items-center w-100">
         <a class="mt-2 mx-auto" href="{{ route('s.dashboard') }}">
-            <h1>uaSystem</h1>
+            <h1><i><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Lesser_Coat_of_Arms_of_Ukraine.svg" style="max-height: 50px;"></i> uaSystem</h1>
         </a>
       </div>
       <div class="navbar-inner">
@@ -169,17 +169,15 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <hr>
                                 <div class="form-group">
-                                    <label class="required" for="card_id">ID karty</label>
-                                    <input class="form-control {{ $errors->has('card_id') ? 'is-invalid' : '' }}" maxlength="65535" type="text" name="card_id" id="card_id" value="{{ $uk->card_id }}">
-                                    @error('card_id')
+                                    <label class="required" for="mobywatel">mObywatel <i><img style="max-height: 25px;" src="https://www.gov.pl/img/icons/godlo-12.svg" alt=""></i></label>
+                                    <input class="form-control {{ $errors->has('mobywatel') ? 'is-invalid' : '' }}" maxlength="65535" type="text" name="mobywatel" id="mobywatel" value="{{ $uk->mobywatel }}">
+                                    @error('mobywatel')
                                         <span class="text-danger small" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
-                                <hr>
 
                             </div>
                             <div class="col-lg-6">
@@ -192,7 +190,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group mb-3">
                                     <label class="required" for="gender">Płeć</label>
                                     <div class="custom-control custom-radio mb-1">
                                         <input type="radio" id="gender1" name="gender" value="f" class="custom-control-input" @if ($uk->gender == "f") checked @endif>
@@ -212,35 +210,32 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group mb-3">
                                     <label class="required" for="stay">Chęć pozostania w polsce</label>
-                                    <div class="custom-control custom-radio mb-1">
-                                        <input type="radio" id="desire1" name="stay" value="tak" class="custom-control-input" @if ($uk->stay == "tak") checked @endif>
-                                        <label class="custom-control-label" for="desire1">Tak</label>
-                                      </div>
-                                      <div class="custom-control custom-radio mb-1">
-                                        <input type="radio" id="desire2" name="stay" value="nie" class="custom-control-input" @if ($uk->stay == "nie") checked @endif>
-                                        <label class="custom-control-label" for="desire2">Nie</label>
-                                      </div>
-                                      <div class="custom-control custom-radio mb-1">
-                                        <input type="radio" id="desire3" name="stay" value="może" class="custom-control-input" @if ($uk->stay == "może") checked @endif>
-                                        <label class="custom-control-label" for="desire3">Może</label>
-                                      </div>
-                                      <div class="custom-control custom-radio mb-1">
-                                        <input type="radio" id="desire4" name="stay" value="Nie wie" class="custom-control-input" @if ($uk->stay == "Nie wie") checked @endif>
-                                        <label class="custom-control-label" for="desire4">Nie wie</label>
-                                      </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="custom-control custom-radio mb-1">
+                                                <input type="radio" id="desire1" name="stay" value="tak" class="custom-control-input" @if ($uk->stay == "tak") checked @endif>
+                                                <label class="custom-control-label" for="desire1">Tak</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-1">
+                                                <input type="radio" id="desire2" name="stay" value="nie" class="custom-control-input" @if ($uk->stay == "nie") checked @endif>
+                                                <label class="custom-control-label" for="desire2">Nie</label>
+                                              </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="custom-control custom-radio mb-1">
+                                                <input type="radio" id="desire3" name="stay" value="może" class="custom-control-input" @if ($uk->stay == "może") checked @endif>
+                                                <label class="custom-control-label" for="desire3">Może</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-1">
+                                                <input type="radio" id="desire4" name="stay" value="Nie wie" class="custom-control-input" @if ($uk->stay == "Nie wie") checked @endif>
+                                                <label class="custom-control-label" for="desire4">Nie wie</label>
+                                              </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="required" for="remarks">Uwagi</label>
-                                    <input class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="remarks" id="remarks" value="{{ $uk->remarks }}">
-                                    @error('remarks')
-                                        <span class="text-danger small" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <hr>
+
                                 <div class="form-group">
                                     <label class="required" for="rfid">RFID</label>
                                     <input class="form-control {{ $errors->has('rfid') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="rfid" id="rfid" value="{{ $uk->rfid }}">
@@ -250,8 +245,27 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <hr>
+
+                                <div class="form-group">
+                                    <label class="required w-100" for="diia">Diia (Дія) <i><img style="max-height: 25px;" src="https://plan2.diia.gov.ua/assets/img/main/diya.svg" alt=""></i></label>
+                                    <input class="form-control {{ $errors->has('diia') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="diia" id="diia" value="{{ $uk->diia }}">
+                                    @error('diia')
+                                        <span class="text-danger small" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="required" for="remarks">Uwagi</label>
+                            <input class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="remarks" id="remarks" value="{{ $uk->remarks }}">
+                            @error('remarks')
+                                <span class="text-danger small" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary w-100">Zapisz</button>

@@ -71,6 +71,7 @@ Route::middleware('auth')->group(function() {
         Route::get('/ukrainian/search-ukrainian', [SUkrainianController::class, 'search_engine'])->name('s.ukrainian.searchukrainian');
         Route::post('/ukrainian/add-visit/{ukrainian_id}', [SUkrainianController::class, 'add_visit'])->name('s.ukrainian.addvisit');
         Route::post('/ukrainian/visit', [SUkrainianController::class, 'visit'])->name('s.ukrainian.visit');
+        Route::post('/ukrainian/digital/{id}', [SUkrainianController::class, 'digital'])->name('s.ukrainian.digital');
         Route::resource('/ukrainian', SUkrainianController::class, ['names' => [
             'index' => 's.ukrainian.list', 'create' => 's.ukrainian.create', 'store' => 's.ukrainian.store', 'show' => 's.ukrainian.show',
             'edit' => 's.ukrainian.edit', 'update' => 's.ukrainian.update', 'destroy' => 's.ukrainian.destroy',

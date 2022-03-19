@@ -10,7 +10,7 @@
     <div class="scrollbar-inner">
       <div class="sidenav-header d-flex mt-2 align-items-center w-100">
         <a class="mt-2 mx-auto" href="{{ route('s.dashboard') }}">
-            <h1>uaSystem</h1>
+            <h1><i><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Lesser_Coat_of_Arms_of_Ukraine.svg" style="max-height: 50px;"></i> uaSystem</h1>
         </a>
       </div>
       <div class="navbar-inner">
@@ -157,13 +157,18 @@
                             <div class="form-group">
                                 <label class="required" for="gender">Płeć</label>
                                 <div class="custom-control custom-radio mb-1">
-                                    <input type="radio" id="gender1" name="gender" value="f" class="custom-control-input">
+                                    <input type="radio" id="gender1" name="gender" value="f" class="custom-control-input" required>
                                     <label class="custom-control-label" for="gender1">Kobieta</label>
                                   </div>
                                   <div class="custom-control custom-radio mb-1">
                                     <input type="radio" id="gender2" name="gender" value="m" class="custom-control-input">
                                     <label class="custom-control-label" for="gender2">Mężczyzna</label>
                                   </div>
+                                  @error('gender')
+                                    <span class="text-danger small" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <div class="form-group">
@@ -217,6 +222,37 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="required w-100" for="diia">Diia (Дія) <i><img style="max-height: 25px;" src="https://plan2.diia.gov.ua/assets/img/main/diya.svg" alt=""></i></label>
+                                <input class="form-control {{ $errors->has('diia') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="diia" id="diia" value="{{ old('diia', '') }}">
+                                @error('diia')
+                                    <span class="text-danger small" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @if ($errors->first('diia') == "Taki diia już występuje.") <br> <a href="{{ route('s.ukrainian.search') }}?q={{ old('diia', '') }}" class="font-weight-bold">Przejdź do tej osoby klikając tutaj</a> @endif
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label class="required w-100" for="mobywatel">mObywatel <i><img style="max-height: 25px;" src="https://www.gov.pl/img/icons/godlo-12.svg" alt=""></i></label>
+                                <input class="form-control {{ $errors->has('mobywatel') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="mobywatel" id="mobywatel" value="{{ old('mobywatel', '') }}">
+                                @error('mobywatel')
+                                    <span class="text-danger small" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label class="required" for="rfid">RFID</label>
+                                <input class="form-control {{ $errors->has('rfid') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="rfid" id="rfid" value="{{ old('rfid', '') }}">
+                                @error('rfid')
+                                    <span class="text-danger small" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
                                 <label class="required" for="remarks">Uwagi</label>
                                 <input class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="remarks" id="remarks" value="{{ old('remarks', '') }}">
                                 @error('remarks')
@@ -227,29 +263,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="required" for="card_id">ID karty</label>
-                                <input class="form-control {{ $errors->has('card_id') ? 'is-invalid' : '' }}" maxlength="65535" type="text" name="card_id" id="card_id" value="{{ old('card_id', '') }}">
-                                @error('card_id')
-                                    <span class="text-danger small" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label class="required" for="rfid">RFID</label>
-                                <input class="form-control {{ $errors->has('rfid') ? 'is-invalid' : '' }}" maxlength="65535" type="text" name="rfid" id="rfid" value="{{ old('rfid', '') }}">
-                                @error('rfid')
-                                    <span class="text-danger small" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
                                 <button type="submit" class="btn btn-primary w-100">Utwórz</button>
                             </div>
-
                         </form>
                     </div>
                 </div>

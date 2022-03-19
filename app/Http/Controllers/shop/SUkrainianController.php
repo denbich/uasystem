@@ -34,7 +34,8 @@ class SUkrainianController extends Controller
             'stay' => 'nullable|max:255',
             'children' => 'nullable|max:255',
             'remarks' => 'nullable|max:65535',
-            'card_id' => 'nullable|max:255|unique:ukrainians,card_id',
+            'diia' => 'nullable|max:255|unique:ukrainians,diia',
+            'mobywatel' => 'nullable|max:255|unique:ukrainians,mobywatel',
             'rfid' => 'nullable|max:255|unique:ukrainians,rfid',
         ]);
 
@@ -55,7 +56,8 @@ class SUkrainianController extends Controller
             'stay' => $stay,
             'children' => $validate['children'],
             'remarks' => $validate['remarks'],
-            'card_id' => $validate['card_id'],
+            'diia' => $validate['diia'],
+            'mobywatel' => $validate['mobywatel'],
             'rfid' => $validate['rfid'],
             'created_by_id' => Auth::id(),
         ]);
@@ -97,7 +99,8 @@ class SUkrainianController extends Controller
             'stay' => 'nullable|max:255',
             'children' => 'nullable|max:255',
             'remarks' => 'nullable|max:65535',
-            'card_id' => 'nullable|max:255|unique:ukrainians,card_id',
+            'diia' => 'nullable|max:255|unique:ukrainians,diia',
+            'mobywatel' => 'nullable|max:255|unique:ukrainians,mobywatel',
             'rfid' => 'nullable|max:255|unique:ukrainians,rfid',
         ]);
 
@@ -119,7 +122,8 @@ class SUkrainianController extends Controller
             'stay' => $stay,
             'children' => $validate['children'],
             'remarks' => $validate['remarks'],
-            'card_id' => $validate['card_id'],
+            'diia' => $validate['diia'],
+            'mobywatel' => $validate['mobywatel'],
             'rfid' => $validate['rfid'],
             'created_by_id' => Auth::id(),
         ]);
@@ -172,13 +176,25 @@ class SUkrainianController extends Controller
 
     public function search()
     {
-        return view('shop.ukrainian.search');
+        if (!isset($_GET['q']))
+        {
+            return view('shop.ukrainian.search');
+        } else {
+            if (!empty($_GET['q']))
+            {
+                $q = $_GET['q'];
+                $ukrainians = Ukrainian::where('firstname', 'like', '%'.$q.'%')->orWhere('lastname', 'like', '%'.$q.'%')->orWhere('birth', 'like', '%'.$q.'%')->orWhere('diia', $q)->orWhere('mobywatel', $q)->orWhere('rfid', $q)->with('ukrainian_visit')->withCount('ukrainian_visit')->get();
+                return view('shop.ukrainian.search', ['ukrainians' => $ukrainians]);
+            } else {
+                return view('shop.ukrainian.search');
+            }
+        }
     }
 
     public function search_engine(Request $request)
     {
 
-        $urkainians = Ukrainian::where('firstname', 'like', '%'.$request->search.'%')->orWhere('lastname', 'like', '%'.$request->search.'%')->orWhere('birth', 'like', '%'.$request->search.'%')->orWhere('card_id', $request->search)->orWhere('rfid', $request->search)->withCount('ukrainian_visit')->get();
+        $urkainians = Ukrainian::where('firstname', 'like', '%'.$request->search.'%')->orWhere('lastname', 'like', '%'.$request->search.'%')->orWhere('birth', 'like', '%'.$request->search.'%')->orWhere('diia', $request->search)->orWhere('mobywatel', $request->search)->orWhere('rfid', $request->search)->withCount('ukrainian_visit')->get();
 
         if(count($urkainians) > 0)
         {
@@ -220,7 +236,7 @@ class SUkrainianController extends Controller
             'user_id' => Auth::id(),
         ]);
 
-        $urkainians = Ukrainian::where('firstname', 'like', '%'.$request->search.'%')->orWhere('lastname', 'like', '%'.$request->search.'%')->orWhere('birth', 'like', '%'.$request->search.'%')->orWhere('card_id', $request->search)->orWhere('rfid', $request->search)->withCount('ukrainian_visit')->get();
+        $urkainians = Ukrainian::where('firstname', 'like', '%'.$request->search.'%')->orWhere('lastname', 'like', '%'.$request->search.'%')->orWhere('birth', 'like', '%'.$request->search.'%')->orWhere('diia', $request->search)->orWhere('mobywatel', $request->search)->orWhere('rfid', $request->search)->withCount('ukrainian_visit')->get();
 
         if(count($urkainians) > 0)
         {
@@ -251,5 +267,24 @@ class SUkrainianController extends Controller
         } else {
             return "<h1 class='text-center text-danger'>Brak wyników!</h1>";
         }
+    }
+
+    public function digital(Request $request)
+    {
+        $validate = $request->validate([
+            'diia' => 'nullable|max:255|unique:ukrainians,diia,'.$request->id,
+            'mobywatel' => 'nullable|max:255|unique:ukrainians,mobywatel,'.$request->id,
+            'rfid' => 'nullable|max:255|unique:ukrainians,rfid,'.$request->id,
+        ]);
+
+        $ukrainian = Ukrainian::where('id', $request->id)->first();
+        $ukrainian->update([
+            'diia' => $validate['diia'],
+            'mobywatel' => $validate['mobywatel'],
+            'rfid' => $validate['rfid'],
+        ]);
+        $ukrainian->save();
+
+        return back()->with(['change_digital' => true]);
     }
 }

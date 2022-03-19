@@ -20,12 +20,13 @@ return new class extends Migration
             $table->string('stay')->nullable();
             $table->string('children')->nullable();
             $table->text('remarks')->nullable();
-            $table->string('card_id')->unique()->nullable();
+            $table->string('diia')->unique()->nullable();
+            $table->string('mobywatel')->unique()->nullable();
             $table->string('rfid')->unique()->nullable();
             $table->unsignedBigInteger('created_by_id');
             $table->timestamps();
 
-            $table->foreign('created_by_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('created_by_id')->references('id')->on('users')->onDelete('restrict');
         });
     }
 
