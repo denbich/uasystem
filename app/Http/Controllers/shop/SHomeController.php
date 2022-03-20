@@ -23,14 +23,14 @@ class SHomeController extends Controller
         $ukrainians = Ukrainian::count();
         $signed = Ukrainian::whereDate('created_at', date('Y-m-d'))->count();
 
-        $date7 = Carbon::now()->subDays(7);
-        $date6 = Carbon::now()->subDays(6);
-        $date5 = Carbon::now()->subDays(5);
-        $date4 = Carbon::now()->subDays(4);
-        $date3 = Carbon::now()->subDays(3);
-        $date2 = Carbon::now()->subDays(2);
-        $date1 = Carbon::now()->subDays(1);
-        $date = Carbon::now();
+        $date = date('Y-m-d 23:59:59');
+        $date1 = date("Y-m-d 23:59:59", strtotime("-1 day"));
+        $date2 = date("Y-m-d 23:59:59", strtotime("-2 day"));
+        $date3 = date("Y-m-d 23:59:59", strtotime("-3 day"));
+        $date4 = date("Y-m-d 23:59:59", strtotime("-4 day"));
+        $date5 = date("Y-m-d 23:59:59", strtotime("-5 day"));
+        $date6 = date("Y-m-d 23:59:59", strtotime("-6 day"));
+        $date7 = date("Y-m-d 23:59:59", strtotime("-7 day"));
 
         $new1 = Ukrainian::where('created_at', '>=', $date1)->where('created_at', '<=', $date)->get()->count();
         $new2 = Ukrainian::where('created_at', '>=', $date2)->where('created_at', '<=', $date1)->get()->count();
@@ -133,6 +133,11 @@ class SHomeController extends Controller
         ]);
 
         return back()->with(['edit_user' => true]);
+    }
+
+    public function help_centre()
+    {
+        return view('shop.help');
     }
 
     public function excel()

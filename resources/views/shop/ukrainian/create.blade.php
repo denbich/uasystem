@@ -118,6 +118,24 @@
                         <form action="{{ route('s.ukrainian.store') }}" method="post">
                             @csrf
                             <div class="form-group">
+                                <label class="required" for="lastname">Pytania na wstęp:</label>
+                                <ul>
+                                    <li>Ви вперше тут? (Wy wpersze tut?) - Czy pani jest tu pierwszy raz?</li>
+                                    <li>У вас є закордонний паспорт? (U was je zakordonnyj pasport?) - Czy ma Pani zagraniczny paszport?</li>
+                                    <li>У вас є дія? (U was je Dija?) - Czy Pani ma Diię? (Ukraiński mObywatel)</li>
+                                </ul>
+                            </div>
+                            <div class="form-group">
+                                <label class="required" for="lastname">Nazwisko</label>
+                                <p class="font-italic">Як вас звати? (Jak was zwaty?) - Jak się Pani/Pan nazywa?</p>
+                                <input class="form-control {{ $errors->has('lastname') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="lastname" id="lastname" value="{{ old('lastname', '') }}" required>
+                                @error('lastname')
+                                    <span class="text-danger small" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label class="required" for="firstname">Imię</label>
                                 <input class="form-control {{ $errors->has('firstname') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="firstname" id="firstname" value="{{ old('firstname', '') }}" required>
                                 @error('firstname')
@@ -127,16 +145,8 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="required" for="lastname">Nazwisko</label>
-                                <input class="form-control {{ $errors->has('lastname') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="lastname" id="lastname" value="{{ old('lastname', '') }}" required>
-                                @error('lastname')
-                                    <span class="text-danger small" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
                                 <label class="required" for="birth">Data urodzenia</label>
+                                <p class="font-italic">Яка у вас дата народження? (Jaka u was data narodżenja?) - Jaka jest Pani data urodzenia?</p>
                                 <input class="form-control {{ $errors->has('birth') ? 'is-invalid' : '' }}" maxlength="255" type="date" name="birth" id="birth" value="{{ old('birth', '') }}" required>
                                 @error('birth')
                                     <span class="text-danger small" role="alert">
@@ -146,6 +156,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="required" for="telephone">Numer telefonu</label>
+                                <p class="font-italic">Який у вас номер телефону? Чи польський номер? Якщо ні, то український. (Jakij u was nomjer telefonu? Czy polskij nomjer? Jakszczo ni to ukraiński) - Jaki jest Pani numer telefonu? Polski numer jest? Jeśli nie to ukraiński.</p>
                                 <input class="form-control {{ $errors->has('telephone') ? 'is-invalid' : '' }}" maxlength="255" type="tel" name="telephone" id="telephone" value="{{ old('telephone', '') }}">
                                 @error('telephone')
                                     <span class="text-danger small" role="alert">
@@ -173,6 +184,7 @@
 
                             <div class="form-group">
                                 <label class="required" for="address">Adres pobytu w polsce (ulica numer, Miasto)</label>
+                                <p class="font-italic">Яка ваша зараз адреса в Польщі? (Jaka wasza zaraz adrjesa w polszczi?) - Jaki jest Pani adres w Polsce?</p>
                                 <input class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="address" id="address" value="{{ old('address', '') }}">
                                 @error('address')
                                     <span class="text-danger small" role="alert">
@@ -183,6 +195,7 @@
 
                             <div class="form-group">
                                 <label class="required" for="work">Wykonywana praca</label>
+                                <p class="font-italic">Якою була ваша робота в Україні? (Jakoju byla wasza rabota w ukraini?) - Jaka była Pani praca w ukrainie?</p>
                                 <input class="form-control {{ $errors->has('work') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="work" id="work" value="{{ old('work', '') }}">
                                 @error('work')
                                     <span class="text-danger small" role="alert">
@@ -193,6 +206,7 @@
 
                             <div class="form-group">
                                 <label class="required" for="stay">Chęć pozostania w polsce</label>
+                                <p class="font-italic">Хочеш залишитися в Польщі і працювати? (Wy chocze Zal'yszytica w polszczi i pracjuwati?) - Czy chce pani zostać w Polsce i pracować?</p>
                                 <div class="custom-control custom-radio mb-1">
                                     <input type="radio" id="desire1" name="stay" value="tak" class="custom-control-input">
                                     <label class="custom-control-label" for="desire1">Tak</label>
@@ -213,6 +227,7 @@
 
                             <div class="form-group">
                                 <label class="required" for="children">Informacja o dzieciach</label>
+                                <p class="font-italic">У вас є діти? (u was e dzjeci?) - Czy ma pani dzieci? <br> Скільки років дітям? (Skolki rokiw dietjam) - Ile dzieci mają lat?</p>
                                 <input class="form-control {{ $errors->has('children') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="children" id="children" value="{{ old('children', '') }}" required>
                                 @error('children')
                                     <span class="text-danger small" role="alert">

@@ -143,42 +143,44 @@
     <!-- Page content -->
 
     <div class="container-fluid mt--6">
-        <div class="">
-          <div class="card">
-            <div class="card-header">
-              <div class="row align-items-center">
-                <div class="col">
-                  <h3 class="mb-0">Statystyki rejestracji i ponownych wizyt (Ostatnie 7 dni)</h3>
-                </div>
-                <div class="col text-right">
-                  <a href="{{ route('s.ukrainian.list') }}" class="btn btn-sm btn-primary">Lista uchodźców</a>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="row align-items-center">
+                      <div class="col">
+                        <h3 class="mb-0">Statystyki rejestracji i ponownych wizyt (Ostatnie 7 dni)</h3>
+                      </div>
+                      <div class="col text-right">
+                        <a href="{{ route('s.ukrainian.list') }}" class="btn btn-sm btn-primary">Lista uchodźców</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                      <div>
+                          <canvas id="chart1" style="max-height:400px;"></canvas>
+                        </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="card-body">
-                <div>
-                    <canvas id="chart1" style="max-height:400px;"></canvas>
+              <div class="col-lg-3">
+                  <div class="card">
+                    <div class="card-header">
+                      <div class="row align-items-center">
+                        <div class="col">
+                          <h3 class="mb-0">Pomoc</h3>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <p>Jeśli masz probem, propozycję bądź pytanie to śmiało pisz na adres:
+                          <a target="_blank" rel="nofollow" href="mailto:administrator@wolontariat.rybnik.pl">administrator@wolontariat.rybnik.pl</a>
+                      </p>
+                      <a href="{{ route('s.help_centre') }}"><i class="fas fa-info-circle text-primary"></i> Centrum pomocy</a>
+                    </div>
                   </div>
-            </div>
-          </div>
+                </div>
         </div>
-        <div class="">
-            <div class="card">
-              <div class="card-header">
-                <div class="row align-items-center">
-                  <div class="col">
-                    <h3 class="mb-0">Pomoc</h3>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <p>Jeśli masz probem, propozycję bądź pytanie to śmiało pisz na adres:
-                    <a target="_blank" rel="nofollow" href="mailto:administrator@wolontariat.rybnik.pl">administrator@wolontariat.rybnik.pl</a>
-                </p>
-                <!--<a target="_blank" rel="nofollow" href="#"><i class="far fa-question-circle"></i> Centrum pomocy</a>-->
-              </div>
-            </div>
-          </div>
 
       <div class="row">
         <div class="col-xl-6">

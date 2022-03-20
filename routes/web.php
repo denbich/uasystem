@@ -60,11 +60,18 @@ Route::middleware('auth')->group(function() {
             Route::post('/profile', 'save_profile');
             Route::get('/settings', 'settings')->name('s.settings');
             Route::post('/settings', 'save_settings');
+
+            Route::prefix('/help-centre')->group(function() {
+                Route::get('/', 'help_centre')->name('s.help_centre');
+            });
+
             Route::get('/excel', 'excel');
             Route::post('/excel', 'exceldo');
 
             Route::get('/visits', 'visits');
             Route::post('/visits', 'visitsdo');
+
+
 
         });
         Route::get('/ukrainian/search', [SUkrainianController::class, 'search'])->name('s.ukrainian.search');
