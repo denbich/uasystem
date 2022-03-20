@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\shop;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Ukrainian;
 use Illuminate\Http\Request;
@@ -21,6 +22,53 @@ class SHomeController extends Controller
         $users = User::count();
         $ukrainians = Ukrainian::count();
         $signed = Ukrainian::whereDate('created_at', date('Y-m-d'))->count();
+
+        /*$date7 = Carbon::now()->subDays(7);
+        $date6 = Carbon::now()->subDays(6);
+        $date5 = Carbon::now()->subDays(5);
+        $date4 = Carbon::now()->subDays(4);
+        $date3 = Carbon::now()->subDays(3);
+        $date2 = Carbon::now()->subDays(2);
+        $date1 = Carbon::now()->subDays(1);
+        $date = Carbon::now();
+        $chart = [
+            '1' => [
+                'date' => $date,
+                'new' => Ukrainian::where('created_at', '>=', $date1)->where('created_at', '<=', $date)->get()->count(),
+                'old' => Ukrainian_visit::where('created_at', '>=', $date1)->where('created_at', '<=', $date)->get()->count(),
+            ],
+            '2' => [
+                'date' => $date1,
+                'new' => Ukrainian::where('created_at', '>=', $date2)->where('created_at', '<=', $date1)->get()->count(),
+                'old' => Ukrainian_visit::where('created_at', '>=', $date2)->where('created_at', '<=', $date1)->get()->count(),
+            ],
+            '3' => [
+                'date' => $date2,
+                'new' => Ukrainian::where('created_at', '>=', $date3)->where('created_at', '<=', $date2)->get()->count(),
+                'old' => Ukrainian_visit::where('created_at', '>=', $date3)->where('created_at', '<=', $date2)->get()->count(),
+            ],
+            '4' => [
+                'date' => $date3,
+                'new' => Ukrainian::where('created_at', '>=', $date4)->where('created_at', '<=', $date3)->get()->count(),
+                'old' => Ukrainian_visit::where('created_at', '>=', $date4)->where('created_at', '<=', $date3)->get()->count(),
+            ],
+            '5' => [
+                'date' => $date4,
+                'new' => Ukrainian::where('created_at', '>=', $date5)->where('created_at', '<=', $date4)->get()->count(),
+                'old' => Ukrainian_visit::where('created_at', '>=', $date5)->where('created_at', '<=', $date4)->get()->count(),
+            ],
+            '6' => [
+                'date' => $date5,
+                'new' => Ukrainian::where('created_at', '>=', $date6)->where('created_at', '<=', $date5)->get()->count(),
+                'old' => Ukrainian_visit::where('created_at', '>=', $date6)->where('created_at', '<=', $date5)->get()->count(),
+            ],
+            '7' => [
+                'date' => $date6,
+                'new' => Ukrainian::where('created_at', '>=', $date7)->where('created_at', '<=', $date6)->get()->count(),
+                'old' => Ukrainian_visit::where('created_at', '>=', $date7)->where('created_at', '<=', $date6)->get()->count(),
+            ],
+        ];*/
+
         return view('shop.dashboard', ['users' => $users, 'ukrainians' => $ukrainians, 'signed' => $signed]);
     }
 

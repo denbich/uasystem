@@ -27,6 +27,6 @@ class Ukrainian_visit extends Model
 
     public function ukrainians()
     {
-        return $this->hasMany(Ukrainian::class, 'ukrainian_id', 'id');
+        return $this->hasMany(Ukrainian::class, 'id', 'ukrainian_id');
     }
 }

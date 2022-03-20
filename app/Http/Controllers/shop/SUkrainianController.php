@@ -99,9 +99,9 @@ class SUkrainianController extends Controller
             'stay' => 'nullable|max:255',
             'children' => 'nullable|max:255',
             'remarks' => 'nullable|max:65535',
-            'diia' => 'nullable|max:255|unique:ukrainians,diia',
-            'mobywatel' => 'nullable|max:255|unique:ukrainians,mobywatel',
-            'rfid' => 'nullable|max:255|unique:ukrainians,rfid',
+            'diia' => 'nullable|max:255|unique:ukrainians,diia,'.$id,
+            'mobywatel' => 'nullable|max:255|unique:ukrainians,mobywatel,'.$id,
+            'rfid' => 'nullable|max:255|unique:ukrainians,rfid,'.$id,
         ]);
 
         if ($request->stay == null)

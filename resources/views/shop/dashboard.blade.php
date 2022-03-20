@@ -61,7 +61,7 @@
               </nav>
             </div>
             <div class="col-lg-6 col-5 text-right">
-              <a href="{{ route('a.user.create') }}" class="btn btn-sm btn-neutral"><i class="fas fa-plus"></i> Nowy uchodźca</a>
+              <a href="{{ route('s.ukrainian.create') }}" class="btn btn-sm btn-neutral"><i class="fas fa-plus"></i> Nowy uchodźca</a>
             </div>
           </div>
           <div class="row" style="display: flex;

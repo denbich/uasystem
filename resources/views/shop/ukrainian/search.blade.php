@@ -141,7 +141,7 @@
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-lg-7">
+                    <div class="col-lg-6">
                         <form action="{{ route('s.ukrainian.search') }}" method="get">
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" name="q" id="search" placeholder="Szukaj uchodźcy" aria-label="Szukaj uchodźcy" aria-describedby="search-button" value="@isset($_GET['q']){{ $_GET['q'] }}@endisset">
