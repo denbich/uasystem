@@ -19,11 +19,11 @@ class SHomeController extends Controller
 {
     public function dashboard()
     {
-        $users = User::count();
+        $visits = Ukrainian_visit::count();
         $ukrainians = Ukrainian::count();
         $signed = Ukrainian::whereDate('created_at', date('Y-m-d'))->count();
 
-        /*$date7 = Carbon::now()->subDays(7);
+        $date7 = Carbon::now()->subDays(7);
         $date6 = Carbon::now()->subDays(6);
         $date5 = Carbon::now()->subDays(5);
         $date4 = Carbon::now()->subDays(4);
@@ -67,9 +67,9 @@ class SHomeController extends Controller
                 'new' => Ukrainian::where('created_at', '>=', $date7)->where('created_at', '<=', $date6)->get()->count(),
                 'old' => Ukrainian_visit::where('created_at', '>=', $date7)->where('created_at', '<=', $date6)->get()->count(),
             ],
-        ];*/
+        ];
 
-        return view('shop.dashboard', ['users' => $users, 'ukrainians' => $ukrainians, 'signed' => $signed]);
+        return view('shop.dashboard', ['visits' => $visits, 'ukrainians' => $ukrainians, 'signed' => $signed, 'chart' => $chart]);
     }
 
     public function settings()

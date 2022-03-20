@@ -84,8 +84,7 @@
     <script src="/assets/vendor/js-cookie/js.cookie.js"></script>
     <script src="/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
     <script src="/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-    <script src="/assets/vendor/chart.js/dist/Chart.min.js"></script>
-    <script src="/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
     <script src="/assets/js/argon.js"></script> <!-- ?v=1.2.0 -->
 
     @yield('script')

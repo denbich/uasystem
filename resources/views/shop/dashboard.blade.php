@@ -88,23 +88,6 @@
                 <div class="card-body my-3">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Liczba użytkowników</h5>
-                      <span class="h2 font-weight-bold mb-0">{{ $users }}</span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-orange text-white rounded-circle shadow">
-                        <i class="fas fa-users"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-md-6 h-100">
-              <div class="card card-stats">
-                <div class="card-body my-3">
-                  <div class="row">
-                    <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0">Liczba zarejestrowanych uchodźców</h5>
                       <span class="h2 font-weight-bold mb-0">{{ $ukrainians }}</span>
                     </div>
@@ -117,6 +100,24 @@
                 </div>
               </div>
             </div>
+            <div class="col-xl-3 col-md-6 h-100">
+              <div class="card card-stats">
+                <div class="card-body my-3">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Liczba ponownych wizyt</h5>
+                      <span class="h2 font-weight-bold mb-0">{{ $visits }}</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-orange text-white rounded-circle shadow">
+                        <i class="fas fa-users"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div class="col-xl-3 col-md-6 h-100">
                 <div class="card card-stats">
                   <div class="card-body my-3">
@@ -147,7 +148,7 @@
             <div class="card-header">
               <div class="row align-items-center">
                 <div class="col">
-                  <h3 class="mb-0">Wykres rejestracji</h3>
+                  <h3 class="mb-0">Statystyki rejestracji i ponownych wizyt (Ostatnie 7 dni)</h3>
                 </div>
                 <div class="col text-right">
                   <a href="{{ route('s.ukrainian.list') }}" class="btn btn-sm btn-primary">Lista uchodźców</a>
@@ -156,7 +157,7 @@
             </div>
             <div class="card-body">
                 <div>
-                    <canvas id="chart1"></canvas>
+                    <canvas id="chart1" style="max-height:400px;"></canvas>
                   </div>
             </div>
           </div>
@@ -200,35 +201,36 @@
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
 
 <script>
-    const labels = [
-      'Poniedziałek',
-      'Wtorek',
-      'Środa',
-      'Czwartek',
-      'Piątek',
-      'Sobota',
-      'Niedziela'
-    ];
+    const labels = [{!! "'".date('Y-m-d', strtotime($chart[7]['date']))."', '".date('Y-m-d', strtotime($chart[6]['date']))."', '".date('Y-m-d', strtotime($chart[5]['date']))."', '".date('Y-m-d', strtotime($chart[4]['date']))."', '".date('Y-m-d', strtotime($chart[3]['date']))."', '".date('Y-m-d', strtotime($chart[2]['date']))."', '".date('Y-m-d', strtotime($chart[1]['date']))."'" !!}];
 
     const data = {
       labels: labels,
       datasets: [{
-        label: 'My First dataset',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: [0, 10, 5, 2, 20, 30, 45],
-      }]
+        label: 'Liczba nowych rejestracji',
+        backgroundColor: 'rgb(0, 87, 183)',
+        borderColor: 'rgb(0, 87, 183)',
+        data: [{{ $chart[7]['new'].", ".$chart[6]['new'].", ".$chart[5]['new'].", ".$chart[4]['new'].", ".$chart[3]['new'].", ".$chart[2]['new'].", ".$chart[1]['new'] }}],
+        stack: 'Stack 0',
+      },
+      {
+        label: 'Liczba Ponownych wizyt',
+        backgroundColor: 'rgb(255, 215, 0)',
+        borderColor: 'rgb(255, 215, 0)',
+        data: [{{ $chart[7]['old'].", ".$chart[6]['old'].", ".$chart[5]['old'].", ".$chart[4]['old'].", ".$chart[3]['old'].", ".$chart[2]['old'].", ".$chart[1]['old'] }}],
+        stack: 'Stack 1',
+      }
+    ]
     };
 
     const config = {
-      type: 'line',
+      type: 'bar',
       data: data,
       options: {}
     };
   </script>
 
 <script>
-    //const myChart = new Chart(document.getElementById('chart1'),config);
+    const myChart = new Chart(document.getElementById('chart1'),config);
   </script>
 
 
