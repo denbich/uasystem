@@ -31,41 +31,50 @@ class SHomeController extends Controller
         $date2 = Carbon::now()->subDays(2);
         $date1 = Carbon::now()->subDays(1);
         $date = Carbon::now();
+
+        $new1 = Ukrainian::where('created_at', '>=', $date1)->where('created_at', '<=', $date)->get()->count();
+        $new2 = Ukrainian::where('created_at', '>=', $date2)->where('created_at', '<=', $date1)->get()->count();
+        $new3 = Ukrainian::where('created_at', '>=', $date3)->where('created_at', '<=', $date2)->get()->count();
+        $new4 = Ukrainian::where('created_at', '>=', $date4)->where('created_at', '<=', $date3)->get()->count();
+        $new5 = Ukrainian::where('created_at', '>=', $date5)->where('created_at', '<=', $date4)->get()->count();
+        $new6 = Ukrainian::where('created_at', '>=', $date6)->where('created_at', '<=', $date5)->get()->count();
+        $new7 = Ukrainian::where('created_at', '>=', $date7)->where('created_at', '<=', $date6)->get()->count();
+
         $chart = [
             '1' => [
                 'date' => $date,
-                'new' => Ukrainian::where('created_at', '>=', $date1)->where('created_at', '<=', $date)->get()->count(),
-                'old' => Ukrainian_visit::where('created_at', '>=', $date1)->where('created_at', '<=', $date)->get()->count(),
+                'new' => $new1,
+                'old' => $new1 - Ukrainian_visit::where('created_at', '>=', $date1)->where('created_at', '<=', $date)->get()->count(),
             ],
             '2' => [
                 'date' => $date1,
-                'new' => Ukrainian::where('created_at', '>=', $date2)->where('created_at', '<=', $date1)->get()->count(),
-                'old' => Ukrainian_visit::where('created_at', '>=', $date2)->where('created_at', '<=', $date1)->get()->count(),
+                'new' => $new2,
+                'old' => $new2 - Ukrainian_visit::where('created_at', '>=', $date2)->where('created_at', '<=', $date1)->get()->count(),
             ],
             '3' => [
                 'date' => $date2,
-                'new' => Ukrainian::where('created_at', '>=', $date3)->where('created_at', '<=', $date2)->get()->count(),
-                'old' => Ukrainian_visit::where('created_at', '>=', $date3)->where('created_at', '<=', $date2)->get()->count(),
+                'new' => $new3,
+                'old' => $new3 - Ukrainian_visit::where('created_at', '>=', $date3)->where('created_at', '<=', $date2)->get()->count(),
             ],
             '4' => [
                 'date' => $date3,
-                'new' => Ukrainian::where('created_at', '>=', $date4)->where('created_at', '<=', $date3)->get()->count(),
-                'old' => Ukrainian_visit::where('created_at', '>=', $date4)->where('created_at', '<=', $date3)->get()->count(),
+                'new' => $new4,
+                'old' => $new4 - Ukrainian_visit::where('created_at', '>=', $date4)->where('created_at', '<=', $date3)->get()->count(),
             ],
             '5' => [
                 'date' => $date4,
-                'new' => Ukrainian::where('created_at', '>=', $date5)->where('created_at', '<=', $date4)->get()->count(),
-                'old' => Ukrainian_visit::where('created_at', '>=', $date5)->where('created_at', '<=', $date4)->get()->count(),
+                'new' => $new5,
+                'old' => $new5 - Ukrainian_visit::where('created_at', '>=', $date5)->where('created_at', '<=', $date4)->get()->count(),
             ],
             '6' => [
                 'date' => $date5,
-                'new' => Ukrainian::where('created_at', '>=', $date6)->where('created_at', '<=', $date5)->get()->count(),
-                'old' => Ukrainian_visit::where('created_at', '>=', $date6)->where('created_at', '<=', $date5)->get()->count(),
+                'new' => $new6,
+                'old' => $new6 - Ukrainian_visit::where('created_at', '>=', $date6)->where('created_at', '<=', $date5)->get()->count(),
             ],
             '7' => [
                 'date' => $date6,
-                'new' => Ukrainian::where('created_at', '>=', $date7)->where('created_at', '<=', $date6)->get()->count(),
-                'old' => Ukrainian_visit::where('created_at', '>=', $date7)->where('created_at', '<=', $date6)->get()->count(),
+                'new' => $new7,
+                'old' => $new7 - Ukrainian_visit::where('created_at', '>=', $date7)->where('created_at', '<=', $date6)->get()->count(),
             ],
         ];
 
