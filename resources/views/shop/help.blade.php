@@ -110,17 +110,23 @@
                         <div class="card-body">
                           <ol>
                               <li>Z bocznego menu wybierz Uchodźcy <i class="fas fa-arrow-right"></i> Dodaj <br>
-                                  <img src="{{ url('help/1.png') }}" class="w-100 text-center my-2" alt="">
+                                <a href="{{ url('help/1.png') }}" data-toggle="lightbox">
+                                    <img src="{{ url('help/1.png') }}" class="w-100 text-center my-2 img-fluid" alt="image">
+                                </a>
                               </li>
                               <li>Wypełniasz ankietę zgodnie z wytycznymi: <br>
                                 <ul>
                                     <li>Jeśli uchodźca zarejestrował się w 28 dzielnicy: Imię, nazwisko, data urodzenia, informacja o dzieciach, w polu uwagi pisz: "info w 28 dzielnicy",</li>
                                     <li>Jeśli uchodźca NIE zarejestrował się w 28 dzielnicy: Imię, nazwisko, data urodzenia, numer telefonu, aktualny adres, informacja o pracy, informacja o chęci pozostania, informacja o dzieciach.</li>
                                 </ul>
-                                <img src="{{ url('help/2.png') }}" class="w-100 text-center my-2" alt="">
+                                <a href="{{ url('help/2.png') }}" data-toggle="lightbox">
+                                    <img src="{{ url('help/2.png') }}" class="w-100 text-center my-2 img-fluid" alt="image">
+                                </a>
                                 <li>Jeśli uchodźca posiada polski dokument tożsamości z wartwą elektroniczną (RFID), to poproś go o niego i postępuj zgodnie z wytycznymi w zakładce <a href="" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">"Jak korzystać z czytnika kart RFID?"</a></li>
                                 <li>Klikasz przycisk "Utwórz" by dodać uchodźcę do systemu. <span class="text-danger">Uwaga! Nie musisz dodawać osobno wizyty - pierwsza wizyta dodaje się automatycznie.</span></li>
-                                <img src="{{ url('help/3.png') }}" class="w-100 text-center my-2" alt="">
+                                <a href="{{ url('help/3.png') }}" data-toggle="lightbox">
+                                    <img src="{{ url('help/3.png') }}" class="w-100 text-center my-2 img-fluid" alt="image">
+                                </a>
                                 <li>Wydaj mapę Rybnika oraz talon na jedzenię i chemię.</li>
                             </li>
                           </ol>
@@ -142,17 +148,25 @@
                               <li>Możesz wyszukać na 2 sposoby:
                                   <ul>
                                       <li>Z bocznego menu wybierając Uchodźcy <i class="fas fa-arrow-right"></i> Szukaj
-                                        <img src="{{ url('help/4.png') }}" class="w-100 text-center my-2" alt="">
+                                        <a href="{{ url('help/4.png') }}" data-toggle="lightbox">
+                                            <img src="{{ url('help/4.png') }}" class="w-100 text-center my-2 img-fluid" alt="image">
+                                        </a>
                                         I wyszukujesz dane
-                                        <img src="{{ url('help/5.png') }}" class="w-100 text-center my-2" alt="">
+                                        <a href="{{ url('help/5.png') }}" data-toggle="lightbox">
+                                            <img src="{{ url('help/5.png') }}" class="w-100 text-center my-2 img-fluid" alt="image">
+                                        </a>
                                       </li>
                                       <li>Bezpośrednio z górnego menu z paska wyszukiwania
-                                        <img src="{{ url('help/6.png') }}" class="w-100 text-center my-2" alt="">
+                                        <a href="{{ url('help/6.png') }}" data-toggle="lightbox">
+                                            <img src="{{ url('help/6.png') }}" class="w-100 text-center my-2 img-fluid" alt="image">
+                                        </a>
                                       </li>
                                   </ul>
                               </li>
                               <li>Wyszukaj daną frazę i wyskoczą ci wyniki wyszukiwania
-                                <img src="{{ url('help/7.png') }}" class="w-100 text-center my-2" alt="">
+                                <a href="{{ url('help/7.png') }}" data-toggle="lightbox">
+                                    <img src="{{ url('help/7.png') }}" class="w-100 text-center my-2 img-fluid" alt="image">
+                                </a>
                               </li>
                               <li>uchodźcę możesz wyszukać po następujących danych:
                                   <ul>
@@ -187,10 +201,14 @@
                             <ol>
                                 <li>Wyszukaj uchodźca <a href="" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">(Osobny artykuł "Jak wyszukać uchodźcę?")</a> lub znajdź go na liście uchodźców (Uchodźcy <i class="fas fa-arrow-right"></i> lista),</li>
                                 <li>Kliknij w ikonę <i class="fas fa-edit"></i> w opcjach
-                                    <img src="{{ url('help/8.png?a') }}" class="w-100 text-center my-2" alt="">
+                                    <a href="{{ url('help/8.png') }}" data-toggle="lightbox">
+                                        <img src="{{ url('help/8.png') }}" class="w-100 text-center my-2 img-fluid" alt="image">
+                                    </a>
                                 </li>
                                 <li>Edytuj dane i kliknij przycisk "Zapisz"
-                                    <img src="{{ url('help/9.png') }}" class="w-100 text-center my-2" alt="">
+                                    <a href="{{ url('help/9.png') }}" data-toggle="lightbox">
+                                        <img src="{{ url('help/9.png') }}" class="w-100 text-center my-2 img-fluid" alt="image">
+                                    </a>
                                 </li>
                             </ol>
                           </div>
@@ -209,10 +227,14 @@
                             <ol>
                                 <li>Wyszukaj uchodźca <a href="" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">(Osobny artykuł "Jak wyszukać uchodźcę?")</a> lub znajdź go na liście uchodźców (Uchodźcy <i class="fas fa-arrow-right"></i> lista),</li>
                                 <li>Kliknij w ikonę <i class="fas fa-plus"></i> w opcjach
-                                    <img src="{{ url('help/10.png?') }}" class="w-100 text-center my-2" alt="">
+                                    <a href="{{ url('help/10.png') }}" data-toggle="lightbox">
+                                        <img src="{{ url('help/10.png') }}" class="w-100 text-center my-2 img-fluid" alt="image">
+                                    </a>
                                 </li>
                                 <li>Zaznacz powody wizyty (Opcja ubrania jest zaznaczona domyślnie) i kliknij przycisk "Zatwierdź"
-                                    <img src="{{ url('help/11.png') }}" class="w-100 text-center my-2" alt="">
+                                    <a href="{{ url('help/11.png') }}" data-toggle="lightbox">
+                                        <img src="{{ url('help/11.png') }}" class="w-100 text-center my-2 img-fluid" alt="image">
+                                    </a>
                                 </li>
                             </ol>
                           </div>
@@ -231,10 +253,14 @@
                             <ol>
                                 <li>Wyszukaj uchodźca <a href="" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">(Osobny artykuł "Jak wyszukać uchodźcę?")</a> lub znajdź go na liście uchodźców (Uchodźcy <i class="fas fa-arrow-right"></i> lista),</li>
                                 <li>Kliknij w ikonę <i class="fas fa-qrcode"></i> w opcjach
-                                    <img src="{{ url('help/12.png') }}" class="w-100 text-center my-2" alt="">
+                                    <a href="{{ url('help/12.png') }}" data-toggle="lightbox">
+                                        <img src="{{ url('help/12.png') }}" class="w-100 text-center my-2 img-fluid" alt="image">
+                                    </a>
                                 </li>
                                 <li>Zaznacz odpowiednią opcję i wprowadź dane za pomocą skanera kodów QR lub czytnia kart RFID <a href="" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">(Osobny artykuł "Jak korzystać z czytnika kart RFID?")</a>
-                                    <img src="{{ url('help/13.png') }}" class="w-100 text-center my-2" alt="">
+                                    <a href="{{ url('help/13.png') }}" data-toggle="lightbox">
+                                        <img src="{{ url('help/13.png') }}" class="w-100 text-center my-2 img-fluid" alt="image">
+                                    </a>
                                 </li>
                                 <li>By zapisać dane kliknij przycisk "Zapisz".</li>
                             </ol>
@@ -263,6 +289,15 @@
     </div>
   </div>
 
+@endsection
+
+@section('script')
+<script>
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox();
+            });
+</script>
 @endsection
 
 
