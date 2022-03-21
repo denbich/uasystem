@@ -100,16 +100,16 @@
                     <div class="card">
                       <div class="card-header" id="headingOne">
                         <h5 class="mb-0">
-                          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          <button class="btn btn-link collapsed w-100 text-left" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                             Jak dodać nowego uchodźcę?
                           </button>
                         </h5>
                       </div>
 
-                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
                           <ol>
-                              <li>Z bocznego menu wybierz Uchodźcy -> Dodaj <br>
+                              <li>Z bocznego menu wybierz Uchodźcy <i class="fas fa-arrow-right"></i> Dodaj <br>
                                   <img src="{{ url('help/1.png') }}" class="w-100 text-center my-2" alt="">
                               </li>
                               <li>Wypełniasz ankietę zgodnie z wytycznymi: <br>
@@ -118,7 +118,7 @@
                                     <li>Jeśli uchodźca NIE zarejestrował się w 28 dzielnicy: Imię, nazwisko, data urodzenia, numer telefonu, aktualny adres, informacja o pracy, informacja o chęci pozostania, informacja o dzieciach.</li>
                                 </ul>
                                 <img src="{{ url('help/2.png') }}" class="w-100 text-center my-2" alt="">
-                                <li>Jeśli uchodźca posiada polski dokument tożsamości z wartwą elektroniczną (RFID), to poproś go o niego i postępuj zgodnie z wytycznymi w zakładce "Jak korzystać z czytnika kart RFID?"</li>
+                                <li>Jeśli uchodźca posiada polski dokument tożsamości z wartwą elektroniczną (RFID), to poproś go o niego i postępuj zgodnie z wytycznymi w zakładce <a href="" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">"Jak korzystać z czytnika kart RFID?"</a></li>
                                 <li>Klikasz przycisk "Utwórz" by dodać uchodźcę do systemu. <span class="text-danger">Uwaga! Nie musisz dodawać osobno wizyty - pierwsza wizyta dodaje się automatycznie.</span></li>
                                 <img src="{{ url('help/3.png') }}" class="w-100 text-center my-2" alt="">
                                 <li>Wydaj mapę Rybnika oraz talon na jedzenię i chemię.</li>
@@ -130,7 +130,7 @@
                     <div class="card">
                       <div class="card-header" id="headingTwo">
                         <h5 class="mb-0">
-                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          <button class="btn btn-link collapsed w-100 text-left" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             Jak wyszukać uchodźcę?
                           </button>
                         </h5>
@@ -141,7 +141,7 @@
                               <li>Poproś o dokument tożsamości (Paszport, dowód, Diia),</li>
                               <li>Możesz wyszukać na 2 sposoby:
                                   <ul>
-                                      <li>Z bocznego menu wybierając Uchodźcy -> Szukaj
+                                      <li>Z bocznego menu wybierając Uchodźcy <i class="fas fa-arrow-right"></i> Szukaj
                                         <img src="{{ url('help/4.png') }}" class="w-100 text-center my-2" alt="">
                                         I wyszukujesz dane
                                         <img src="{{ url('help/5.png') }}" class="w-100 text-center my-2" alt="">
@@ -153,6 +153,14 @@
                               </li>
                               <li>Wyszukaj daną frazę i wyskoczą ci wyniki wyszukiwania
                                 <img src="{{ url('help/7.png') }}" class="w-100 text-center my-2" alt="">
+                              </li>
+                              <li>uchodźcę możesz wyszukać po następujących danych:
+                                  <ul>
+                                      <li>Imię,</li>
+                                      <li>Nazwisko,</li>
+                                      <li>Data urodzenia (Format: RRRR-MM-DD),</li>
+                                      <li>Cyfrowe dane: RFID, Diia, mObywatel.</li>
+                                  </ul>
                               </li>
                               <li>Wytłumaczenie ikon w opcjach:
                                   <ul>
@@ -169,7 +177,7 @@
                     <div class="card">
                         <div class="card-header" id="headingThree">
                           <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <button class="btn btn-link collapsed w-100 text-left" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                               Jak edytować dane uchodźcy?
                             </button>
                           </h5>
@@ -177,7 +185,7 @@
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                           <div class="card-body">
                             <ol>
-                                <li>Wyszukaj uchodźca <a href="" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">(Osobny artykuł "Jak wyszukać uchodźcę?")</a> lub znajdź go na liście uchodźców (Uchodźcy -> lista),</li>
+                                <li>Wyszukaj uchodźca <a href="" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">(Osobny artykuł "Jak wyszukać uchodźcę?")</a> lub znajdź go na liście uchodźców (Uchodźcy <i class="fas fa-arrow-right"></i> lista),</li>
                                 <li>Kliknij w ikonę <i class="fas fa-edit"></i> w opcjach
                                     <img src="{{ url('help/8.png?a') }}" class="w-100 text-center my-2" alt="">
                                 </li>
@@ -191,7 +199,7 @@
                       <div class="card">
                         <div class="card-header" id="headingFour">
                           <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <button class="btn btn-link collapsed w-100 text-left" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                               Jak dodać wizytę?
                             </button>
                           </h5>
@@ -199,7 +207,7 @@
                         <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
                           <div class="card-body">
                             <ol>
-                                <li>Wyszukaj uchodźca <a href="" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">(Osobny artykuł "Jak wyszukać uchodźcę?")</a> lub znajdź go na liście uchodźców (Uchodźcy -> lista),</li>
+                                <li>Wyszukaj uchodźca <a href="" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">(Osobny artykuł "Jak wyszukać uchodźcę?")</a> lub znajdź go na liście uchodźców (Uchodźcy <i class="fas fa-arrow-right"></i> lista),</li>
                                 <li>Kliknij w ikonę <i class="fas fa-plus"></i> w opcjach
                                     <img src="{{ url('help/10.png?') }}" class="w-100 text-center my-2" alt="">
                                 </li>
@@ -213,26 +221,35 @@
                       <div class="card">
                         <div class="card-header" id="headingFive">
                           <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseF">
+                            <button class="btn btn-link collapsed w-100 text-left" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseF">
                               Jak dodać cyfrowe dane uchodźca? (Diia, mObywatel, Karta RFID)
                             </button>
                           </h5>
                         </div>
                         <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
                           <div class="card-body">
-                            Wkrótce
+                            <ol>
+                                <li>Wyszukaj uchodźca <a href="" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">(Osobny artykuł "Jak wyszukać uchodźcę?")</a> lub znajdź go na liście uchodźców (Uchodźcy <i class="fas fa-arrow-right"></i> lista),</li>
+                                <li>Kliknij w ikonę <i class="fas fa-qrcode"></i> w opcjach
+                                    <img src="{{ url('help/12.png') }}" class="w-100 text-center my-2" alt="">
+                                </li>
+                                <li>Zaznacz odpowiednią opcję i wprowadź dane za pomocą skanera kodów QR lub czytnia kart RFID <a href="" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">(Osobny artykuł "Jak korzystać z czytnika kart RFID?")</a>
+                                    <img src="{{ url('help/13.png') }}" class="w-100 text-center my-2" alt="">
+                                </li>
+                                <li>By zapisać dane kliknij przycisk "Zapisz".</li>
+                            </ol>
                           </div>
                         </div>
                       </div>
                     <div class="card">
-                      <div class="card-header" id="headingF">
+                      <div class="card-header" id="headingSix">
                         <h5 class="mb-0">
-                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseF" aria-expanded="false" aria-controls="collapseF">
+                          <button class="btn btn-link collapsed w-100 text-left" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseF">
                             Jak korzystać z czytnika kart RFID?
                           </button>
                         </h5>
                       </div>
-                      <div id="collapseF" class="collapse" aria-labelledby="headingF" data-parent="#accordion">
+                      <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
                         <div class="card-body">
                             Wkrótce
                         </div>
