@@ -41,7 +41,7 @@ class="bg-default"
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <a href="{{ route('home') }}" class="nav-link text-center">
-                <span class="nav-link-inner--text">{{ __('Strona Główna') }}</span>
+                <span class="nav-link-inner--text">{{ __('main.menu.mainpage') }}</span>
               </a>
             </li>
 
