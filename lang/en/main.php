@@ -8,16 +8,22 @@ return [
     'signin' => 'Sign in',
     'lang' => 'Choose language',
     'morelang' => 'More languages...',
-    'success' => 'Sukces',
+    'success' => 'Success',
     'cancel' => 'Cancel',
+    'confirm' => 'Confirm',
+    'save' => 'Save',
     'error' => 'Error',
     'alert' => 'Alert',
+    'addrefugee' => 'Add refugee',
+    'refugee' => 'Refugees',
+    'options' => 'Options',
+    'null' => 'Lack',
 
     'langlist' => [
         'current' => [
-            'polish' => 'Polish',
-            'english' => 'English',
-            'ukrainian' => 'Ukrainian',
+            'polish' => 'Polski',
+            'english' => 'Angielski',
+            'ukrainian' => 'Ukraiński',
         ],
 
         'foreign' => [
@@ -25,6 +31,17 @@ return [
             'english' => 'English',
             'ukrainian' => 'Yкраїнський',
         ],
+    ],
+
+    'menu' => [
+        'mainpage' => 'Main page',
+    ],
+
+    'auth' => [
+        'panel' => 'uaSystem Panel',
+        'login' => 'Username',
+        'password' => 'Password',
+        'rememberme' => 'Remember me',
     ],
 ];
 
