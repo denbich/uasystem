@@ -8,10 +8,10 @@
 <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
     <div class="container text-primary">
         <div class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white">
-            <a class="text-white" href="{{ route('home') }}">uaSystem</a>
-              <a class="ml-1" href="{{ route('home') }}" rel="noopener noreferrer">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" alt="">
+            <a class="ml-1" href="{{ route('home') }}" rel="noopener noreferrer">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Lesser_Coat_of_Arms_of_Ukraine.svg" style="min-height: 55px;">
               </a>
+            <a class="text-white" href="{{ route('home') }}"> uaSystem</a>
         </div>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
