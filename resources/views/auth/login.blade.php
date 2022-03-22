@@ -126,7 +126,7 @@ class="bg-default"
                           <div class="custom-control custom-control-alternative custom-checkbox">
                             <input class="custom-control-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                             <label class="custom-control-label" for="remember">
-                              <span class="text-muted">{{ __('main.login.password') }}</span>
+                              <span class="text-muted">{{ __('main.auth.rememberme') }}</span>
                             </label>
                           </div>
                           <div class="text-center">
