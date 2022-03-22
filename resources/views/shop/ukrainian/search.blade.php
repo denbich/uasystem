@@ -225,7 +225,7 @@
                         <label class="custom-control-label" for="Check1{{ $uk->id }}">{{ __('shop.refugees.list.clothes') }}</label>
                       </div>
                       <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="Check2" name="food">
+                        <input type="checkbox" class="custom-control-input" id="Check2{{ $uk->id }}" name="food">
                         <label class="custom-control-label" for="Check2{{ $uk->id }}">{{ __('shop.refugees.list.food') }}</label>
                       </div>
                       <div class="custom-control custom-checkbox">
