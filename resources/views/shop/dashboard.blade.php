@@ -105,7 +105,7 @@
                 <div class="card-body my-3">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">{{ __('shop.dashboard.visits.count') }}</h5>
+                      <h5 class="card-title text-uppercase text-muted mb-0">{{ __('shop.dashboard.visitscount') }}</h5>
                       <span class="h2 font-weight-bold mb-0">{{ $visits }}</span>
                     </div>
                     <div class="col-auto">
