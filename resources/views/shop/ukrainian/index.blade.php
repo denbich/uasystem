@@ -133,7 +133,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th>{{ __('shop.refugees.list.name') }}</th>
-                                <th>{{ __('shop.refugees.list.visit') }}</th>
+                                <th>{{ __('shop.refugees.list.visits') }}</th>
                                 <th>{{ __('shop.refugees.list.lastvisit') }}</th>
                                 <th>{{ __('shop.refugees.list.birthdate') }}</th>
                                 <th>{{ __('shop.refugees.list.kids') }}</th>
