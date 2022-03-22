@@ -162,7 +162,7 @@
                     <small>{{ __('main.langlist.current.english') }} ({{ __('main.langlist.foreign.english') }})</small>
                     @endif
                   </a>
-                  <a href="{{ route('language', ['ua']) }}" class="col-4 my-2 shortcut-item text-center">
+                  <a href="{{ route('language', ['uk']) }}" class="col-4 my-2 shortcut-item text-center">
                       <span class="shortcut-media avatar rounded-circle">
                           <img src="https://cdn.jsdelivr.net/npm/round-flag-icons/flags/ua.svg" alt="">
                         </span>
