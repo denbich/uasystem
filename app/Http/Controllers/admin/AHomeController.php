@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\Ukrainian;
 use Illuminate\Http\Request;
+use App\Models\Ukrainian_visit;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;

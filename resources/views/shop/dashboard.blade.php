@@ -64,25 +64,7 @@
               @include('shop.include.button')
             </div>
           </div>
-          <div class="row" style="display: flex;
-          flex-wrap: wrap;">
-            <div class="col-xl-3 col-md-6 h-100">
-              <div class="card card-stats">
-                <div class="card-body my-3">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">{{ __('shop.dashboard.yourid') }}</h5>
-                      <span class="h2 font-weight-bold mb-0">{{ Auth::user()->id }}</span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                        <i class="fas fa-id-card-alt"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="row" style="display: flex; flex-wrap: wrap;">
             <div class="col-xl-3 col-md-6 h-100">
               <div class="card card-stats">
                 <div class="card-body my-3">
@@ -93,13 +75,39 @@
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
-                        <i class="fas fa-user-plus"></i>
+                        <i class="fa-solid fa-rectangle-list"></i>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <div class="col-xl-3 col-md-6 h-100">
+                <div class="card card-stats">
+                  <div class="card-body my-3">
+                    <div class="row">
+                      <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">{{ __('shop.dashboard.todaycount') }}</h5>
+                        <span class="h2 font-weight-bold mb-0">{{ $chart[1]['old'] }}</span>
+                      </div>
+                      <div class="col-auto">
+                        <div class="icon icon-shape bg-success text-white rounded-circle shadow">
+                            <i class="fa-solid fa-person-circle-plus"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="mt-3 mb-0 text-sm">
+                        @if ($stats['refugees'] >= 0)
+                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> {{ $stats['refugees'] }}%</span>
+                        @else
+                        <span class="text-danger mr-2"><i class="fa fa-arrow-down"></i> {{ $stats['refugees'] }}%</span>
+                        @endif
+
+                        <span class="text-nowrap">{{ __('shop.dashboard.stat') }}</span>
+                      </p>
+                  </div>
+                </div>
+              </div>
             <div class="col-xl-3 col-md-6 h-100">
               <div class="card card-stats">
                 <div class="card-body my-3">
@@ -110,31 +118,40 @@
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-orange text-white rounded-circle shadow">
-                        <i class="fas fa-users"></i>
+                        <i class="fa-solid fa-clock-rotate-left"></i>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
             <div class="col-xl-3 col-md-6 h-100">
                 <div class="card card-stats">
                   <div class="card-body my-3">
                     <div class="row">
                       <div class="col">
-                        <h5 class="card-title text-uppercase text-muted mb-0">{{ __('shop.dashboard.todaycount') }}</h5>
-                        <span class="h2 font-weight-bold mb-0">{{ $signed }}</span>
+                        <h5 class="card-title text-uppercase text-muted mb-0">{{ __('shop.dashboard.todayvisit') }}</h5>
+                        <span class="h2 font-weight-bold mb-0">{{ $chart[1]['new'] }}</span>
                       </div>
                       <div class="col-auto">
-                        <div class="icon icon-shape bg-success text-white rounded-circle shadow">
-                          <i class="fas fa-clock"></i>
+                        <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                            <i class="fa-solid fa-clock"></i>
                         </div>
                       </div>
                     </div>
+                    <p class="mt-3 mb-0 text-sm">
+                        @if ($stats['visits'] >= 0)
+                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> {{ $stats['visits'] }}%</span>
+                        @else
+                        <span class="text-danger mr-2"><i class="fa fa-arrow-down"></i> {{ $stats['visits'] }}%</span>
+                        @endif
+
+                        <span class="text-nowrap">{{ __('shop.dashboard.stat') }}</span>
+                      </p>
                   </div>
                 </div>
               </div>
+
           </div>
         </div>
       </div>

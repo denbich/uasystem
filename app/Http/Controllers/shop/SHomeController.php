@@ -22,6 +22,7 @@ class SHomeController extends Controller
         $visits = Ukrainian_visit::count();
         $ukrainians = Ukrainian::count();
         $signed = Ukrainian::whereDate('created_at', date('Y-m-d'))->count();
+        $visits_today = Ukrainian_visit::whereDate('created_at', date('Y-m-d'))->count();
 
         $date = date('Y-m-d 23:59:59');
         $date1 = date("Y-m-d 23:59:59", strtotime("-1 day"));
@@ -44,7 +45,7 @@ class SHomeController extends Controller
             '1' => [
                 'date' => $date,
                 'new' => $new1,
-                'old' => Ukrainian_visit::where('created_at', '>=', $date1)->where('created_at', '<=', $date)->get()->count() -$new1,
+                'old' => Ukrainian_visit::where('created_at', '>=', $date1)->where('created_at', '<=', $date)->get()->count() - $new1,
             ],
             '2' => [
                 'date' => $date1,
@@ -78,7 +79,31 @@ class SHomeController extends Controller
             ],
         ];
 
-        return view('shop.dashboard', ['visits' => $visits, 'ukrainians' => $ukrainians, 'signed' => $signed, 'chart' => $chart]);
+        $stats = [
+            'refugees' => round(((43 - 73)/73)*100, '2'),
+            'visits' => round(((82 - 109)/109)*100, '2'),
+        ];
+
+        if ($new1 == 0)
+        {
+            $srefugees = 100;
+        } else {
+            $srefugees = round((($new1 - $new2)/$new2)*100, 2);
+        }
+
+        if (($chart[1]['old'] - $chart[1]['new']) == 0)
+        {
+            $svisits = 100;
+        } else {
+            $svisits = round((($chart[1]['old'] - $chart[2]['old'])/$chart[2]['old'])*100, 2);
+        }
+
+        $stats = [
+            'refugees' => $srefugees,
+            'visits' => $svisits,
+        ];
+
+        return view('shop.dashboard', ['visits' => $visits, 'ukrainians' => $ukrainians, 'signed' => $signed, 'visits_today' => $visits_today, 'chart' => $chart, 'stats' => $stats]);
     }
 
     public function settings()

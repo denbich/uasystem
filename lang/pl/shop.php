@@ -26,10 +26,11 @@ return [
     ],
     'dashboard' => [
         'title' => 'Sklep Półki dobra | Полиці добра',
-        'yourid' => 'Twoje ID',
+        'todayvisit' => 'Dzisiejsza liczba wizyt',
         'refugeescount' => 'Liczba zarejestrowanych uchodźców',
         'visitscount' => 'Liczba ponownych wizyt',
         'todaycount' => 'Dzisiejsza liczba zarejestrowanych',
+        'stat' => 'Względem wczorajszego dnia',
         'stats' => [
             'title' => 'Statystyki rejestracji i ponownych wizyt (Ostatnie 7 dni)',
             'button' => 'Lista uchodźców',
