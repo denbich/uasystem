@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-{{ __('Ustawienia') }}
+{{ __('shop.sidemenu.other.settings') }}
 @endsection
 
 @section('content')
@@ -20,7 +20,7 @@
         </ul>
         <hr class="my-3">
         <h6 class="navbar-heading p-0 text-muted">
-            <span class="docs-normal">Ogólne</span>
+            <span class="docs-normal">{{ __('shop.sidemenu.general.title') }}</span>
         </h6>
           <ul class="navbar-nav">
             @include('shop.include.refugees')
@@ -28,38 +28,37 @@
 
           <hr class="my-3">
           <h6 class="navbar-heading p-0 text-muted">
-            <span class="docs-normal">Inne</span>
+            <span class="docs-normal">{{ __('shop.sidemenu.other.title') }}</span>
           </h6>
 
           <ul class="navbar-nav mb-md-3">
             <li class="nav-item">
                 <a class="nav-link active" href="{{ route('s.settings') }}">
                     <i class="fas fa-cog text-primary"></i>
-                    <span class="nav-link-text">Ustawienia</span>
+                    <span class="nav-link-text">{{ __('shop.sidemenu.other.settings') }}</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('s.help_centre') }}">
                     <i class="fas fa-info-circle text-primary"></i>
-                    <span class="nav-link-text">Centrum pomocy</span>
+                    <span class="nav-link-text">{{ __('shop.sidemenu.other.help') }}</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="https://docs.google.com/spreadsheets/d/1SYVe6dfqVk0SOJyWWnXtlLcQJ3WMcv1rhHX8WuOMiYo/edit?usp=sharing" target="_blank">
                     <i class="fas fa-table text-primary"></i>
-                    <span class="nav-link-text">Grafik dużurów</span>
+                    <span class="nav-link-text">{{ __('shop.sidemenu.other.schedule') }}</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fas fa-sign-out-alt text-primary"></i>
-                    <span class="nav-link-text">Wyloguj się</span>
+                    <span class="nav-link-text">{{ __('main.logout') }}</span>
                 </a>
             </li>
-
           </ul>
         </div>
       </div>
@@ -74,16 +73,16 @@
           <div class="header-body">
             <div class="row align-items-center py-4">
               <div class="col-lg-6 col-7">
-                <h6 class="h2 text-white d-inline-block mb-0">Ustawienia</h6>
+                <h6 class="h2 text-white d-inline-block mb-0">{{ __('shop.sidemenu.other.settings') }}</h6>
                 <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                   <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                     <li class="breadcrumb-item"><a href="{{ route('s.dashboard') }}"><i class="fas fa-home"></i></a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Ustawienia</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ __('shop.sidemenu.other.settings') }}</li>
                   </ol>
                 </nav>
               </div>
               <div class="col-lg-6 col-5 text-right">
-                <a href="{{ route('s.ukrainian.create') }}" class="btn btn-sm btn-neutral"><i class="fas fa-plus"></i> Nowy uchodźca</a>
+                @include('shop.include.button')
               </div>
             </div>
           </div>
@@ -98,7 +97,7 @@
               <div class="card-header">
                 <div class="row align-items-center">
                   <div class="col-8">
-                    <h3 class="mb-0">Zmiana hasła </h3>
+                    <h3 class="mb-0">{{ __('shop.settings.title') }} </h3>
                   </div>
                 </div>
               </div>
@@ -107,7 +106,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <span class="alert-text"><strong>Sukces!</strong> Zamiana hasła zakończyła się pomyślnie!</span>
+                            <span class="alert-text"><strong>{{ __('main.success') }}!</strong> {{ __('shop.settings.alert') }}</span>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -120,7 +119,7 @@
                     <div class="row justify-content-center pt-2">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="required" for="oldpassword">Stare hasło</label>
+                                <label class="required" for="oldpassword">{{ __('shop.settings.oldpwd') }}</label>
                                 <input class="form-control {{ $errors->has('oldpassword') ? 'is-invalid' : '' }}" type="password" name="oldpassword" id="oldpassword" required>
                                 @error('oldpassword')
                                     <span class="text-danger small" role="alert">
@@ -129,7 +128,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="required" for="password">Nowe hasło</label>
+                                <label class="required" for="password">{{ __('shop.settings.newpwd') }}</label>
                                 <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password" name="password" id="password" required>
                                 @error('password')
                                     <span class="text-danger small" role="alert">
@@ -138,10 +137,10 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="required" for="password_confirmation">Powtórz nowe hasło</label>
+                                <label class="required" for="password_confirmation">{{ __('shop.settings.repeatnewpwd') }}</label>
                                 <input class="form-control" type="password" name="password_confirmation" id="password_confirmation" required>
                             </div>
-                            <button class="btn btn-primary w-100">Zmień hasło</button>
+                            <button class="btn btn-primary w-100">{{ __('shop.settings.button') }}</button>
                         </div>
                     </div>
                 </form>

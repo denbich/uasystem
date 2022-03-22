@@ -36,20 +36,21 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <a href="{{ route('home') }}" class="nav-link text-center font-weight-900">
-                <span class="nav-link-inner--text">{{ __('Strona Główna') }}</span>
+                <span class="nav-link-inner--text">{{ __('main.menu.mainpage') }}</span>
               </a>
             </li>
 
           </ul>
         <hr class="d-lg-none" />
         <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+            @include('lang')
 
           <li class="nav-item d-lg-block ml-lg-4 text-center">
-            <a href="" class="btn btn-neutral btn-icon text-center">
+            <a href="{{ route('login') }}" class="btn btn-neutral btn-icon text-center">
               <span class="btn-inner--icon">
                 <i class="fas fa-handshake mr-2"></i>
               </span>
-              <span class="nav-link-inner--text">{{ __('Zaloguj się') }}</span>
+              <span class="nav-link-inner--text">{{ __('main.login') }}</span>
             </a>
           </li>
         </ul>
@@ -63,13 +64,13 @@
           <div class="header-body text-center mb-8">
             <div class="row justify-content-center">
               <div class="col-xl-8 col-lg-8 col-md-8 px-5">
-                <h1 class="display-1 text-white mt-3 font-weight-700">{{ Str::upper(__('Panel uaSystem')) }}</h1>
+                <h1 class="display-1 text-white mt-3 font-weight-700">{{ Str::upper(__('main.auth.panel')) }}</h1>
 
                 <a href="{{ route('login') }}" class="btn btn-neutral btn-icon text-xl text-center btn-lg mt-2">
                     <span class="btn-inner--icon">
                       <i class="fas fa-sign-in-alt mr-2"></i>
                     </span>
-                    <span class="nav-link-inner--text">{{ __('Zaloguj się') }}</span>
+                    <span class="nav-link-inner--text">{{ __('main.login') }}</span>
                   </a>
               </div>
             </div>
@@ -83,32 +84,6 @@
       </div>
 
     <div class="container-fluid mt--8">
-
-        <div class="card d-none">
-            <div class="card-bodsy">
-                    <div class="row">
-                        <div class="col-lg-6 text-center my-auto">
-                            <h1>{{ Str::upper(__('home.section1.header')) }}</h1>
-                            <h3 class="text-success">{{ __('home.section1.text') }}</h3>
-                            <br>
-                            <p class="text-dark font-weight-500">{{ __('home.section1.article.part1') }}</p>
-
-                            <ul class="text-left">
-                                <li><a href="https://vol4life.aiij.org/" target="_blank" rel="noopener noreferrer">Volunteering for Sporty and Healthy Life</a></li>
-                                <li><a href="https://svt.aiij.org/" target="_blank" rel="noopener noreferrer">Skills Development for Sports Volunteering Trainers</a></li>
-                                <li><a href="https://sport4change.aiij.org/" target="_blank" rel="noopener noreferrer">Sport for Change</a></li>
-                            </ul>
-                             <p class="text-dark font-weight-500">{{ __('home.section1.article.part2') }}</p>
-                            <a href="" target="_blank" rel="noopener noreferrer" class="btn btn-info text-dark my-1">{{ Str::upper(__('index.footer.codex')) }}</a>
-                            <a href="{{ url('/files/regulamin_wolontariatu_MOSiR_Rybnik.pdf') }}" target="_blank" rel="noopener noreferrer" class="btn btn-info text-dark my-1">{{ Str::upper(__('index.footer.regulations')) }}</a>
-                        </div>
-                        <div class="col-lg-6">
-                            <img src="{{ url('img/volunteers.jpg') }}" alt="" class="w-100 my-1">
-                            <img src="{{ url('img/vol4life.jpg') }}" alt="" class="w-100 my-1">
-                        </div>
-                    </div>
-            </div>
-          </div>
     </div>
   </div>
 

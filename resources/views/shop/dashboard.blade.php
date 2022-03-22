@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-{{ __('Panel sklepu') }}
+{{ __('shop.dashboard.title') }}
 @endsection
 
 @section('content')
@@ -19,13 +19,13 @@
             <li class="nav-item">
               <a class="nav-link active" href="{{ route('s.dashboard') }}">
                 <i class="ni ni-tv-2 "></i>
-                <span class="nav-link-text">Panel</span>
+                <span class="nav-link-text">{{ __('shop.sidemenu.dashboard') }}</span>
               </a>
             </li>
         </ul>
         <hr class="my-3">
         <h6 class="navbar-heading p-0 text-muted">
-            <span class="docs-normal">Ogólne</span>
+            <span class="docs-normal">{{ __('shop.sidemenu.general.title') }}</span>
         </h6>
           <ul class="navbar-nav">
             @include('shop.include.refugees')
@@ -33,7 +33,7 @@
 
           <hr class="my-3">
           <h6 class="navbar-heading p-0 text-muted">
-            <span class="docs-normal">Inne</span>
+            <span class="docs-normal">{{ __('shop.sidemenu.other.title') }}</span>
           </h6>
 
           <ul class="navbar-nav mb-md-3">
@@ -52,16 +52,16 @@
         <div class="header-body">
           <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
-              <h6 class="h2 text-white d-inline-block mb-0">Sklep Półki Dobra</h6>
+              <h6 class="h2 text-white d-inline-block mb-0">{{ __('shop.dashboard.title') }}</h6>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Panel</li>
+                  <li class="breadcrumb-item active" aria-current="page">{{ __('shop.sidemenu.dashboard') }}</li>
                 </ol>
               </nav>
             </div>
             <div class="col-lg-6 col-5 text-right">
-              <a href="{{ route('s.ukrainian.create') }}" class="btn btn-sm btn-neutral"><i class="fas fa-plus"></i> Nowy uchodźca</a>
+              @include('shop.include.button')
             </div>
           </div>
           <div class="row" style="display: flex;
@@ -71,7 +71,7 @@
                 <div class="card-body my-3">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Twoje ID</h5>
+                      <h5 class="card-title text-uppercase text-muted mb-0">{{ __('shop.dashboard.yourid') }}</h5>
                       <span class="h2 font-weight-bold mb-0">{{ Auth::user()->id }}</span>
                     </div>
                     <div class="col-auto">
@@ -88,7 +88,7 @@
                 <div class="card-body my-3">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Liczba zarejestrowanych uchodźców</h5>
+                      <h5 class="card-title text-uppercase text-muted mb-0">{{ __('shop.dashboard.refugeescount') }}</h5>
                       <span class="h2 font-weight-bold mb-0">{{ $ukrainians }}</span>
                     </div>
                     <div class="col-auto">
@@ -105,7 +105,7 @@
                 <div class="card-body my-3">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Liczba ponownych wizyt</h5>
+                      <h5 class="card-title text-uppercase text-muted mb-0">{{ __('shop.dashboard.visits.count') }}</h5>
                       <span class="h2 font-weight-bold mb-0">{{ $visits }}</span>
                     </div>
                     <div class="col-auto">
@@ -123,7 +123,7 @@
                   <div class="card-body my-3">
                     <div class="row">
                       <div class="col">
-                        <h5 class="card-title text-uppercase text-muted mb-0">Dzisiejsza liczba zarejestowanych</h5>
+                        <h5 class="card-title text-uppercase text-muted mb-0">{{ __('shop.dashboard.todaycount') }}</h5>
                         <span class="h2 font-weight-bold mb-0">{{ $signed }}</span>
                       </div>
                       <div class="col-auto">
@@ -149,10 +149,10 @@
                   <div class="card-header">
                     <div class="row align-items-center">
                       <div class="col">
-                        <h3 class="mb-0">Statystyki rejestracji i ponownych wizyt (Ostatnie 7 dni)</h3>
+                        <h3 class="mb-0">{{ __('shop.dashboard.stats.title') }}</h3>
                       </div>
                       <div class="col text-right">
-                        <a href="{{ route('s.ukrainian.list') }}" class="btn btn-sm btn-primary">Lista uchodźców</a>
+                        <a href="{{ route('s.ukrainian.list') }}" class="btn btn-sm btn-primary">{{ __('shop.dashboard.stats.button') }}</a>
                       </div>
                     </div>
                   </div>
@@ -168,15 +168,15 @@
                     <div class="card-header">
                       <div class="row align-items-center">
                         <div class="col">
-                          <h3 class="mb-0">Pomoc</h3>
+                          <h3 class="mb-0">{{ __('shop.dashboard.help') }}</h3>
                         </div>
                       </div>
                     </div>
                     <div class="card-body">
-                      <p>Jeśli masz probem, propozycję bądź pytanie to śmiało pisz na adres:
+                      <p>{{ __('shop.dashboard.helptext') }}
                           <a target="_blank" rel="nofollow" href="mailto:administrator@wolontariat.rybnik.pl">administrator@wolontariat.rybnik.pl</a>
                       </p>
-                      <a href="{{ route('s.help_centre') }}"><i class="fas fa-info-circle text-primary"></i> Centrum pomocy</a>
+                      <a href="{{ route('s.help_centre') }}"><i class="fas fa-info-circle text-primary"></i> {{ __('shop.sidemenu.other.help') }}</a>
                     </div>
                   </div>
                 </div>
@@ -208,14 +208,14 @@
     const data = {
       labels: labels,
       datasets: [{
-        label: 'Liczba nowych rejestracji',
+        label: "{{ __('shop.dashboard.stats.sign') }}",
         backgroundColor: 'rgb(0, 87, 183)',
         borderColor: 'rgb(0, 87, 183)',
         data: [{{ $chart[7]['new'].", ".$chart[6]['new'].", ".$chart[5]['new'].", ".$chart[4]['new'].", ".$chart[3]['new'].", ".$chart[2]['new'].", ".$chart[1]['new'] }}],
         stack: 'Stack 0',
       },
       {
-        label: 'Liczba Ponownych wizyt',
+        label: "{{ __('shop.dashboard.stats.visit') }}",
         backgroundColor: 'rgb(255, 215, 0)',
         borderColor: 'rgb(255, 215, 0)',
         data: [{{ $chart[7]['old'].", ".$chart[6]['old'].", ".$chart[5]['old'].", ".$chart[4]['old'].", ".$chart[3]['old'].", ".$chart[2]['old'].", ".$chart[1]['old'] }}],

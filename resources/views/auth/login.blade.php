@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-{{ __('Zaloguj się') }}
+{{ __('main.login') }}
 @endsection
 
 @section('body')
@@ -40,7 +40,7 @@ class="bg-default"
         </div>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a href="" class="nav-link text-center">
+              <a href="{{ route('home') }}" class="nav-link text-center">
                 <span class="nav-link-inner--text">{{ __('Strona Główna') }}</span>
               </a>
             </li>
@@ -48,13 +48,13 @@ class="bg-default"
           </ul>
         <hr class="d-lg-none" />
         <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-
+            @include('lang')
           <li class="nav-item d-lg-block ml-lg-4 text-center">
             <a href="" class="btn btn-neutral btn-icon text-center">
               <span class="btn-inner--icon">
                 <i class="fas fa-handshake mr-2"></i>
               </span>
-              <span class="nav-link-inner--text">{{ __('Zaloguj się') }}</span>
+              <span class="nav-link-inner--text">{{ __('main.login') }}</span>
             </a>
           </li>
         </ul>
@@ -68,7 +68,7 @@ class="bg-default"
           <div class="header-body text-center mb-6">
             <div class="row justify-content-center">
               <div class="col-xl-8 col-lg-8 col-md-8 px-5">
-                <h1 class="display-1 text-white mt-3 font-weight-700">{{ Str::upper(__('Zaloguj się')) }}</h1>
+                <h1 class="display-1 text-white mt-3 font-weight-700">{{ Str::upper(__('main.login')) }}</h1>
               </div>
             </div>
           </div>
@@ -97,7 +97,7 @@ class="bg-default"
                                 <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                               </div>
                               <input id="name" type="name" class="form-control @error('name') is-invalid @enderror" name="name"
-                                value="{{ old('name') }}" required autocomplete="name" placeholder="{{ __('Login') }}" autofocus>
+                                value="{{ old('name') }}" required autocomplete="name" placeholder="{{ __('main.auth.login') }}" autofocus>
                             </div>
                           </div>
                           <div class="mt-2 mb-3">
@@ -113,7 +113,7 @@ class="bg-default"
                                 <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                               </div>
                               <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                                    name="password" required autocomplete="current-password" placeholder="{{ __('Hasło') }}">
+                                    name="password" required autocomplete="current-password" placeholder="{{ __('main.auth.password') }}">
                             </div>
                           </div>
                           <div class="form-group">
@@ -126,13 +126,33 @@ class="bg-default"
                           <div class="custom-control custom-control-alternative custom-checkbox">
                             <input class="custom-control-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                             <label class="custom-control-label" for="remember">
-                              <span class="text-muted">{{ __('Zapamiętaj mnie') }}</span>
+                              <span class="text-muted">{{ __('main.login.password') }}</span>
                             </label>
                           </div>
                           <div class="text-center">
-                            <button type="submit" class="btn btn-info text-dark mt-3 mb-1 w-100">{{ __('Zaloguj się') }}</button>
+                            <button type="submit" class="btn btn-info text-dark mt-3 mb-1 w-100">{{ __('main.login') }}</button>
                           </div>
                         </form>
+                        <hr class="my-3">
+                        <h2 class="text-center"><strong>{{ __('main.lang') }}</strong></h2>
+                            <div class="row mb-3 text-center">
+                                <div class="col">
+                                    <span class="shortcut-media avatar rounded-circle">
+                                        <a href="{{ route('language', ['pl']) }}"><img src="https://cdn.jsdelivr.net/npm/round-flag-icons/flags/pl.svg"></a>
+                                    </span>
+
+                                </div>
+                                <div class="col">
+                                    <span class="shortcut-media avatar rounded-circle">
+                                        <a href="{{ route('language', ['en']) }}"><img src="https://cdn.jsdelivr.net/npm/round-flag-icons/flags/gb.svg"></a>
+                                    </span>
+                                </div>
+                                <div class="col">
+                                    <span class="shortcut-media avatar rounded-circle">
+                                        <a href="{{ route('language', ['uk']) }}"><img src="https://cdn.jsdelivr.net/npm/round-flag-icons/flags/ua.svg"></a>
+                                    </span>
+                                </div>
+                            </div>
                       </div>
                 </div>
           </div>

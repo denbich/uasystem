@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-{{ __('Dodaj uchodźca') }}
+{{ __('shop.refugees.create.title') }}
 @endsection
 
 @section('content')
@@ -20,29 +20,29 @@
         </ul>
         <hr class="my-3">
         <h6 class="navbar-heading p-0 text-muted">
-            <span class="docs-normal">Ogólne</span>
+            <span class="docs-normal">{{ __('shop.sidemenu.general.title') }}</span>
         </h6>
           <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link active" href="#refugees" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="refugees">
                   <i class="fas fa-users text-primary"></i>
-                  <span class="nav-link-text">Uchodźcy</span>
+                  <span class="nav-link-text">{{ __('shop.sidemenu.general.refugees.title') }}</span>
                 </a>
                 <div class="collapse show" id="refugees" style="">
                   <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
                         <a href="{{ route('s.ukrainian.list') }}" class="nav-link">
-                          <span class="sidenav-normal"> Lista </span>
+                          <span class="sidenav-normal"> {{ __('shop.sidemenu.general.refugees.list') }} </span>
                         </a>
                       </li>
                     <li class="nav-item">
                       <a href="{{ route('s.ukrainian.search') }}" class="nav-link">
-                        <span class="sidenav-normal"> Wyszukaj </span>
+                        <span class="sidenav-normal"> {{ __('shop.sidemenu.general.refugees.search') }} </span>
                       </a>
                     </li>
                     <li class="nav-item active">
                       <a href="{{ route('s.ukrainian.create') }}" class="nav-link">
-                        <span class="sidenav-normal"> Dodaj </span>
+                        <span class="sidenav-normal"> {{ __('shop.sidemenu.general.refugees.add') }} </span>
                       </a>
                     </li>
                   </ul>
@@ -53,7 +53,7 @@
 
           <hr class="my-3">
           <h6 class="navbar-heading p-0 text-muted">
-            <span class="docs-normal">Inne</span>
+            <span class="docs-normal">{{ __('shop.sidemenu.other.title') }}</span>
           </h6>
 
           <ul class="navbar-nav mb-md-3">
@@ -72,12 +72,12 @@
           <div class="header-body">
             <div class="row align-items-center py-4">
               <div class="col-lg-6 col-7">
-                <h6 class="h2 text-white d-inline-block mb-0">Dodaj uchodźca</h6>
+                <h6 class="h2 text-white d-inline-block mb-0">{{ __('shop.refugees.create.title') }}</h6>
                 <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                   <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                     <li class="breadcrumb-item"><a href="{{ route('s.dashboard') }}"><i class="fas fa-home"></i></a></li>
-                    <li class="breadcrumb-item active" aria-current="page">uchodźcy</li>
-                    <li class="breadcrumb-item"><a href="{{ route('s.ukrainian.create') }}">dodaj</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ __('shop.sidemenu.general.refugees.title') }}</li>
+                    <li class="breadcrumb-item"><a href="{{ route('s.ukrainian.create') }}">{{ __('shop.sidemenu.general.refugees.add') }}</a></li>
                   </ol>
                 </nav>
               </div>
@@ -93,7 +93,7 @@
             <div class="card-header">
               <div class="row align-items-center">
                 <div class="col-8">
-                  <h3 class="mb-0">Dodaj uchodźca </h3>
+                  <h3 class="mb-0">{{ __('shop.refugees.create.title') }} </h3>
                 </div>
                 <div class="col-4 text-right">
                   <a href="#generatemodal" data-toggle="modal" data-target="#generatemodal" class="btn btn-sm btn-primary d-none"><i class="fas fa-clipboard-list"></i> Generuj listę</a>
@@ -105,7 +105,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <span class="alert-text"><strong>Sukces!</strong> Uchodźca został dodany pomyślnie!</span>
+                            <span class="alert-text"><strong>{{ __('main.success') }}!</strong> {{ __('shop.refugees.create.alert') }}</span>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -126,7 +126,7 @@
                                 </ul>
                             </div>
                             <div class="form-group">
-                                <label class="required" for="lastname">Nazwisko</label>
+                                <label class="required" for="lastname">{{ __('shop.refugees.create.lastname') }}</label>
                                 <p class="font-italic">Як вас звати? (Jak was zwaty?) - Jak się Pani/Pan nazywa?</p>
                                 <input class="form-control {{ $errors->has('lastname') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="lastname" id="lastname" value="{{ old('lastname', '') }}" required>
                                 @error('lastname')
@@ -136,7 +136,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="required" for="firstname">Imię</label>
+                                <label class="required" for="firstname">{{ __('shop.refugees.create.firstname') }}</label>
                                 <input class="form-control {{ $errors->has('firstname') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="firstname" id="firstname" value="{{ old('firstname', '') }}" required>
                                 @error('firstname')
                                     <span class="text-danger small" role="alert">
@@ -145,7 +145,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="required" for="birth">Data urodzenia</label>
+                                <label class="required" for="birth">{{ __('shop.refugees.create.birth') }}</label>
                                 <p class="font-italic">Яка у вас дата народження? (Jaka u was data narodżenja?) - Jaka jest Pani data urodzenia?</p>
                                 <input class="form-control {{ $errors->has('birth') ? 'is-invalid' : '' }}" maxlength="255" type="date" name="birth" id="birth" value="{{ old('birth', '') }}" required>
                                 @error('birth')
@@ -155,7 +155,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="required" for="telephone">Numer telefonu</label>
+                                <label class="required" for="telephone">{{ __('shop.refugees.create.telephone') }}</label>
                                 <p class="font-italic">Який у вас номер телефону? Чи польський номер? Якщо ні, то український. (Jakij u was nomjer telefonu? Czy polskij nomjer? Jakszczo ni to ukraiński) - Jaki jest Pani numer telefonu? Polski numer jest? Jeśli nie to ukraiński.</p>
                                 <input class="form-control {{ $errors->has('telephone') ? 'is-invalid' : '' }}" maxlength="255" type="tel" name="telephone" id="telephone" value="{{ old('telephone', '') }}">
                                 @error('telephone')
@@ -166,14 +166,14 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="required" for="gender">Płeć</label>
+                                <label class="required" for="gender">{{ __('shop.refugees.create.gender.title') }}</label>
                                 <div class="custom-control custom-radio mb-1">
                                     <input type="radio" id="gender1" name="gender" value="f" class="custom-control-input" required>
-                                    <label class="custom-control-label" for="gender1">Kobieta</label>
+                                    <label class="custom-control-label" for="gender1">{{ __('shop.refugees.create.gender.f') }}</label>
                                   </div>
                                   <div class="custom-control custom-radio mb-1">
                                     <input type="radio" id="gender2" name="gender" value="m" class="custom-control-input">
-                                    <label class="custom-control-label" for="gender2">Mężczyzna</label>
+                                    <label class="custom-control-label" for="gender2">{{ __('shop.refugees.create.gender.m') }}</label>
                                   </div>
                                   @error('gender')
                                     <span class="text-danger small" role="alert">
@@ -183,7 +183,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="required" for="address">Adres pobytu w polsce (ulica numer, Miasto)</label>
+                                <label class="required" for="address">{{ __('shop.refugees.create.address') }}</label>
                                 <p class="font-italic">Яка ваша зараз адреса в Польщі? (Jaka wasza zaraz adrjesa w polszczi?) - Jaki jest Pani adres w Polsce?</p>
                                 <input class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="address" id="address" value="{{ old('address', '') }}">
                                 @error('address')
@@ -194,7 +194,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="required" for="work">Wykonywana praca</label>
+                                <label class="required" for="work">{{ __('shop.refugees.create.work') }}</label>
                                 <p class="font-italic">Якою була ваша робота в Україні? (Jakoju byla wasza rabota w ukraini?) - Jaka była Pani praca w ukrainie?</p>
                                 <input class="form-control {{ $errors->has('work') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="work" id="work" value="{{ old('work', '') }}">
                                 @error('work')
@@ -205,28 +205,28 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="required" for="stay">Chęć pozostania w polsce</label>
+                                <label class="required" for="stay">{{ __('shop.refugees.create.stay.title') }}</label>
                                 <p class="font-italic">Хочеш залишитися в Польщі і працювати? (Wy chocze Zal'yszytica w polszczi i pracjuwati?) - Czy chce pani zostać w Polsce i pracować?</p>
                                 <div class="custom-control custom-radio mb-1">
                                     <input type="radio" id="desire1" name="stay" value="tak" class="custom-control-input">
-                                    <label class="custom-control-label" for="desire1">Tak</label>
+                                    <label class="custom-control-label" for="desire1">{{ __('shop.refugees.create.stay.yes') }}</label>
                                   </div>
                                   <div class="custom-control custom-radio mb-1">
                                     <input type="radio" id="desire2" name="stay" value="nie" class="custom-control-input">
-                                    <label class="custom-control-label" for="desire2">Nie</label>
+                                    <label class="custom-control-label" for="desire2">{{ __('shop.refugees.create.stay.no') }}</label>
                                   </div>
                                   <div class="custom-control custom-radio mb-1">
                                     <input type="radio" id="desire3" name="stay" value="może" class="custom-control-input">
-                                    <label class="custom-control-label" for="desire3">Może</label>
+                                    <label class="custom-control-label" for="desire3">{{ __('shop.refugees.create.stay.maybe') }}</label>
                                   </div>
                                   <div class="custom-control custom-radio mb-1">
                                     <input type="radio" id="desire4" name="stay" value="Nie wie" class="custom-control-input">
-                                    <label class="custom-control-label" for="desire4">Nie wie</label>
+                                    <label class="custom-control-label" for="desire4">{{ __('shop.refugees.create.stay.tdk') }}</label>
                                   </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="required" for="children">Informacja o dzieciach</label>
+                                <label class="required" for="children">{{ __('shop.refugees.create.kids') }}</label>
                                 <p class="font-italic">У вас є діти? (u was e dzjeci?) - Czy ma pani dzieci? <br> Скільки років дітям? (Skolki rokiw dietjam) - Ile dzieci mają lat?</p>
                                 <input class="form-control {{ $errors->has('children') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="children" id="children" value="{{ old('children', '') }}" required>
                                 @error('children')
@@ -268,7 +268,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="required" for="remarks">Uwagi</label>
+                                <label class="required" for="remarks">{{ __('shop.refugees.create.remarks') }}</label>
                                 <input class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="remarks" id="remarks" value="{{ old('remarks', '') }}">
                                 @error('remarks')
                                     <span class="text-danger small" role="alert">
@@ -278,7 +278,7 @@
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary w-100">Utwórz</button>
+                                <button type="submit" class="btn btn-primary w-100">{{ __('shop.refugees.create.button') }}</button>
                             </div>
                         </form>
                     </div>

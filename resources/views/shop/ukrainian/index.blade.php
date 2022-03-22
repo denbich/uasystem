@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-{{ __('Lista uchodźców') }}
+{{ __('shop.refugees.list.title') }}
 @endsection
 
 @section('content')
@@ -20,29 +20,29 @@
         </ul>
         <hr class="my-3">
         <h6 class="navbar-heading p-0 text-muted">
-            <span class="docs-normal">Ogólne</span>
+            <span class="docs-normal">{{ __('shop.sidemenu.general.title') }}</span>
         </h6>
           <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link active" href="#refugees" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="refugees">
                   <i class="fas fa-users text-primary"></i>
-                  <span class="nav-link-text">Uchodźcy</span>
+                  <span class="nav-link-text">{{ __('shop.sidemenu.general.refugees.title') }}</span>
                 </a>
                 <div class="collapse show" id="refugees" style="">
                   <ul class="nav nav-sm flex-column">
                     <li class="nav-item active">
                         <a href="{{ route('s.ukrainian.list') }}" class="nav-link">
-                          <span class="sidenav-normal"> Lista </span>
+                          <span class="sidenav-normal"> {{ __('shop.sidemenu.general.refugees.list') }} </span>
                         </a>
                       </li>
                     <li class="nav-item">
                       <a href="{{ route('s.ukrainian.search') }}" class="nav-link">
-                        <span class="sidenav-normal"> Wyszukaj </span>
+                        <span class="sidenav-normal"> {{ __('shop.sidemenu.general.refugees.search') }} </span>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a href="{{ route('s.ukrainian.create') }}" class="nav-link">
-                        <span class="sidenav-normal"> Dodaj </span>
+                        <span class="sidenav-normal"> {{ __('shop.sidemenu.general.refugees.add') }} </span>
                       </a>
                     </li>
                   </ul>
@@ -53,7 +53,7 @@
 
           <hr class="my-3">
           <h6 class="navbar-heading p-0 text-muted">
-            <span class="docs-normal">Inne</span>
+            <span class="docs-normal">{{ __('shop.sidemenu.other.title') }}</span>
           </h6>
 
           <ul class="navbar-nav mb-md-3">
@@ -72,17 +72,17 @@
           <div class="header-body">
             <div class="row align-items-center py-4">
               <div class="col-lg-6 col-7">
-                <h6 class="h2 text-white d-inline-block mb-0">Lista uchodźców</h6>
+                <h6 class="h2 text-white d-inline-block mb-0">{{ __('shop.refugees.list.title') }}</h6>
                 <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                   <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                     <li class="breadcrumb-item"><a href="{{ route('s.dashboard') }}"><i class="fas fa-home"></i></a></li>
-                    <li class="breadcrumb-item active" aria-current="page">uchodźcy</li>
-                    <li class="breadcrumb-item"><a href="{{ route('s.ukrainian.list') }}">Lista</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ __('shop.sidemenu.general.refugees.title') }}</li>
+                    <li class="breadcrumb-item"><a href="{{ route('s.ukrainian.list') }}">{{ __('shop.sidemenu.general.refugees.list') }}</a></li>
                   </ol>
                 </nav>
               </div>
               <div class="col-lg-6 col-5 text-right">
-                <a href="{{ route('s.ukrainian.create') }}" class="btn btn-sm btn-neutral"><i class="fas fa-plus"></i> Nowy uchodźca</a>
+                @include('shop.include.button')
               </div>
             </div>
           </div>
@@ -96,10 +96,10 @@
             <div class="card-header">
               <div class="row align-items-center">
                 <div class="col-8">
-                  <h3 class="mb-0">Lista uchodźców </h3>
+                  <h3 class="mb-0">{{ __('shop.refugees.list.title') }}</h3>
                 </div>
                 <div class="col-4 text-right">
-                  <a href="#generatemodal" data-toggle="modal" data-target="#generatemodal" class="btn btn-sm btn-primary d-none"><i class="fas fa-clipboard-list"></i> Generuj listę</a>
+                  <a href="#generatemodal" data-toggle="modal" data-target="#generatemodal" class="btn btn-sm btn-primary d-none"><i class="fas fa-clipboard-list"></i> {{ __('shop.refugees.list.button') }}</a>
                 </div>
               </div>
             </div>
@@ -108,7 +108,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <span class="alert-text"><strong>Sukces!</strong> Wizyta została dodana pomyślnie!</span>
+                            <span class="alert-text"><strong>{{ __('main.success') }}!</strong> {{ __('shop.refugees.alert.visit') }}</span>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -120,7 +120,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <span class="alert-text"><strong>Sukces!</strong> Zmiana cyfrowych danych zakończyła się pomyślnie!</span>
+                            <span class="alert-text"><strong>{{ __('main.success') }}!</strong> {{ __('shop.refugees.alert.data') }}</span>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -132,12 +132,12 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th>Imię i nazwisko</th>
-                                <th>Ilość wizyt</th>
-                                <th>Ostatnia wizyta - potrzeby</th>
-                                <th>Data urodzenia</th>
-                                <th>Dzieci</th>
-                                <th>Opcje</th>
+                                <th>{{ __('shop.refugees.list.name') }}</th>
+                                <th>{{ __('shop.refugees.list.visit') }}</th>
+                                <th>{{ __('shop.refugees.list.lastvisit') }}</th>
+                                <th>{{ __('shop.refugees.list.birthdate') }}</th>
+                                <th>{{ __('shop.refugees.list.kids') }}</th>
+                                <th>{{ __('main.options') }}</th>
                             </tr>
                         </thead>
                         <tbody class="list">
@@ -153,7 +153,7 @@
                                         </div>
                                     </th>
                                     <td><span class="badge badge-primary">{{ $uk->ukrainian_visit_count }}</span></td>
-                                    <td>{{ $uk->ukrainian_visit->last()->created_at }} - @if ($uk->ukrainian_visit->last()->food == 1) Jedzenie, @endif @if ($uk->ukrainian_visit->last()->detergents == 1) Chemia, @endif @if ($uk->ukrainian_visit->last()->clothes == 1) Ubrania @endif</td>
+                                    <td>{{ $uk->ukrainian_visit->last()->created_at }} - @if ($uk->ukrainian_visit->last()->food == 1) {{ __('shop.refugees.list.food') }}, @endif @if ($uk->ukrainian_visit->last()->detergents == 1) {{ __('shop.refugees.list.detergents') }}, @endif @if ($uk->ukrainian_visit->last()->clothes == 1) {{ __('shop.refugees.list.clothes') }} @endif</td>
                                     <td>{{ date("d.m.Y", strtotime($uk->birth)) }} r.</td>
                                     <td>
                                         <div class="d-flex align-items-center">
@@ -177,7 +177,7 @@
                                     </td>
                                 </tr>
                             @empty
-                                <h2 class="text-center text-danger">Brak uchodźców!</h2>
+                                <h2 class="text-center text-danger">{{ __('shop.refugees.list.norefugees') }}</h2>
                             @endforelse
                         </tbody>
                     </table>
@@ -197,7 +197,7 @@
         <form action="{{ route('s.ukrainian.addvisit', [$uk->id]) }}" method="post">
             @csrf
             <div class="modal-header">
-                <h5 class="modal-title" id="labelmodaluk{{ $uk->id }}">Powód wizyty</h5>
+                <h5 class="modal-title" id="labelmodaluk{{ $uk->id }}">{{ __('shop.refugees.repeating.modalvisit.reason') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -205,37 +205,37 @@
               <div class="modal-body">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="Check1{{ $uk->id }}" name="clothes">
-                    <label class="custom-control-label" for="Check1{{ $uk->id }}">Ubrania</label>
+                    <label class="custom-control-label" for="Check1{{ $uk->id }}">{{ __('shop.refugees.list.clothes') }}</label>
                   </div>
                   <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="Check2" name="food">
-                    <label class="custom-control-label" for="Check2{{ $uk->id }}">Jedzenie</label>
+                    <label class="custom-control-label" for="Check2{{ $uk->id }}">{{ __('shop.refugees.list.food') }}</label>
                   </div>
                   <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="Check3{{ $uk->id }}" name="detergents">
-                    <label class="custom-control-label" for="Check3{{ $uk->id }}">Chemia / kosmetyki</label>
+                    <label class="custom-control-label" for="Check3{{ $uk->id }}">{{ __('shop.refugees.list.detergents') }}</label>
                   </div>
                   <div class="mt-3">
-                    <h3>Wizyty w sklepie</h3>
+                    <h3>{{ __('shop.refugees.repeating.modalvisit.shopvisits') }}</h3>
                     <div class="alert alert-secondary" role="alert">
                         <ul>
                             @forelse ($uk->ukrainian_visit as $visit)
                             <li>
                                 {{ $visit->created_at }} -
-                                @if ($visit->food == 1) Jedzenie, @endif
-                                @if ($visit->detergents == 1) Chemia, @endif
-                                @if ($visit->clothes == 1) Ubrania @endif
+                                @if ($visit->food == 1) {{ __('shop.refugees.list.food') }}, @endif
+                                @if ($visit->detergents == 1) {{ __('shop.refugees.list.detergents') }}, @endif
+                                @if ($visit->clothes == 1) {{ __('shop.refugees.list.clothes') }} @endif
                             </li>
                         @empty
-                            <h4 class="text-danger">Brak wizyt!</h4>
+                            <h4 class="text-danger">{{ __('shop.refugees.list.novisits') }}</h4>
                         @endforelse
                         </ul>
                     </div>
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
-                <button type="submit" class="btn btn-primary">Zatwierdź</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('main.cancel') }}</button>
+                <button type="submit" class="btn btn-primary">{{ __('main.confirm') }}</button>
               </div>
         </form>
       </div>
@@ -248,7 +248,7 @@
         <form action="{{ route('s.ukrainian.digital', [$uk->id]) }}" method="post">
             @csrf
             <div class="modal-header">
-                <h5 class="modal-title" id="labelmodalukinfo{{ $uk->id }}">Edytuj cyfrowe dane uchodźca</h5>
+                <h5 class="modal-title" id="labelmodalukinfo{{ $uk->id }}">{{ __('shop.refugees.repeating.modaldata.title') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -275,7 +275,7 @@
                 </div>
                 <div class="form-group">
                     <label class="required" for="mobywatel">mObywatel <i><img style="max-height: 25px;" src="https://www.gov.pl/img/icons/godlo-12.svg" alt=""></i></label>
-                    <input class="form-control {{ $errors->has('mobywatel') ? 'is-invalid' : '' }}" maxlength="65535" type="text" name="mobywatel" id="mobywatel" value="{{ $uk->mobywatel }}">
+                    <input class="form-control {{ $errors->has('mobywatel') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="mobywatel" id="mobywatel" value="{{ $uk->mobywatel }}">
                     @error('mobywatel')
                         <span class="text-danger small" role="alert">
                             <strong>{{ $message }}</strong>
@@ -284,8 +284,8 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
-                <button type="submit" class="btn btn-primary">Zapisz</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('main.cancel') }}</button>
+                <button type="submit" class="btn btn-primary">{{ __('main.save') }}</button>
               </div>
         </form>
       </div>

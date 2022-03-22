@@ -7,7 +7,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-search"></i></span>
               </div>
-              <input class="form-control" placeholder="Szukaj uchodźca" name="q" type="text">
+              <input class="form-control" placeholder="{{ __('shop.topmenu.search') }}" name="q" type="text">
             </div>
           </div>
           <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
@@ -142,24 +142,36 @@
                       <span class="h4 text-center text-dark w-100">Wybierz język</span>
                   </div>
                 <div class="row shortcuts px-4 justify-content-center">
-                  <a href="/language/pl" class="col-4 my-2 shortcut-item text-center">
+                  <a href="{{ route('language', ['pl']) }}" class="col-4 my-2 shortcut-item text-center">
                     <span class="shortcut-media avatar rounded-circle">
                       <img src="https://cdn.jsdelivr.net/npm/round-flag-icons/flags/pl.svg" alt="">
                     </span>
-                    <small>Polish (Polski)</small>
+                    @if (session('locale') == 'pl')
+                    <small class="font-weight-700">{{ __('main.langlist.current.polish') }}</small>
+                    @else
+                    <small>{{ __('main.langlist.current.polish') }} ({{ __('main.langlist.foreign.polish') }})</small>
+                    @endif
                   </a>
-                  <!--<a href="/language/en" class="col-4 my-2 shortcut-item text-center">
+                  <a href="{{ route('language', ['en']) }}" class="col-4 my-2 shortcut-item text-center">
                     <span class="shortcut-media avatar rounded-circle">
                       <img src="https://cdn.jsdelivr.net/npm/round-flag-icons/flags/gb.svg" alt="">
                     </span>
-                    <small>English</small>
+                    @if (session('locale') == 'en')
+                    <small class="font-weight-700">{{ __('main.langlist.current.english') }}</small>
+                    @else
+                    <small>{{ __('main.langlist.current.english') }} ({{ __('main.langlist.foreign.english') }})</small>
+                    @endif
                   </a>
-                  <a href="/language/ua" class="col-4 my-2 shortcut-item text-center d-none">
+                  <a href="{{ route('language', ['ua']) }}" class="col-4 my-2 shortcut-item text-center">
                       <span class="shortcut-media avatar rounded-circle">
                           <img src="https://cdn.jsdelivr.net/npm/round-flag-icons/flags/ua.svg" alt="">
                         </span>
-                    <small>Ukraiński</small>
-                  </a>-->
+                        @if (session('locale') == 'uk')
+                        <small class="font-weight-700">{{ __('main.langlist.current.ukrainian') }}</small>
+                        @else
+                        <small>{{ __('main.langlist.current.ukrainian') }} ({{ __('main.langlist.foreign.ukrainian') }})</small>
+                        @endif
+                  </a>
                 </div>
               </div>
             </li>
@@ -213,11 +225,11 @@
               </div>
               <a href="{{ route('s.profile') }}" class="dropdown-item">
                 <i class="ni ni-single-02"></i>
-                <span>Profil</span>
+                <span>{{ __('shop.topmenu.profile') }}</span>
               </a>
               <a href="{{ route('s.settings') }}" class="dropdown-item">
                 <i class="fas fa-cog"></i>
-                <span>Ustawienia</span>
+                <span>{{ __('shop.sidemenu.other.settings') }}</span>
               </a>
               <!--<a href="#!" class="dropdown-item">
                 <i class="ni ni-support-16"></i>
@@ -226,7 +238,7 @@
               <div class="dropdown-divider"></div>
               <a href="" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="fas fa-sign-out-alt"></i>
-                <span>Wyloguj się</span>
+                <span>{{ __('main.logout') }}</span>
               </a>
             </div>
           </li>

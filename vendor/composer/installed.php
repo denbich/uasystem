@@ -5,11 +5,20 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '7979735f203dcae33a5fda92ca54f98456c830c9',
+        'reference' => '4704b1d5ab6895fa4c2d5ce93b206278bb339758',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
     'versions' => array(
+        'barryvdh/laravel-debugbar' => array(
+            'pretty_version' => 'v3.6.7',
+            'version' => '3.6.7.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../barryvdh/laravel-debugbar',
+            'aliases' => array(),
+            'reference' => 'b96f9820aaf1ff9afe945207883149e1c7afb298',
+            'dev_requirement' => true,
+        ),
         'brick/math' => array(
             'pretty_version' => '0.9.3',
             'version' => '0.9.3.0',
@@ -388,7 +397,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '7979735f203dcae33a5fda92ca54f98456c830c9',
+            'reference' => '4704b1d5ab6895fa4c2d5ce93b206278bb339758',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -507,6 +516,15 @@
             'aliases' => array(),
             'reference' => 'c66aefcafb4f6c269510e9ac46b82619a904c576',
             'dev_requirement' => false,
+        ),
+        'maximebf/debugbar' => array(
+            'pretty_version' => 'v1.18.0',
+            'version' => '1.18.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../maximebf/debugbar',
+            'aliases' => array(),
+            'reference' => '0d44b75f3b5d6d41ae83b79c7a4bceae7fbc78b6',
+            'dev_requirement' => true,
         ),
         'mockery/mockery' => array(
             'pretty_version' => '1.5.0',
@@ -1066,6 +1084,15 @@
             'aliases' => array(),
             'reference' => '1955d595c12c111629cc814d3f2a2ff13580508a',
             'dev_requirement' => false,
+        ),
+        'symfony/debug' => array(
+            'pretty_version' => 'v4.4.37',
+            'version' => '4.4.37.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/debug',
+            'aliases' => array(),
+            'reference' => '5de6c6e7f52b364840e53851c126be4d71e60470',
+            'dev_requirement' => true,
         ),
         'symfony/deprecation-contracts' => array(
             'pretty_version' => 'v3.0.0',

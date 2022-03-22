@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-{{ __('Profil') }}
+{{ __('shop.profile.title') }}
 @endsection
 
 @section('content')
@@ -20,7 +20,7 @@
         </ul>
         <hr class="my-3">
         <h6 class="navbar-heading p-0 text-muted">
-            <span class="docs-normal">Ogólne</span>
+            <span class="docs-normal">{{ __('shop.sidemenu.general.title') }}</span>
         </h6>
           <ul class="navbar-nav">
             @include('shop.include.refugees')
@@ -28,7 +28,7 @@
 
           <hr class="my-3">
           <h6 class="navbar-heading p-0 text-muted">
-            <span class="docs-normal">Inne</span>
+            <span class="docs-normal">{{ __('shop.sidemenu.other.title') }}</span>
           </h6>
 
           <ul class="navbar-nav mb-md-3">
@@ -47,16 +47,16 @@
           <div class="header-body">
             <div class="row align-items-center py-4">
               <div class="col-lg-6 col-7">
-                <h6 class="h2 text-white d-inline-block mb-0">Profil</h6>
+                <h6 class="h2 text-white d-inline-block mb-0">{{ __('shop.profile.title') }}</h6>
                 <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                   <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                     <li class="breadcrumb-item"><a href="{{ route('s.dashboard') }}"><i class="fas fa-home"></i></a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Profil</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ __('shop.profile.title') }}</li>
                   </ol>
                 </nav>
               </div>
               <div class="col-lg-6 col-5 text-right">
-                <a href="{{ route('s.ukrainian.create') }}" class="btn btn-sm btn-neutral"><i class="fas fa-plus"></i> Nowy uchodźca</a>
+                @include('shop.include.button')
               </div>
             </div>
           </div>
@@ -71,7 +71,7 @@
               <div class="card-header">
                 <div class="row align-items-center">
                   <div class="col-8">
-                    <h3 class="mb-0">Profil użytkownika </h3>
+                    <h3 class="mb-0">{{ __('shop.profile.title') }} </h3>
                   </div>
                 </div>
               </div>
@@ -80,7 +80,7 @@
                   <div class="row justify-content-center">
                       <div class="col-lg-8">
                           <div class="alert alert-success alert-dismissible fade show" role="alert">
-                              <span class="alert-text"><strong>Sukces!</strong> Edytowanie danych użytkownika zakończyło się pomyślnie!</span>
+                              <span class="alert-text"><strong>{{ __('main.success') }}!</strong> {{ __('shop.profile.alert') }}</span>
                               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                               </button>
@@ -93,7 +93,7 @@
                       <div class="row pt-2">
                           <div class="col-lg-6">
                               <div class="form-group">
-                                  <label class="required" for="name">Nazwa użytkownika</label>
+                                  <label class="required" for="name">{{ __('shop.profile.username') }}</label>
                                   <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="name" id="name" value="{{ Auth::user()->name }}" required>
                                   @error('name')
                                       <span class="text-danger small" role="alert">
@@ -102,7 +102,7 @@
                                   @enderror
                               </div>
                               <div class="form-group">
-                                  <label class="required" for="firstname">Imię</label>
+                                  <label class="required" for="firstname">{{ __('shop.profile.firstname') }}</label>
                                   <input class="form-control {{ $errors->has('firstname') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="firstname" id="firstname" value="{{ Auth::user()->firstname }}" required>
                                   @error('firstname')
                                       <span class="text-danger small" role="alert">
@@ -111,13 +111,13 @@
                                   @enderror
                               </div>
                               <div class="form-group">
-                                  <a href="{{ route('s.settings') }}" class="btn btn-primary w-100">Zamień hasło</a>
+                                  <a href="{{ route('s.settings') }}" class="btn btn-primary w-100">{{ __('shop.settings.button') }}</a>
                               </div>
 
                           </div>
                           <div class="col-lg-6">
                               <div class="form-group">
-                                  <label class="required" for="firstname">Adres email</label>
+                                  <label class="required" for="firstname">{{ __('shop.profile.email') }}</label>
                                   <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" maxlength="255" type="email" name="email" id="email" value="{{ Auth::user()->email }}" required>
                                   @error('email')
                                       <span class="text-danger small" role="alert">
@@ -126,7 +126,7 @@
                                   @enderror
                               </div>
                               <div class="form-group">
-                                  <label class="required" for="lastname">Nazwisko</label>
+                                  <label class="required" for="lastname">{{ __('shop.profile.lastname') }}</label>
                                   <input class="form-control {{ $errors->has('lastname') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="lastname" id="lastname" value="{{ Auth::user()->lastname }}" required>
                                   @error('lastname')
                                       <span class="text-danger small" role="alert">
@@ -135,7 +135,7 @@
                                   @enderror
                               </div>
                               <div class="form-group">
-                                  <label class="required" for="telephone">Numer telefonu</label>
+                                  <label class="required" for="telephone">{{ __('shop.profile.telephone') }}</label>
                                   <input class="form-control {{ $errors->has('telephone') ? 'is-invalid' : '' }}" maxlength="255" type="tel" name="telephone" id="telephone" value="{{ Auth::user()->telephone }}" required>
                                   @error('telephone')
                                       <span class="text-danger small" role="alert">
@@ -147,7 +147,7 @@
                       </div>
                       <div class="row justify-content-center">
                           <div class="col-lg-6">
-                              <button class="btn btn-success w-100">Zapisz zmiany</button>
+                              <button class="btn btn-success w-100">{{ __('shop.profile.button') }}</button>
                           </div>
                       </div>
                   </form>
