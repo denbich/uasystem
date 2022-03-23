@@ -86,14 +86,14 @@ class SHomeController extends Controller
 
         if ($new1 == 0)
         {
-            $srefugees = 100;
+            $srefugees = -100;
         } else {
             $srefugees = round((($new1 - $new2)/$new2)*100, 2);
         }
 
         if (($chart[1]['old'] - $chart[1]['new']) == 0)
         {
-            $svisits = 100;
+            $svisits = -100;
         } else {
             $svisits = round((($chart[1]['old'] - $chart[2]['old'])/$chart[2]['old'])*100, 2);
         }

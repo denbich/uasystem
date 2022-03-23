@@ -120,7 +120,7 @@
                       <h3 class="mb-0">{{ __('shop.refugees.show.title') }} </h3>
                     </div>
                     <div class="col-4 text-right">
-                        <h3 class="mb-0">{{ __('shop.refugees.list.visit') }}: <span class="badge badge-primary">{{ $uk->ukrainian_visit_count }}</span></h3>
+                        <h3 class="mb-0">{{ __('shop.refugees.list.visits') }}: <span class="badge badge-primary">{{ $uk->ukrainian_visit_count }}</span></h3>
                     </div>
                   </div>
                 </div>
