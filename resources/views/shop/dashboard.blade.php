@@ -131,7 +131,7 @@
                     <div class="row">
                       <div class="col">
                         <h5 class="card-title text-uppercase text-muted mb-0">{{ __('shop.dashboard.todayvisit') }}</h5>
-                        <span class="h2 font-weight-bold mb-0">{{ $visits_today }}</span>
+                        <span class="h2 font-weight-bold mb-0">{{ $visits_today-$signed }}</span>
                       </div>
                       <div class="col-auto">
                         <div class="icon icon-shape bg-info text-white rounded-circle shadow">
