@@ -190,6 +190,7 @@
                       </div>
                     </div>
                     <div class="card-body">
+                        <img src="{{ url('/assets/img/help.svg') }}" alt="" class="w-100 p-4 mb-2">
                       <p>{{ __('shop.dashboard.helptext') }}
                           <a target="_blank" rel="nofollow" href="mailto:administrator@wolontariat.rybnik.pl">administrator@wolontariat.rybnik.pl</a>
                       </p>
@@ -200,8 +201,37 @@
         </div>
 
       <div class="row">
-        <div class="col-xl-6">
-
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <h3 class="mb-0">Chęć pozostania w polsce</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <canvas id="chart2" style="max-height:400px;"></canvas>
+                      </div>
+                </div>
+              </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <h3 class="mb-0">Płeć</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <canvas id="chart3" style="max-height:400px;"></canvas>
+                      </div>
+                </div>
+              </div>
         </div>
 
       </div>
@@ -220,10 +250,10 @@
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
 
 <script>
-    const labels = [{!! "'".date('Y-m-d', strtotime($chart[7]['date']))."', '".date('Y-m-d', strtotime($chart[6]['date']))."', '".date('Y-m-d', strtotime($chart[5]['date']))."', '".date('Y-m-d', strtotime($chart[4]['date']))."', '".date('Y-m-d', strtotime($chart[3]['date']))."', '".date('Y-m-d', strtotime($chart[2]['date']))."', '".date('Y-m-d', strtotime($chart[1]['date']))."'" !!}];
+    const labels1 = [{!! "'".date('Y-m-d', strtotime($chart[7]['date']))."', '".date('Y-m-d', strtotime($chart[6]['date']))."', '".date('Y-m-d', strtotime($chart[5]['date']))."', '".date('Y-m-d', strtotime($chart[4]['date']))."', '".date('Y-m-d', strtotime($chart[3]['date']))."', '".date('Y-m-d', strtotime($chart[2]['date']))."', '".date('Y-m-d', strtotime($chart[1]['date']))."'" !!}];
 
-    const data = {
-      labels: labels,
+    const data1 = {
+      labels: labels1,
       datasets: [{
         label: "{{ __('shop.dashboard.stats.sign') }}",
         backgroundColor: 'rgb(0, 87, 183)',
@@ -241,15 +271,57 @@
     ]
     };
 
-    const config = {
+    const config1 = {
       type: 'bar',
-      data: data,
+      data: data1,
+      options: {}
+    };
+
+
+    const labels2 = ['Tak', 'Nie', 'Może', 'Nie wie'];
+
+    const data2 = {
+      labels: labels2,
+      datasets: [{
+        label: "{{ __('shop.dashboard.stats.sign') }}",
+        backgroundColor: ['rgb(8, 217, 214)', 'rgb(37, 42, 52)', 'rgb(255, 46, 99)', 'rgb(210, 210, 210)'],
+        borderColor: ['rgb(8, 217, 214)', 'rgb(37, 42, 52)', 'rgb(255, 46, 99)', 'rgb(210, 210, 210)'],
+        data: [{{ $stats2['stay']['yes'].", ".$stats2['stay']['no'].", ".$stats2['stay']['maybe'].", ".$stats2['stay']['tdk'] }}],
+      },
+    ]
+    };
+
+    const config2 = {
+      type: 'doughnut',
+      data: data2,
+      options: {}
+    };
+
+
+    const labels3 = ['Kobieta', 'Mężczyzna'];
+
+    const data3 = {
+      labels: labels3,
+      datasets: [{
+        label: "{{ __('shop.dashboard.stats.sign') }}",
+        backgroundColor: ['rgb(255, 138, 174)', 'rgb(154, 220, 255)'],
+        borderColor: ['rgb(255, 138, 174)', 'rgb(154, 220, 255)'],
+        data: [{{ $stats2['gender']['f'].", ".$stats2['gender']['m'] }}],
+      },
+    ]
+    };
+
+    const config3 = {
+      type: 'pie',
+      data: data3,
       options: {}
     };
   </script>
 
 <script>
-    const myChart = new Chart(document.getElementById('chart1'),config);
+    const myChart1 = new Chart(document.getElementById('chart1'),config1);
+    const myChart2 = new Chart(document.getElementById('chart2'),config2);
+    const myChart3 = new Chart(document.getElementById('chart3'),config3);
   </script>
 
 

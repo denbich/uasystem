@@ -79,11 +79,6 @@ class SHomeController extends Controller
             ],
         ];
 
-        $stats = [
-            'refugees' => round(((43 - 73)/73)*100, '2'),
-            'visits' => round(((82 - 109)/109)*100, '2'),
-        ];
-
         if ($new1 == 0)
         {
             $srefugees = -100;
@@ -103,7 +98,20 @@ class SHomeController extends Controller
             'visits' => $svisits,
         ];
 
-        return view('shop.dashboard', ['visits' => $visits, 'ukrainians' => $ukrainians, 'signed' => $signed, 'visits_today' => $visits_today, 'chart' => $chart, 'stats' => $stats]);
+        $stats2 = [
+            'gender' => [
+                'f' => Ukrainian::where('gender', 'f')->get()->count(),
+                'm' => Ukrainian::where('gender', 'm')->get()->count(),
+            ],
+            'stay' => [
+                'yes' => Ukrainian::where('stay', 'tak')->get()->count(),
+                'no' => Ukrainian::where('stay', 'nie')->get()->count(),
+                'maybe' => Ukrainian::where('stay', 'może')->get()->count(),
+                'tdk' => Ukrainian::where('stay', 'nie wie')->get()->count(),
+            ],
+        ];
+
+        return view('shop.dashboard', ['visits' => $visits, 'ukrainians' => $ukrainians, 'signed' => $signed, 'visits_today' => $visits_today, 'chart' => $chart, 'stats' => $stats, 'stats2' => $stats2]);
     }
 
     public function settings()
