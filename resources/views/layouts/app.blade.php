@@ -9,7 +9,7 @@
 
   <title>@yield('title') | uaSystem</title>
 
-  <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" type="image/x-icon">
+  <link rel="shortcut icon" href="{{ url('/assets/img/logo.svg') }}" type="image/x-icon">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
 

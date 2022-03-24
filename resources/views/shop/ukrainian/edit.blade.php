@@ -8,11 +8,7 @@
 
 <nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main">
     <div class="scrollbar-inner">
-      <div class="sidenav-header d-flex mt-2 align-items-center w-100">
-        <a class="mt-2 mx-auto" href="{{ route('s.dashboard') }}">
-            <h1><i><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Lesser_Coat_of_Arms_of_Ukraine.svg" style="max-height: 50px;"></i> uaSystem</h1>
-        </a>
-      </div>
+        @include('shop.include.logo')
       <div class="navbar-inner">
         <div class="collapse navbar-collapse" id="sidenav-collapse-main">
         <ul class="navbar-nav">

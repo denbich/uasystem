@@ -4,14 +4,18 @@
 {{ __('Strona główna') }}
 @endsection
 
+@section('body')
+class="bg-default"
+@endsection
+
 @section('content')
 <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
     <div class="container text-primary">
         <div class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white">
             <a class="ml-1" href="{{ route('home') }}" rel="noopener noreferrer">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Lesser_Coat_of_Arms_of_Ukraine.svg" style="min-height: 55px;">
+                <img src="{{ url('/assets/img/logo.svg') }}" style="min-height: 55px;">
               </a>
-            <a class="text-white" href="{{ route('home') }}"> uaSystem</a>
+            <a class="text-white ml-2" href="{{ route('home') }}"> uaSystem</a>
         </div>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,12 +63,13 @@
   </nav>
 
   <div class="main-content">
-    <div class="header bg-gradient-primary py-8 py-lg-8 pt-lg-9">
+    <div class="header bg-gradient-primary py-7 py-lg-7 pt-lg-8">
         <div class="container-fluid my-5">
           <div class="header-body text-center mb-8">
             <div class="row justify-content-center">
-              <div class="col-xl-8 col-lg-8 col-md-8 px-5">
-                <h1 class="display-1 text-white mt-3 font-weight-700">{{ Str::upper(__('main.auth.panel')) }}</h1>
+              <div class="col-xl-8 col-lg-8 col-md-8">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Lesser_Coat_of_Arms_of_Ukraine.svg" style="max-height: 100px;" alt="">
+                <h1 class="display-1 text-white mt-3 font-weight-700">{{ Str::upper(__('main.auth.panel')) }} </h1>
 
                 <a href="{{ route('login') }}" class="btn btn-neutral btn-icon text-xl text-center btn-lg mt-2">
                     <span class="btn-inner--icon">
@@ -78,7 +83,7 @@
         </div>
         <div class="separator separator-bottom separator-skew zindex-100">
             <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-              <polygon class="fill-secondary" points="2560 0 2560 100 0 100"></polygon>
+              <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
             </svg>
           </div>
       </div>
