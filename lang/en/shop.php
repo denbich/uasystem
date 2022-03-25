@@ -59,6 +59,9 @@ return [
         'telephone' => 'Telephone number',
         'button' => 'save Changes',
         'alert' => 'You have successfully edited your user data!',
+        'divchecktitle' => 'Settings without saving (Save automatically)',
+        'check1' => 'Display digital data in refugee creation',
+        'check2' => 'Display questions - hints for creating a refugee',
     ],
 
     'help' => [
@@ -130,6 +133,8 @@ return [
         ],
         'create' => [
             'title' => 'Add refugee',
+            'question' => 'Are they registered in the 28th district (28 dzielnica)?',
+            'checkbox' => 'Display digital data',
             'lastname' => 'Lastname',
             'firstname' => 'Name',
             'birth' => 'Date of birth',

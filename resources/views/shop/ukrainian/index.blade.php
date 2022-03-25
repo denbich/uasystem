@@ -292,4 +292,12 @@
 
 @endsection
 
+@section('script')
+<!--<script>
+    //$(".alert-dismissible").fadeTo(5000, 500).slideUp(500, function() {
+        //$(".alert-dismissible").slideUp(500);
+    });
+</script>-->
+@endsection
+
 

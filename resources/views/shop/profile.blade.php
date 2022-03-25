@@ -155,18 +155,18 @@
                     <div class="card">
                         <div class="card-header">
                           <div class="align-items-center">
-                              <h3 class="mb-0">{{ __('Ustawienia bez potrzeby zapisywania (Zapisują się automatycznie)') }} </h3>
+                              <h3 class="mb-0">{{ __('shop.profile.divchecktitle') }} </h3>
                           </div>
                         </div>
                         <div class="card-body">
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox mb-2">
                                     <input type="checkbox" class="custom-control-input" id="Check1">
-                                    <label class="custom-control-label h-100" for="Check1">Wyświetlaj cyfrowe dane w tworzeniu uchodźca</label>
+                                    <label class="custom-control-label h-100" for="Check1">{{ __('shop.profile.check1') }}</label>
                                   </div>
                                   <div class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="Check2">
-                                    <label class="custom-control-label h-100" for="Check2">Wyświetlaj pytania - podpowiedzi w tworzeniu uchodźca</label>
+                                    <label class="custom-control-label h-100" for="Check2">{{ __('shop.profile.check2') }}</label>
                                   </div>
                               </div>
                         </div>

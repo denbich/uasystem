@@ -208,7 +208,7 @@
                     </div>
                     <div class="mb-2">
                         <label class="font-weight-bold text-center w-100">{{ __('shop.refugees.create.remarks') }}</label>
-                        <p>@if (empty($uk->remark)) {{ __('main.null') }} @else {{ $uk->remarks }} @endif</p>
+                        <p>@if (empty($uk->remarks)) {{ __('main.null') }} @else {{ $uk->remarks }} @endif</p>
                     </div>
                 </div>
               </div>
@@ -321,5 +321,3 @@
     </div>
 
 @endsection
-
-

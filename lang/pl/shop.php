@@ -59,6 +59,9 @@ return [
         'telephone' => 'Numer telefonu',
         'button' => 'Zapisz zmiany',
         'alert' => 'Edytowanie danych użytkownika zakończyło się pomyślnie!',
+        'divchecktitle' => 'Ustawienia bez potrzeby zapisywania (Zapisują się automatycznie)',
+        'check1' => 'Wyświetlaj cyfrowe dane w tworzeniu uchodźca',
+        'check2' => 'Wyświetlaj pytania - podpowiedzi w tworzeniu uchodźca',
     ],
 
     'help' => [
@@ -130,6 +133,8 @@ return [
         ],
         'create' => [
             'title' => 'Dodaj uchodźcę',
+            'question' => 'Czy jest zarejestrowany/a w 28 dzielnicy?',
+            'checkbox' => 'Wyświetl cyfrowe dane',
             'lastname' => 'Nazwisko',
             'firstname' => 'Imię',
             'birth' => 'Data urodzenia',

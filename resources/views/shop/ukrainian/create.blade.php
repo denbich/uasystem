@@ -96,7 +96,7 @@
                   <a href="#generatemodal" data-toggle="modal" data-target="#generatemodal" class="btn btn-sm btn-primary d-none"><i class="fas fa-clipboard-list"></i> Generuj listę</a>
                   <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="digitalcheckbox">
-                    <label class="custom-control-label" for="digitalcheckbox">Wyświetl cyfrowe dane</label>
+                    <label class="custom-control-label" for="digitalcheckbox">{{ __('shop.refugees.create.checkbox') }}</label>
                   </div>
                 </div>
               </div>
@@ -127,10 +127,10 @@
                                 </ul>
                             </div>
                             <div class="form-group">
-                                <h2>Czy jest zarejestrowany/a w 28 dzielnicy?</h2>
+                                <h2>{{ __('shop.refugees.create.question') }}</h2>
                                 <label class="custom-toggle">
                                     <input type="checkbox" id="dzielnicacheckbox">
-                                    <span class="custom-toggle-slider rounded-circle" data-label-off="Nie" data-label-on="Tak"></span>
+                                    <span class="custom-toggle-slider rounded-circle" data-label-off="{{ __('shop.refugees.create.stay.no') }}" data-label-on="{{ __('shop.refugees.create.stay.yes') }}"></span>
                                 </label>
                             </div>
                             <div class="form-group">
@@ -347,6 +347,7 @@
     }
     });
 </script>
+
 @endsection
 
 
