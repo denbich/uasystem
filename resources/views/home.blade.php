@@ -24,12 +24,13 @@ class="bg-default"
       <div class="navbar-collapse navbar-custom-collapse collapse" id="navbar-collapse">
         <div class="navbar-collapse-header">
           <div class="row">
-            <div class="col-8 collapse-brand text-center mx-auto">
-              <a href="" class="w-100 text-center mx-auto" rel="noopener noreferrer">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" class="text-center mx-auto my-2" alt="Ukraine flag">
+            <div class="col-10 collapse-brand text-center mx-auto">
+              <a href="{{ route('home') }}" class="w-100 text-center mx-auto" rel="noopener noreferrer">
+                <img src="{{ url('/assets/img/logo.svg') }}" style="min-height: 55px;" class="text-center mx-auto my-2">
+                uaSystem
             </a>
             </div>
-            <div class="col-4 collapse-close">
+            <div class="col-2 collapse-close">
               <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
@@ -68,7 +69,8 @@ class="bg-default"
           <div class="header-body text-center mb-8">
             <div class="row justify-content-center">
               <div class="col-xl-8 col-lg-8 col-md-8">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Lesser_Coat_of_Arms_of_Ukraine.svg" style="max-height: 100px;" alt="">
+                <img src="{{ url('/assets/img/logo.svg') }}" style="max-height: 100px;" class="mx-3">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Lesser_Coat_of_Arms_of_Ukraine.svg" class="mx-3" style="max-height: 100px;" alt="">
                 <h1 class="display-1 text-white mt-3 font-weight-700">{{ Str::upper(__('main.auth.panel')) }} </h1>
 
                 <a href="{{ route('login') }}" class="btn btn-neutral btn-icon text-xl text-center btn-lg mt-2">
@@ -93,7 +95,6 @@ class="bg-default"
   </div>
 
   @include('websitefooter')
-
 
 @endsection
 
