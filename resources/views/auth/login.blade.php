@@ -153,12 +153,17 @@ class="bg-default"
                                     </span>
                                 </div>
                             </div>
+                            <div class="text-center text-sm mt-2">
+                                <a href="{{ route('password.request') }}" class="mx-2">{{ __('Zapomniałeś hasła?') }}</a>
+                              </div>
                       </div>
                 </div>
           </div>
       </div>
     </div>
   </div>
+
+  @include('websitefooter')
 
 @endsection
 

@@ -92,6 +92,8 @@ class="bg-default"
     </div>
   </div>
 
+  @include('websitefooter')
+
 
 @endsection
 
