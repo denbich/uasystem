@@ -89,6 +89,20 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
     <script src="/assets/js/argon.js?v=1.0.0"></script> <!-- ?v=1.2.0 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js" integrity="sha512-Y2IiVZeaBwXG1wSV7f13plqlmFOx8MdjuHyYFVoYzhyRr3nH/NMDjTBSswijzADdNzMyWNetbLMfOpIPl6Cv9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        if ($.cookie('DisplayDigital') == null)
+        {
+            $.cookie("DisplayDigital", true, { expires: 365, path: '/' });
+        }
+
+        if ($.cookie('DisplayQuestions') == null)
+        {
+            $.cookie("DisplayQuestions", true, { expires: 365, path: '/' });
+        }
+
+    </script>
 
     @yield('script')
 
