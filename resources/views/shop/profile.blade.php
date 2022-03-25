@@ -63,91 +63,115 @@
 
     <div class="container-fluid mt--6">
         <div class="h-100">
-            <div class="card">
-              <div class="card-header">
-                <div class="row align-items-center">
-                  <div class="col-8">
-                    <h3 class="mb-0">{{ __('shop.profile.title') }} </h3>
-                  </div>
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="card">
+                        <div class="card-header">
+                          <div class="row align-items-center">
+                            <div class="col-8">
+                              <h3 class="mb-0">{{ __('shop.profile.title') }} </h3>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-body">
+                            @if (session('edit_user') == true)
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <span class="alert-text"><strong>{{ __('main.success') }}!</strong> {{ __('shop.profile.alert') }}</span>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
+                            <form action="{{ route('s.profile') }}" method="post">
+                                @csrf
+                                <div class="row pt-2">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="required" for="name">{{ __('shop.profile.username') }}</label>
+                                            <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="name" id="name" value="{{ Auth::user()->name }}" required>
+                                            @error('name')
+                                                <span class="text-danger small" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="required" for="firstname">{{ __('shop.profile.firstname') }}</label>
+                                            <input class="form-control {{ $errors->has('firstname') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="firstname" id="firstname" value="{{ Auth::user()->firstname }}" required>
+                                            @error('firstname')
+                                                <span class="text-danger small" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <a href="{{ route('s.settings') }}" class="btn btn-primary w-100">{{ __('shop.settings.button') }}</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="required" for="firstname">{{ __('shop.profile.email') }}</label>
+                                            <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" maxlength="255" type="email" name="email" id="email" value="{{ Auth::user()->email }}" required>
+                                            @error('email')
+                                                <span class="text-danger small" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="required" for="lastname">{{ __('shop.profile.lastname') }}</label>
+                                            <input class="form-control {{ $errors->has('lastname') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="lastname" id="lastname" value="{{ Auth::user()->lastname }}" required>
+                                            @error('lastname')
+                                                <span class="text-danger small" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="required" for="telephone">{{ __('shop.profile.telephone') }}</label>
+                                            <input class="form-control {{ $errors->has('telephone') ? 'is-invalid' : '' }}" maxlength="255" type="tel" name="telephone" id="telephone" value="{{ Auth::user()->telephone }}" required>
+                                            @error('telephone')
+                                                <span class="text-danger small" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-6">
+                                        <button class="btn btn-success w-100">{{ __('shop.profile.button') }}</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                      </div>
                 </div>
-              </div>
-              <div class="card-body">
-                  @if (session('edit_user') == true)
-                  <div class="row justify-content-center">
-                      <div class="col-lg-8">
-                          <div class="alert alert-success alert-dismissible fade show" role="alert">
-                              <span class="alert-text"><strong>{{ __('main.success') }}!</strong> {{ __('shop.profile.alert') }}</span>
-                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                              </button>
+                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="card-header">
+                          <div class="align-items-center">
+                              <h3 class="mb-0">{{ __('Ustawienia bez potrzeby zapisywania (Zapisują się automatycznie)') }} </h3>
                           </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div class="custom-control custom-checkbox mb-2">
+                                    <input type="checkbox" class="custom-control-input" id="Check1">
+                                    <label class="custom-control-label h-100" for="Check1">Wyświetlaj cyfrowe dane w tworzeniu uchodźca</label>
+                                  </div>
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="Check2">
+                                    <label class="custom-control-label h-100" for="Check2">Wyświetlaj pytania - podpowiedzi w tworzeniu uchodźca</label>
+                                  </div>
+                              </div>
+                        </div>
                       </div>
-                  </div>
-                  @endif
-                  <form action="{{ route('s.profile') }}" method="post">
-                      @csrf
-                      <div class="row pt-2">
-                          <div class="col-lg-6">
-                              <div class="form-group">
-                                  <label class="required" for="name">{{ __('shop.profile.username') }}</label>
-                                  <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="name" id="name" value="{{ Auth::user()->name }}" required>
-                                  @error('name')
-                                      <span class="text-danger small" role="alert">
-                                          <strong>{{ $message }}</strong>
-                                      </span>
-                                  @enderror
-                              </div>
-                              <div class="form-group">
-                                  <label class="required" for="firstname">{{ __('shop.profile.firstname') }}</label>
-                                  <input class="form-control {{ $errors->has('firstname') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="firstname" id="firstname" value="{{ Auth::user()->firstname }}" required>
-                                  @error('firstname')
-                                      <span class="text-danger small" role="alert">
-                                          <strong>{{ $message }}</strong>
-                                      </span>
-                                  @enderror
-                              </div>
-                              <div class="form-group">
-                                  <a href="{{ route('s.settings') }}" class="btn btn-primary w-100">{{ __('shop.settings.button') }}</a>
-                              </div>
-
-                          </div>
-                          <div class="col-lg-6">
-                              <div class="form-group">
-                                  <label class="required" for="firstname">{{ __('shop.profile.email') }}</label>
-                                  <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" maxlength="255" type="email" name="email" id="email" value="{{ Auth::user()->email }}" required>
-                                  @error('email')
-                                      <span class="text-danger small" role="alert">
-                                          <strong>{{ $message }}</strong>
-                                      </span>
-                                  @enderror
-                              </div>
-                              <div class="form-group">
-                                  <label class="required" for="lastname">{{ __('shop.profile.lastname') }}</label>
-                                  <input class="form-control {{ $errors->has('lastname') ? 'is-invalid' : '' }}" maxlength="255" type="text" name="lastname" id="lastname" value="{{ Auth::user()->lastname }}" required>
-                                  @error('lastname')
-                                      <span class="text-danger small" role="alert">
-                                          <strong>{{ $message }}</strong>
-                                      </span>
-                                  @enderror
-                              </div>
-                              <div class="form-group">
-                                  <label class="required" for="telephone">{{ __('shop.profile.telephone') }}</label>
-                                  <input class="form-control {{ $errors->has('telephone') ? 'is-invalid' : '' }}" maxlength="255" type="tel" name="telephone" id="telephone" value="{{ Auth::user()->telephone }}" required>
-                                  @error('telephone')
-                                      <span class="text-danger small" role="alert">
-                                          <strong>{{ $message }}</strong>
-                                      </span>
-                                  @enderror
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row justify-content-center">
-                          <div class="col-lg-6">
-                              <button class="btn btn-success w-100">{{ __('shop.profile.button') }}</button>
-                          </div>
-                      </div>
-                  </form>
-              </div>
+                </div>
             </div>
           </div>
 
@@ -158,3 +182,43 @@
 @endsection
 
 
+@section('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+
+    $(document).ready(function() {
+        if($.cookie("DisplayDigital") == 'true')
+        {
+            $('#Check1').prop('checked', true);
+        } else {
+            $('#Check1').prop('checked', false);
+        }
+
+        if($.cookie("DisplayQuestions") == 'true')
+        {
+            $('#Check2').prop('checked', true);
+        } else {
+            $('#Check2').prop('checked', false);
+        }
+
+        $('#Check1').change(function () {
+            if ($('#Check1').prop('checked'))
+            {
+                $.cookie("DisplayDigital", true, { expires: 365, path: '/' });
+            } else {
+                $.cookie("DisplayDigital", false, { expires: 365, path: '/' });
+            }
+        });
+        $('#Check2').change(function () {
+            if ($('#Check2').prop('checked'))
+            {
+                $.cookie("DisplayQuestions", true, { expires: 365, path: '/' });
+            } else {
+                $.cookie("DisplayQuestions", false, { expires: 365, path: '/' });
+            }
+        });
+    });
+
+
+</script>
+@endsection

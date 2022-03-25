@@ -66,7 +66,7 @@ class="bg-default"
   <div class="main-content">
     <div class="header bg-gradient-primary py-7 py-lg-7 pt-lg-8">
         <div class="container-fluid my-5">
-          <div class="header-body text-center mb-8">
+          <div class="header-body text-center mb-6">
             <div class="row justify-content-center">
               <div class="col-xl-8 col-lg-8 col-md-8">
                 <img src="{{ url('/assets/img/logo.svg') }}" style="max-height: 100px;" class="mx-3">
