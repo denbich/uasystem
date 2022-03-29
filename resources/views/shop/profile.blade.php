@@ -168,6 +168,10 @@
                                     <input type="checkbox" class="custom-control-input" id="Check2">
                                     <label class="custom-control-label h-100" for="Check2">{{ __('shop.profile.check2') }}</label>
                                   </div>
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="Check3">
+                                    <label class="custom-control-label h-100" for="Check3">{{ __('shop.profile.check3') }}</label>
+                                  </div>
                               </div>
                         </div>
                       </div>
@@ -198,6 +202,13 @@
             $('#Check2').prop('checked', false);
         }
 
+        if($.cookie("FirstRecord") == 'true')
+        {
+            $('#Check3').prop('checked', true);
+        } else {
+            $('#Check3').prop('checked', false);
+        }
+
         $('#Check1').change(function () {
             if ($('#Check1').prop('checked'))
             {
@@ -212,6 +223,15 @@
                 $.cookie("DisplayQuestions", true, { expires: 365, path: '/' });
             } else {
                 $.cookie("DisplayQuestions", false, { expires: 365, path: '/' });
+            }
+        });
+
+        $('#Check3').change(function () {
+            if ($('#Check3').prop('checked'))
+            {
+                $.cookie("FirstRecord", true, { expires: 365, path: '/' });
+            } else {
+                $.cookie("FirstRecord", false, { expires: 365, path: '/' });
             }
         });
 

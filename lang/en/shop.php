@@ -62,6 +62,7 @@ return [
         'divchecktitle' => 'Settings without saving (Save automatically)',
         'check1' => 'Display digital data in refugee creation',
         'check2' => 'Display questions - hints for creating a refugee',
+        'check3' => 'Immediately show the visit window after displaying 1 record',
     ],
 
     'help' => [

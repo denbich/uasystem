@@ -102,6 +102,11 @@
             $.cookie("DisplayQuestions", true, { expires: 365, path: '/' });
         }
 
+        if ($.cookie('FirstRecord') == null)
+        {
+            $.cookie("FirstRecord", false, { expires: 365, path: '/' });
+        }
+
     </script>
 
     @yield('script')

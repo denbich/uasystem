@@ -62,6 +62,7 @@ return [
         'divchecktitle' => 'Ustawienia bez potrzeby zapisywania (Zapisują się automatycznie)',
         'check1' => 'Wyświetlaj cyfrowe dane w tworzeniu uchodźca',
         'check2' => 'Wyświetlaj pytania - podpowiedzi w tworzeniu uchodźca',
+        'check3' => 'Pokaż od razu okienko wizyty po wyświetleniu 1 rekordu',
     ],
 
     'help' => [

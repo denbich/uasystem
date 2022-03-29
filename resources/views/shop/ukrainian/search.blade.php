@@ -210,12 +210,12 @@
               <form action="{{ route('s.ukrainian.addvisit', [$uk->id]) }}" method="post">
                   @csrf
                   <div class="modal-header">
-                    <h5 class="modal-title" id="labelmodaluk{{ $uk->id }}">{{ __('shop.refugees.repeating.modalvisit.reason') }}</h5>
+                    <h5 class="modal-title" id="labelmodaluk{{ $uk->id }}">{{ __('shop.refugees.repeating.modalvisit.reason') }} - {{ $uk->firstname." ".$uk->lastname }} {{ date("d.m.Y", strtotime($uk->birth)) }} r.</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body">
+                  <div class="modal-body pt-0">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="Check1{{ $uk->id }}" name="clothes" checked>
                         <label class="custom-control-label" for="Check1{{ $uk->id }}">{{ __('shop.refugees.list.clothes') }}</label>
@@ -310,49 +310,8 @@
 @endsection
 
 @section('script')
-<!--<script>
-    $(document).ready(function() {
-        var search = $('#search').val();
-        $.ajax({
-        url: "{{ route('s.ukrainian.searchukrainian') }}",
-        type: "post",
-        dataType: "html",
-        data:{
-            search: search,
-          _token: '{{ csrf_token() }}',
-        },
-        success:function(response){
-            $('#resultsearch').html(response);
-        },
-        error: function(error) {
-         console.log(error);
-        }
-       });
 
-    });
-</script>
-    <script>
-        $('#search').on('keyup propertychange paste', function(){
-        var search = $('#search').val();
-        $.ajax({
-        url: "{{ route('s.ukrainian.searchukrainian') }}",
-        type: "get",
-        dataType: "HTML",
-        data:{
-            search: search,
-          _token: '{{ csrf_token() }}',
-        },
-        success:function(response){
-            $('#resultsearch').html(response);
-        },
-        error: function(error) {
-         console.log(error);
-        }
-       });
-    });
-    </script>-->
-
-    <script>
+    <!--<script>
         function add_visit(value)
         {
             var search = $('#search').val();
@@ -378,7 +337,7 @@
         }
        });
         }
-    </script>
+    </script>-->
 
     <script>
         $.ajaxSetup({
@@ -386,5 +345,15 @@
             'X-CSRF-TOKEN': '{{ csrf_token() }}'
         }
     });
+    </script>
+
+    <script>
+        @isset($ukrainians)
+        if({{ count($ukrainians) }} == 1 && $.cookie('FirstRecord') == "true")
+        {
+            $('#modaluk{{ $ukrainians->first()->id }}').modal('show');
+
+        }
+        @endisset
     </script>
 @endsection
