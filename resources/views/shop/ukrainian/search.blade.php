@@ -348,7 +348,7 @@
     </script>
 
     <script>
-        @isset($ukrainians)
+        @isset($ukrainiansa)
         if({{ count($ukrainians) }} == 1 && $.cookie('FirstRecord') == "true")
         {
             $('#modaluk{{ $ukrainians->first()->id }}').modal('show');
