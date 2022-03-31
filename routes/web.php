@@ -13,9 +13,13 @@ use App\Http\Controllers\shop\SUkrainianController;
 Route::get('language/{locale}', function($locale) { session(['locale' => $locale]); App::setLocale($locale); return back(); })->name('language');
 
 Route::middleware('setlocale')->group(function(){
-    Route::get('/', [HomeController::class, 'home'])->name('home');
+    Route::domain('rybnik.uasystem.pl')->group(function () {
+        Route::get('/', [HomeController::class, 'home'])->name('home');
+    });
+
 
     Route::domain('rybnik.uasystem.pl')->group(function () {
+        Route::redirect('/', '/login');
         //Route::get('/migrate', function () { $code = Artisan::call('migrate', [ '--force' => true]); echo $code; });
 
     Route::get('/home', function(){
