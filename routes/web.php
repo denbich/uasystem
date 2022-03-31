@@ -15,7 +15,8 @@ Route::get('language/{locale}', function($locale) { session(['locale' => $locale
 Route::middleware('setlocale')->group(function(){
     Route::get('/', [HomeController::class, 'home'])->name('home');
 
-    Route::get('/migrate', function () { $code = Artisan::call('migrate', [ '--force' => true]); echo $code; });
+    Route::domain('rybnik.uasystem.pl')->group(function () {
+        //Route::get('/migrate', function () { $code = Artisan::call('migrate', [ '--force' => true]); echo $code; });
 
     Route::get('/home', function(){
         switch(Auth::user()->role)
@@ -88,5 +89,8 @@ Route::middleware('setlocale')->group(function(){
     });
 
     Auth::routes(['register' => false]);
+    });
+
+
 });
 
