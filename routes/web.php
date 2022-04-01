@@ -19,7 +19,7 @@ Route::middleware('setlocale')->group(function(){
     });
 
 
-    Route::domain('rybnik'.env('APP_LINK'))->group(function () {
+    Route::domain('rybnik.'.env('APP_LINK'))->group(function () {
         Route::redirect('/', '/login');
         //Route::get('/migrate', function () { $code = Artisan::call('migrate', [ '--force' => true]); echo $code; });
 
