@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -13,12 +14,12 @@ use App\Http\Controllers\shop\SUkrainianController;
 Route::get('language/{locale}', function($locale) { session(['locale' => $locale]); App::setLocale($locale); return back(); })->name('language');
 
 Route::middleware('setlocale')->group(function(){
-    Route::domain('uasystem.pl')->group(function () {
+    Route::domain(env('APP_LINK'))->group(function () {
         Route::get('/', [HomeController::class, 'home'])->name('home');
     });
 
 
-    Route::domain('rybnik.uasystem.pl')->group(function () {
+    Route::domain('rybnik'.env('APP_LINK'))->group(function () {
         Route::redirect('/', '/login');
         //Route::get('/migrate', function () { $code = Artisan::call('migrate', [ '--force' => true]); echo $code; });
 
