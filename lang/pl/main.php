@@ -35,10 +35,13 @@ return [
 
     'menu' => [
         'mainpage' => 'Strona główna',
+        'rybnik' => 'Rybnik',
+        'zory' => 'Żory',
+        'contact' => 'Kontakt',
     ],
 
     'auth' => [
-        'panel' => 'Panel uaSystem',
+        'panel' => 'Zaloguj się do uaSystem',
         'login' => 'Nazwa użytkownika',
         'password' => 'Hasło',
         'rememberme' => 'Zapamiętaj mnie',

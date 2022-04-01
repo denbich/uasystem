@@ -35,10 +35,13 @@ return [
 
     'menu' => [
         'mainpage' => 'Main page',
+        'rybnik' => 'Rybnik',
+        'zory' => 'Żory',
+        'contact' => 'Contact',
     ],
 
     'auth' => [
-        'panel' => 'uaSystem Panel',
+        'panel' => 'Log in to uaSystem',
         'login' => 'Username',
         'password' => 'Password',
         'rememberme' => 'Remember me',

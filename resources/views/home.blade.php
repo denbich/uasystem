@@ -55,7 +55,7 @@ class="bg-default"
               <span class="btn-inner--icon">
                 <i class="fas fa-handshake mr-2"></i>
               </span>
-              <span class="nav-link-inner--text">{{ __('main.login') }}</span>
+              <span class="nav-link-inner--text">{{ __('main.menu.rybnik') }}</span>
             </a>
           </li>
         </ul>
@@ -73,11 +73,11 @@ class="bg-default"
                 <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Lesser_Coat_of_Arms_of_Ukraine.svg" class="mx-3" style="max-height: 100px;" alt="">
                 <h1 class="display-1 text-white mt-3 font-weight-700">{{ Str::upper(__('main.auth.panel')) }} </h1>
 
-                <a href="{{ route('login') }}" class="btn btn-neutral btn-icon text-xl text-center btn-lg mt-2">
-                    <span class="btn-inner--icon">
-                      <i class="fas fa-sign-in-alt mr-2"></i>
-                    </span>
-                    <span class="nav-link-inner--text">{{ __('main.login') }}</span>
+                <a href="{{ route('login') }}" class="btn btn-neutral text-xl text-center btn-lg mt-2">
+                    <span class="nav-link-inner--text">{{ __('main.menu.rybnik') }}</span>
+                  </a>
+                  <a href="https://zory.{{ env('APP_LINK') }}/login" class="btn btn-neutral text-xl text-center btn-lg mt-2 d-none">
+                    <span class="nav-link-inner--text">{{ __('main.menu.zory') }}</span>
                   </a>
               </div>
             </div>

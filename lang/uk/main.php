@@ -34,6 +34,9 @@ return [
 
     'menu' => [
         'mainpage' => 'Головна сторінка',
+        'rybnik' => 'Rybnik',
+        'zory' => 'Żory',
+        'contact' => 'Контакт',
     ],
 
     'auth' => [
