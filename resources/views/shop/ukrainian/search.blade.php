@@ -365,7 +365,7 @@
     </script>
 
     <script>
-        @isset($ukrainians)
+        @isset($ukrainiansa)
             @if ((session('add_visit') != true))
                 if({{ count($ukrainians) }} == 1 && $.cookie('FirstRecord') == "true")
                 {
