@@ -191,7 +191,10 @@
                             <td>{{ date("d.m.Y", strtotime($uk->birth)) }} r.</td>
                             <td> <div class="d-flex align-items-center"> <span class="completion mr-2">{{ $uk->children }}</span> </div> </td>
                             <td class="text-center">
+                                @if ($_COOKIE['DisplayDigital'] == "true")
                                 <a href="#modalukinfo{{ $uk->id }}" data-toggle="modal" data-target="#modalukinfo{{ $uk->id }}" class="text-lg mx-1"><i class="fas fa-qrcode"></i></a>
+                                @endif
+
                                 <a href="#modaluk{{ $uk->id }}" data-toggle="modal" data-target="#modaluk{{ $uk->id }}" class="text-lg mx-1"> <i class="fas fa-plus"></i> </a>
                                 <a href="{{ route('s.ukrainian.show', [$uk->id]) }}" class="text-lg mx-1"> <i class="fas fa-search"></i> </a>
                                 <a href="{{ route('s.ukrainian.edit', [$uk->id]) }}" class="text-lg mx-1"> <i class="fas fa-edit"></i> </a>
@@ -267,6 +270,7 @@
         </div>
     </div>
 
+    @if ($_COOKIE['DisplayDigital'] == "true")
     <div class="modal fade" id="modalukinfo{{ $uk->id }}" tabindex="-1" role="dialog" aria-labelledby="labelmodalukinfo{{ $uk->id }}" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
@@ -316,6 +320,7 @@
           </div>
         </div>
       </div>
+    @endif
   @endforeach
   @endisset
 

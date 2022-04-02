@@ -97,9 +97,9 @@ class="bg-default"
                     <div class="text-center">
                         <h1>{{ Str::upper(__('Partnerzy')) }}</h1>
                             <div class="row mt-4 justify-content-around">
-                                <div class="col-sm-4">
+                                <!--<div class="col-sm-4">
                                     <a href="https://www.facebook.com/zolty.mlynek.klubokawiarnia/" target="_blank" rel="noopener noreferrer"><img src="{{ url('/assets/img/zory.svg') }}" style="max-height: 161px;"></a>
-                                </div>
+                                </div>-->
                                 <div class="col-sm-4">
                                     <a href="https://www.facebook.com/stowarzyszenie17tka/" target="_blank" rel="noopener noreferrer"><img src="{{ url('/assets/img/17stka.jpg') }}" alt="" class="w-50" style="max-height: 161px"></a>
                                 </div>

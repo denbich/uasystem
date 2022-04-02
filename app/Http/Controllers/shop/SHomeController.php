@@ -82,7 +82,7 @@ class SHomeController extends Controller
         if ($new1 == 0)
         {
             $srefugees = -100;
-            
+
         } elseif ($new1 > 0 and $new2 == 0)
         {
             $srefugees = 100;
