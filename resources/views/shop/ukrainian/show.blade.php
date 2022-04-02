@@ -91,9 +91,12 @@
                     <h3 class="text-center"></h3>
                     <h3 class="text-center">Opcje</h3>
                     <a href="{{ route('s.ukrainian.edit', [$uk->id]) }}" class="btn btn-success w-100 my-2 text-white">{{ __('shop.refugees.edit.title') }}</a>
+                    <a href="#modaldelete" data-toggle="modal" data-target="#modaldelete" class="btn btn-danger w-100 my-2">{{ __('shop.refugees.show.deletebnutton') }}</a>
                     <hr class="my-2">
                         <a href="#modaluk" data-toggle="modal" data-target="#modaluk" class="btn btn-primary w-100 my-2">{{ __('shop.refugees.show.visitbutton') }}</a>
                         <a href="#modalukinfo" data-toggle="modal" data-target="#modalukinfo" class="btn btn-primary w-100 my-2">{{ __('shop.refugees.repeating.modaldata.title') }}</a>
+                        <a href="{{ route('s.ukrainian.visits', [$uk->id]) }}" class="btn btn-primary w-100 my-2">{{ __('Edytuj wizyty') }}</a>
+
                 </div>
               </div>
               <div class="card">
@@ -319,5 +322,29 @@
         </div>
       </div>
     </div>
+
+    <div class="modal fade" id="modaldelete" tabindex="-1" role="dialog" aria-labelledby="labelmodadelete" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <form action="{{ route('s.ukrainian.destroy', [$uk->id]) }}" method="post">
+                @method('DELETE')
+                @csrf
+                <div class="modal-header">
+                  <h5 class="modal-title" id="labelmodaldelete">{{ __('shop.refugees.show.deletebnutton') }}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body py-0">
+                    <h1>Czy jesteś pewnien, że chcesz usunąć tego uchodźca?</h1>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('main.cancel') }}</button>
+                  <button type="submit" class="btn btn-danger">{{ __('main.delete') }}</button>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
 
 @endsection

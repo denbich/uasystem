@@ -123,6 +123,18 @@
                     </div>
                 </div>
                 @endif
+                @if (session('delete_uk') == true)
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <span class="alert-text"><strong>{{ __('main.success') }}!</strong> {{ __('Usuwanie uchodźca zakończyło się pomyślnie!') }}</span>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                @endif
                 <div id="alertsdiv" class="d-none">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
@@ -348,12 +360,14 @@
     </script>
 
     <script>
-        @isset($ukrainiansa)
-        if({{ count($ukrainians) }} == 1 && $.cookie('FirstRecord') == "true")
-        {
-            $('#modaluk{{ $ukrainians->first()->id }}').modal('show');
+        @isset($ukrainians)
+            @if ((session('add_visit') != true))
+                if({{ count($ukrainians) }} == 1 && $.cookie('FirstRecord') == "true")
+                {
+                    $('#modaluk{{ $ukrainians->first()->id }}').modal('show');
 
-        }
+                }
+            @endif
         @endisset
     </script>
 @endsection

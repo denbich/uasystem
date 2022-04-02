@@ -18,6 +18,9 @@ return [
     'refugee' => 'Біженець',
     'options' => 'Параметри',
     'null' => 'Брак',
+    'delete' => 'Видалити',
+    'yes' => '',
+    'no' => '',
 
     'langlist' => [
         'current' => [

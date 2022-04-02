@@ -135,7 +135,8 @@ class SUkrainianController extends Controller
 
     public function destroy($id)
     {
-        //
+        $uk = Ukrainian::where('id', $id)->delete();
+        return redirect()->route('s.ukrainian.search')->with(['delete_uk' => true]);
     }
 
     public function add_visit(Request $request, $ukrainian_id)
@@ -172,6 +173,19 @@ class SUkrainianController extends Controller
         ]);
 
         return back()->with(['add_visit' => true]);
+    }
+
+    public function visitslist($id)
+    {
+        $uk = Ukrainian_visit::where('ukrainian_id', $id)->orderBy('created_at', 'ASC')->get();
+        //dd($uk);
+        return view('shop.ukrainian.visits', ['uk' => $uk, 'id' => $id]);
+    }
+
+    public function visitsdelete(Request $request, $id)
+    {
+        $visit = Ukrainian_visit::where('id', $request->visit_id)->delete();
+        return back()->with(['delete_visit' => true]);
     }
 
     public function search()
@@ -287,4 +301,6 @@ class SUkrainianController extends Controller
 
         return back()->with(['change_digital' => true]);
     }
+
+
 }

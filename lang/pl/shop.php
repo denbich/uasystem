@@ -169,6 +169,7 @@ return [
             'visitbutton' => 'Dodaj wizytę',
             'history' => 'Historia wizyt',
             'title' => 'Informacje o uchodźcu',
+            'deletebnutton' => 'Usuń uchodźca',
         ],
         'alert' => [
             'visit' => 'Wizyta została dodana pomyślnie!',

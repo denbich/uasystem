@@ -80,6 +80,8 @@ Route::middleware('setlocale')->group(function(){
             });
             Route::get('/ukrainian/search', [SUkrainianController::class, 'search'])->name('s.ukrainian.search');
             Route::get('/ukrainian/search-ukrainian', [SUkrainianController::class, 'search_engine'])->name('s.ukrainian.searchukrainian');
+            Route::get('/ukrainian/visits/{ukrainian_id}', [SUkrainianController::class, 'visitslist'])->name('s.ukrainian.visits');
+            Route::post('/ukrainian/visits/{ukrainian_id}', [SUkrainianController::class, 'visitsdelete']);
             Route::post('/ukrainian/add-visit/{ukrainian_id}', [SUkrainianController::class, 'add_visit'])->name('s.ukrainian.addvisit');
             Route::post('/ukrainian/visit', [SUkrainianController::class, 'visit'])->name('s.ukrainian.visit');
             Route::post('/ukrainian/digital/{id}', [SUkrainianController::class, 'digital'])->name('s.ukrainian.digital');

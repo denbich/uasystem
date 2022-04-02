@@ -169,6 +169,7 @@ return [
             'visitbutton' => 'Add visit',
             'history' => 'Visit history',
             'title' => 'Information about the refugee',
+            'deletebnutton' => 'Delete the refugee',
         ],
         'alert' => [
             'visit' => 'The visit has been added successfully!',

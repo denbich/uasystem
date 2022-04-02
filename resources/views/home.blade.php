@@ -74,10 +74,10 @@ class="bg-default"
                 <h1 class="display-1 text-white mt-3 font-weight-700">{{ Str::upper(__('main.auth.panel')) }} </h1>
 
                 <a href="{{ route('login') }}" class="btn btn-neutral text-xl text-center btn-lg mt-2">
-                    <span class="nav-link-inner--text">{{ __('main.menu.rybnik') }}</span>
+                    <span class="nav-link-inner--text">{{ Str::upper(__('main.menu.rybnik')) }}</span>
                   </a>
                   <a href="https://zory.{{ env('APP_LINK') }}/login" class="btn btn-neutral text-xl text-center btn-lg mt-2 d-none">
-                    <span class="nav-link-inner--text">{{ __('main.menu.zory') }}</span>
+                    <span class="nav-link-inner--text">{{ Str::upper(__('main.menu.zory')) }}</span>
                   </a>
               </div>
             </div>
@@ -90,7 +90,28 @@ class="bg-default"
           </div>
       </div>
 
-    <div class="container-fluid mt--8">
+    <div class="container mt--8">
+        <div class="card mt-4">
+            <div class="card-body">
+                <div class="container">
+                    <div class="text-center">
+                        <h1>{{ Str::upper(__('Partnerzy')) }}</h1>
+                            <div class="row mt-4 justify-content-around">
+                                <div class="col-sm-4">
+                                    <a href="https://www.facebook.com/zolty.mlynek.klubokawiarnia/" target="_blank" rel="noopener noreferrer"><img src="{{ url('/assets/img/zory.svg') }}" style="max-height: 161px;"></a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href="https://www.facebook.com/stowarzyszenie17tka/" target="_blank" rel="noopener noreferrer"><img src="{{ url('/assets/img/17stka.jpg') }}" alt="" class="w-50" style="max-height: 161px"></a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href="https://rybnik.eu" target="_blank" rel="noopener noreferrer"><img src="{{ url('/assets/img/rybnik.svg') }}" alt=""  style="max-height: 161px;"></a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+            </div>
+          </div>
     </div>
   </div>
 

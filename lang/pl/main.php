@@ -18,6 +18,9 @@ return [
     'refugee' => 'Uchodźca',
     'options' => 'Opcje',
     'null' => 'Brak',
+    'delete' => 'Usuń',
+    'yes' => 'Tak',
+    'no' => 'Nie',
 
     'langlist' => [
         'current' => [
