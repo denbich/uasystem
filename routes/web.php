@@ -10,6 +10,7 @@ use App\Http\Controllers\shop\SHomeController;
 use App\Http\Controllers\admin\AHomeController;
 use App\Http\Controllers\admin\AUserController;
 use App\Http\Controllers\shop\SUkrainianController;
+use App\Http\Controllers\organisation\OHomeController;
 
 Route::get('language/{locale}', function($locale) { session(['locale' => $locale]); App::setLocale($locale); return back(); })->name('language');
 
@@ -33,7 +34,7 @@ Route::middleware('setlocale')->group(function(){
                 return redirect()->route('s.dashboard');
                 break;
             case('organisation'):
-                return redirect()->route('home');
+                return redirect()->route('o.dashboard');
                 break;
         }
     })->name('redirect');
@@ -91,7 +92,17 @@ Route::middleware('setlocale')->group(function(){
             ]]);
         });
         Route::prefix('/organisation')->middleware('setlocale', 'organisationcheck')->group(function() {
-
+            Route::controller(OHomeController::class)->group(function(){
+                Route::get('/', 'dashboard')->name('o.dashboard');
+                //Route::get('/profile', 'profile')->name('a.profile');
+                //Route::post('/profile', 'save_profile');
+                //Route::get('/settings', 'settings')->name('a.settings');
+                //Route::post('/settings', 'save_settings');
+            });
+            Route::resource('/ukrainian', OUkrainianController::class, ['names' => [
+                'index' => 'o.ukrainian.list', 'create' => 'o.ukrainian.create', 'store' => 'o.ukrainian.store', 'show' => 'o.ukrainian.show',
+                'edit' => 'o.ukrainian.edit', 'update' => 'o.ukrainian.update', 'destroy' => 'o.ukrainian.destroy',
+            ]]);
         });
     });
 

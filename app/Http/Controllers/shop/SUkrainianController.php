@@ -52,6 +52,7 @@ class SUkrainianController extends Controller
             'birth' => $validate['birth'],
             'gender' => $validate['gender'],
             'address' => $validate['address'],
+            'telephone' => $validate['telephone'],
             'work' => $validate['work'],
             'stay' => $stay,
             'children' => $validate['children'],
