@@ -1,0 +1,113 @@
+<div class="container mt-3">
+    <div class="row deliveryinfo text-xs-center">
+    <div class="col-md-3 col-sm-6 col-xs-12 sbr">
+    <ul class="list-unstyled">
+    <li><span class="gift"><svg width="45px" height="45px"><use xlink:href="#gift"></use></svg></span></li>
+    <li>
+    <h4>Darmowa dostawa</h4>
+    <p>Od 300 złotych</p>
+    </li>
+    </ul>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12 sbr">
+    <ul class="list-unstyled">
+    <li><span class="secure"><svg width="45px" height="45px"><use xlink:href="#pay"></use></svg></span></li>
+    <li>
+    <h4>Dostawa</h4>
+    <p>W ciągu 24h przygotujemy <br />twoją paczkę do wysyłki</p>
+    </li>
+    </ul>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12 sbr">
+    <ul class="list-unstyled">
+    <li><span class="support"><svg width="45px" height="45px"><use xlink:href="#support"></use></svg></span></li>
+    <li>
+    <h4>Bezpieczna płatność</h4>
+    <p>Płatność zapewnia: Przelewy24</p>
+    </li>
+    </ul>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12 sbr">
+    <ul class="list-unstyled">
+    <li><span class="shipping"><svg width="45px" height="45px"><use xlink:href="#ship"></use></svg></span></li>
+    <li>
+    <h4>Pomoc online</h4>
+    <p>Możesz odezwać się <br />w każdej chwili!</p>
+    </li>
+    </ul>
+    <p></p>
+    </div>
+    </div>
+    <img src="https://just-me.pl/img/cms/przelewy24lista.png" class="w-100" style="max-width:50%; margin-left: auto; margin-right: auto;"/>
+    </div>
+
+
+
+
+
+
+    {**
+        * 2007-2018 PrestaShop
+        *
+        * NOTICE OF LICENSE
+        *
+        * This source file is subject to the Academic Free License 3.0 (AFL-3.0)
+        * that is bundled with this package in the file LICENSE.txt.
+        * It is also available through the world-wide-web at this URL:
+        * https://opensource.org/licenses/AFL-3.0
+        * If you did not receive a copy of the license and are unable to
+        * obtain it through the world-wide-web, please send an email
+        * to license@prestashop.com so we can send you a copy immediately.
+        *
+        * DISCLAIMER
+        *
+        * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+        * versions in the future. If you wish to customize PrestaShop for your
+        * needs please refer to http://www.prestashop.com for more information.
+        *
+        * @author    PrestaShop SA <contact@prestashop.com>
+        * @copyright 2007-2018 PrestaShop SA
+        * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
+        * International Registered Trademark & Property of PrestaShop SA
+        *}
+
+       <div class="my-2">
+       <div class="container">
+         <div class="block_newsletter">
+           <svg width="50px" height="50px"><use xlink:href="#mail"></use></svg>
+             <h3>{l s='join our newsletter' d='Shop.Theme.Catalog'}</h3>
+           <h5>{$conditions}</h5>
+             <form action="{$urls.pages.index}#testiblock" method="post">
+                   <div class="input-wrapper">
+                     <input
+                       name="email"
+                       type="text"
+                       value="{$value}"
+                       placeholder="{l s='Your email address' d='Shop.Forms.Labels'}"
+                       aria-labelledby="block-newsletter-label"
+                     >
+                   </div>
+
+       {*  {if $conditions}
+                       <p>{$conditions}</p>
+                     {/if} *}
+                     {if $msg}
+                       <p class="alert {if $nw_error}alert-danger{else}alert-success{/if}">
+                         {$msg}
+                       </p>
+                     {/if}
+                     {if isset($id_module)}
+                       {hook h='displayGDPRConsent' id_module=$id_module}
+                     {/if}
+
+                   <input
+                       class="btn btn-primary"
+                       name="submitNewsletter"
+                       type="submit"
+                       value="{l s='subscribe' d='Shop.Theme.Actions'}"
+                     >
+                   <input type="hidden" name="action" value="0">
+                   <div class="clearfix"></div>
+
+             </form>
+           </div>
