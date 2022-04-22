@@ -231,6 +231,7 @@
                     </button>
                   </div>
                   <div class="modal-body pt-0">
+                    <h3>Adres: {{ $uk->address }}</h3>
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="Check1{{ $uk->id }}" name="clothes" checked>
                         <label class="custom-control-label" for="Check1{{ $uk->id }}">{{ __('shop.refugees.list.clothes') }}</label>
