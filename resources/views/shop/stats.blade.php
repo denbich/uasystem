@@ -192,7 +192,7 @@
         label: "Wykresy miast",
         backgroundColor: ['rgb(127, 255, 212)', 'rgb(230, 255, 250)', 'rgb(153, 102, 204)', 'rgb(54, 65, 53)', 'rgb(0, 49, 83)', 'rgb(254, 254, 51)', 'rgb(194,	178, 128)', 'rgb(65, 105, 225)', 'rgb(128, 0, 0)', 'rgb(255, 191, 0)', 'rgb(107, 86, 54)', 'rgb(51, 0, 204)', 'rgb(255, 163, 212)', 'rgb(0, 255, 255)', 'rgb(157, 91, 3)', 'rgb(227, 66, 52)', 'rgb(195, 92, 111)'],
         borderColor: ['rgb(127, 255, 212)', 'rgb(230, 255, 250)', 'rgb(153, 102, 204)', 'rgb(54, 65, 53)', 'rgb(0, 49, 83)', 'rgb(254, 254, 51)', 'rgb(194,	178, 128)', 'rgb(65, 105, 225)', 'rgb(128, 0, 0)', 'rgb(255, 191, 0)', 'rgb(107, 86, 54)', 'rgb(51, 0, 204)', 'rgb(255, 163, 212)', 'rgb(0, 255, 255)', 'rgb(157, 91, 3)', 'rgb(227, 66, 52)', 'rgb(195, 92, 111)'],
-        data: ["0 , ".$stats['jejkowice'].", ".$stats['szczerbice'].", ".$stats['gaszowice'].", ".$stats['czernica'].", ".$stats['lyski'].", ".$stats['sumina'].", ".$stats['rudy'].", ".$stats['rydultowy'].", ".$stats['radlin'].", ".$stats['pszow'].", ".$stats['jankowice'].", ".$stats['swierklany'].", ".$stats['zory'].", ".$stats['czerleszcz'].", ".$stats['palowice'].", ".$stats['wodzislaw'] }}],
+        data: [{{ "0 , ".$stats['jejkowice'].", ".$stats['szczerbice'].", ".$stats['gaszowice'].", ".$stats['czernica'].", ".$stats['lyski'].", ".$stats['sumina'].", ".$stats['rudy'].", ".$stats['rydultowy'].", ".$stats['radlin'].", ".$stats['pszow'].", ".$stats['jankowice'].", ".$stats['swierklany'].", ".$stats['zory'].", ".$stats['czerleszcz'].", ".$stats['palowice'].", ".$stats['wodzislaw'] }}],
       },
     ]
     };
