@@ -73,6 +73,8 @@ Route::middleware('setlocale')->group(function(){
                     Route::get('/', 'help_centre')->name('s.help_centre');
                 });
 
+                Route::get('/stats', 'stats');
+
                 Route::get('/excel', 'excel');
                 Route::post('/excel', 'exceldo');
 

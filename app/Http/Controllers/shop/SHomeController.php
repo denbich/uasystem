@@ -204,4 +204,48 @@ class SHomeController extends Controller
         Excel::import(new VisitsImport, $request->file);
         return "success";
     }
+
+    public function stats()
+    {
+        $rybnik = Ukrainian::where('address', 'like', '%rybnik%')->orWhere('address', 'like', '%Hotel Olimpia%')->orWhere('address', 'like', '%Hotel Politański%')->orWhere('address', 'like', '%Hotel Przy Młynie%')->count();
+        $jejkowice = Ukrainian::where('address', 'like', '%jejkowice%')->count();
+        $szczerbice = Ukrainian::where('address', 'like', '%szczerbice%')->count();
+        $gaszowice = Ukrainian::where('address', 'like', '%gaszowice%')->count();
+        $czernica = Ukrainian::where('address', 'like', '%czernica%')->count();
+        $lyski = Ukrainian::where('address', 'like', '%lyski%')->count();
+        $sumina = Ukrainian::where('address', 'like', '%sumina%')->count();
+        $rudy = Ukrainian::where('address', 'like', '%rudy%')->count();
+        $rydultowy = Ukrainian::where('address', 'like', '%rydułtowy%')->count();
+        $radlin = Ukrainian::where('address', 'like', '%radlin%')->count();
+        $pszow = Ukrainian::where('address', 'like', '%pszów%')->count();
+        $jankowice = Ukrainian::where('address', 'like', '%jankowice%')->count();
+        $swierklany = Ukrainian::where('address', 'like', '%Świerklany%')->count();
+        $zory = Ukrainian::where('address', 'like', '%Żory%')->count();
+        $czerleszcz = Ukrainian::where('address', 'like', '%Czerwionka-Leszczyny%')->orwhere('address', 'like', '%Czerwionka%')->orwhere('address', 'like', '%Leszczyny%')->count();
+        $palowice = Ukrainian::where('address', 'like', '%Palowice%')->count();
+        $wodzislaw = Ukrainian::where('address', 'like', '%Wodzisław%')->count();
+
+        $count = [
+            'rybnik' => $rybnik,
+            'jejkowice' => $jejkowice,
+            'szczerbice' => $szczerbice,
+            'gaszowice' => $gaszowice,
+            'czernica' => $czernica,
+            'lyski' => $lyski,
+            'sumina' => $sumina,
+            'rudy' => $rudy,
+            'rydultowy' => $rydultowy,
+            'radlin' => $radlin,
+            'pszow' => $pszow,
+            'jankowice' => $jankowice,
+            'swierklany' => $swierklany,
+            'zory' => $zory,
+            'czerleszcz' => $czerleszcz,
+            'palowice' => $palowice,
+            'wodzislaw' => $wodzislaw,
+            //'' => $,
+        ];
+
+        return view('shop.stats', ['stats' => $count]);
+    }
 }
